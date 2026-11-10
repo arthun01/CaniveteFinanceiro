@@ -2,7 +2,7 @@
 
 @media (max-width: 1024px) {
   .charts-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
   }
 
@@ -47,6 +47,22 @@
     min-height: auto;
   }
 
+  /* Ajustes dos Gráficos em Telas Médias/Pequenas */
+  .charts-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .chart-card {
+    padding: 1.25rem 1rem;
+    overflow: hidden;
+  }
+
+  .chart-canvas-wrapper {
+    height: 260px;
+    width: 100%;
+  }
+
   .table-card {
     padding: 1.25rem 0.75rem;
   }
@@ -72,6 +88,11 @@
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
   .hero-badge {
     font-size: 0.78rem;
   }
@@ -82,6 +103,26 @@
 
   .kpi-value {
     font-size: 1.5rem;
+  }
+
+  .calculator-form-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .chart-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .chart-header {
+    margin-bottom: 1rem;
+  }
+
+  .chart-title {
+    font-size: 1.05rem;
+  }
+
+  .chart-canvas-wrapper {
+    height: 240px;
   }
 
   .evolution-table th,

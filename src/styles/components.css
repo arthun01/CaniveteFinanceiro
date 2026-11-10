@@ -260,18 +260,25 @@
 /* --- SEÇÃO DE GRÁFICOS --- */
 .charts-section {
   margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .charts-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
   gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .chart-card {
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .chart-header {
@@ -290,10 +297,18 @@
 .chart-canvas-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.chart-canvas-wrapper canvas {
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 /* --- SEÇÃO DA TABELA --- */

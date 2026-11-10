@@ -186,6 +186,8 @@ export class ChartManager {
                 family: 'Inter, sans-serif',
                 size: 11,
               },
+              autoSkip: true,
+              maxTicksLimit: 8,
               maxRotation: 45,
             },
           },
