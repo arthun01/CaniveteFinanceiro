@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Juros Compostos Online | Simulação Financeira</title>
+    <title>FinHub | Simuladores e Calculadoras Financeiras Online</title>
     <meta
       name="description"
-      content="Simule seus investimentos com juros compostos online. Veja gráficos interativos, projeção mês a mês e ano a ano do seu patrimônio."
+      content="Simuladores e calculadoras financeiras inteligentes: Juros Compostos, Reserva de Emergência e projeção de patrimônio em tempo real."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,289 +21,151 @@
     <link rel="stylesheet" href="./src/styles/responsive.css" />
   </head>
   <body>
-    <!-- 1. HEADER / HERO -->
-    <header class="hero container">
-      <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-          <polyline points="16 7 22 7 22 13"></polyline>
-        </svg>
-        Simulador de Patrimônio & Finanças
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <nav class="container" style="padding-top: 1.5rem; padding-bottom: 0.5rem;" aria-label="Navegação Principal">
+      <div class="glass-panel-subtle" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.25rem; border-radius: var(--radius-pill);">
+        <a href="./" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--text-main); text-decoration: none;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+          FinHub
+        </a>
+        <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.9rem;">
+          <a href="./juros-compostos/" style="color: var(--text-muted); text-decoration: none;">Juros Compostos</a>
+          <a href="./reserva-emergencia/" style="color: var(--text-muted); text-decoration: none;">Reserva de Emergência</a>
+          <a href="https://github.com/arthun01" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.35rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            GitHub
+          </a>
+        </div>
       </div>
-      <h1 class="hero-title">
-        Calculadora de <span class="hero-title-gradient">Juros Compostos</span>
+    </nav>
+
+    <!-- HERO DO PORTAL -->
+    <header class="hero container">
+      <div class="hero-badge portal-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 14 14"></polyline>
+        </svg>
+        Suíte de Ferramentas Financeiras
+      </div>
+      <h1 class="hero-title portal-title">
+        Simuladores & <span class="hero-title-gradient">Calculadoras Inteligentes</span>
       </h1>
-      <p class="hero-subtitle">
-        Projete o crescimento do seu capital no tempo com aportes mensais, visualize a curva exponencial em gráficos dinâmicos e compare mês a mês.
+      <p class="hero-subtitle portal-subtitle">
+        Ferramentas interativas com design moderno, gráficos em tempo real e projeções precisas para você dominar suas finanças e acelerar seu patrimônio.
       </p>
     </header>
 
     <main class="container">
-      <!-- 2. CAMPOS DE INPUT (FORMULÁRIO GLASS) -->
-      <section class="glass-panel border-gradient calculator-form-card" aria-label="Formulário de Cálculo">
-        <form id="calc-form" novalidate>
-          <div class="form-grid">
-            <!-- Valor Inicial -->
-            <div class="input-group">
-              <label for="initial-value" class="input-label">
-                Valor inicial
-              </label>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  id="initial-value"
-                  class="form-input"
-                  placeholder="R$ 1.000,00"
-                  inputmode="numeric"
-                  required
-                />
-              </div>
-            </div>
-
-            <!-- Investimento Mensal (Aporte) -->
-            <div class="input-group">
-              <label for="monthly-deposit" class="input-label">
-                Investimento mensal (aporte)
-              </label>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  id="monthly-deposit"
-                  class="form-input"
-                  placeholder="R$ 500,00"
-                  inputmode="numeric"
-                />
-              </div>
-            </div>
-
-            <!-- Taxa de Juros -->
-            <div class="input-group">
-              <label for="interest-rate" class="input-label">
-                Taxa de juros
-              </label>
-              <div class="input-wrapper input-with-select">
-                <input
-                  type="number"
-                  id="interest-rate"
-                  class="form-input"
-                  placeholder="10"
-                  step="0.01"
-                  min="0"
-                  required
-                />
-                <select id="rate-frequency" class="input-select" aria-label="Frequência da taxa">
-                  <option value="yearly">a.a. (anual)</option>
-                  <option value="monthly">a.m. (mensal)</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Período -->
-            <div class="input-group">
-              <label for="period" class="input-label">
-                Período
-              </label>
-              <div class="input-wrapper input-with-select">
-                <input
-                  type="number"
-                  id="period"
-                  class="form-input"
-                  placeholder="5"
-                  min="1"
-                  step="1"
-                  required
-                />
-                <select id="period-type" class="input-select" aria-label="Unidade do período">
-                  <option value="years">anos</option>
-                  <option value="months">meses</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botões de Ação -->
-          <div class="form-actions">
-            <button type="button" id="btn-clear" class="btn btn-secondary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 6h18"></path>
-                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+      <!-- GRID DE CARDS COM AS FERRAMENTAS -->
+      <section class="portal-grid" aria-label="Ferramentas Disponíveis">
+        <!-- Card 1: Calculadora de Juros Compostos -->
+        <a href="./juros-compostos/" class="glass-panel border-gradient border-gradient-accent tool-card">
+          <div class="tool-card-top">
+            <div class="tool-card-icon-wrapper" style="color: var(--accent);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
-              Limpar
-            </button>
-            <button type="submit" id="btn-calculate" class="btn btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                <line x1="8" y1="6" x2="16" y2="6"></line>
-                <line x1="16" y1="14" x2="16" y2="18"></line>
-                <path d="M16 10h.01"></path>
-                <path d="M12 10h.01"></path>
-                <path d="M8 10h.01"></path>
-                <path d="M12 14h.01"></path>
-                <path d="M8 14h.01"></path>
-                <path d="M12 18h.01"></path>
-                <path d="M8 18h.01"></path>
-              </svg>
-              Calcular
-            </button>
-          </div>
-        </form>
-      </section>
-
-      <!-- 3. RESULTADOS EM NÚMEROS (KPI CARDS) -->
-      <section class="results-section" aria-label="Resultados da Simulação">
-        <div class="results-grid">
-          <!-- Valor Total Investido -->
-          <div class="glass-panel border-gradient kpi-card">
-            <div class="kpi-header">
-              <span class="kpi-title">Valor Total Investido</span>
-              <div class="kpi-icon" style="color: var(--invested)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z"></path>
-                </svg>
-              </div>
             </div>
-            <div id="kpi-invested" class="kpi-value">R$ 0,00</div>
-            <div class="kpi-footer">Capital inicial + aportes mensais</div>
-          </div>
-
-          <!-- Total em Juros -->
-          <div class="glass-panel border-gradient border-gradient-profit kpi-card kpi-profit">
-            <div class="kpi-header">
-              <span class="kpi-title">Total em Juros</span>
-              <div class="kpi-icon" style="color: var(--profit-light)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23"></line>
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                </svg>
-              </div>
+            <div>
+              <h2 class="tool-card-title">Calculadora de Juros Compostos</h2>
+              <p class="tool-card-desc" style="margin-top: 0.5rem;">
+                Simule o poder multiplicador do tempo e dos aportes recorrentes nos seus investimentos. Acompanhe a composição patrimonial e compare mês a mês.
+              </p>
             </div>
-            <div id="kpi-interest" class="kpi-value">R$ 0,00</div>
-            <div class="kpi-footer">Rendimento líquido gerado no período</div>
-          </div>
-
-          <!-- Valor Total Final -->
-          <div class="glass-panel border-gradient border-gradient-accent kpi-card kpi-final">
-            <div class="kpi-header">
-              <span class="kpi-title">Valor Total Final</span>
-              <div class="kpi-icon" style="color: var(--accent)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                  <polyline points="17 6 23 6 23 12"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div id="kpi-final" class="kpi-value">R$ 0,00</div>
-            <div class="kpi-footer">Patrimônio bruto acumulado</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. GRÁFICOS (CHART.JS) -->
-      <section class="charts-section" aria-label="Gráficos de Projeção">
-        <div class="charts-grid">
-          <!-- Gráfico de Pizza / Rosca -->
-          <div class="glass-panel border-gradient chart-card">
-            <div class="chart-header">
-              <h3 class="chart-title">Composição do Patrimônio</h3>
-            </div>
-            <div class="chart-canvas-wrapper">
-              <canvas id="chart-pie"></canvas>
+            <div class="tool-badges">
+              <span class="tool-badge">Juros sobre Juros</span>
+              <span class="tool-badge">Aportes Mensais</span>
+              <span class="tool-badge">Gráficos Chart.js</span>
+              <span class="tool-badge">Tabela de Amortização</span>
             </div>
           </div>
-
-          <!-- Gráfico de Barras Verticais -->
-          <div class="glass-panel border-gradient chart-card">
-            <div class="chart-header">
-              <h3 class="chart-title">Evolução do Investimento</h3>
-            </div>
-            <div class="chart-canvas-wrapper">
-              <canvas id="chart-evolution"></canvas>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. TABELA DE EVOLUÇÃO -->
-      <section class="table-section" aria-label="Tabela de Evolução Detalhada">
-        <div class="glass-panel border-gradient table-card">
-          <div class="table-header">
-            <h3 class="table-title">Tabela de Amortização & Evolução</h3>
-            <div class="table-toggles" role="group" aria-label="Visualização da tabela">
-              <button type="button" id="toggle-monthly" class="table-toggle-btn active">
-                Mês a Mês
-              </button>
-              <button type="button" id="toggle-yearly" class="table-toggle-btn">
-                Ano a Ano
-              </button>
-            </div>
-          </div>
-
-          <div class="table-container">
-            <table class="evolution-table" id="evolution-table">
-              <thead>
-                <tr>
-                  <th scope="col" id="th-period">Mês</th>
-                  <th scope="col">Juros do Período</th>
-                  <th scope="col">Total Investido</th>
-                  <th scope="col">Total Juros</th>
-                  <th scope="col">Acumulado</th>
-                </tr>
-              </thead>
-              <tbody id="table-body">
-                <!-- Linhas inseridas via TypeScript -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. EXPLICAÇÃO DE COMO É FEITO O CÁLCULO -->
-      <section class="education-section" aria-label="Como é feito o cálculo">
-        <div class="glass-panel border-gradient education-card">
-          <h2 class="education-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          <div class="tool-card-cta">
+            <span>Acessar Simulador</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-            Como Funciona o Cálculo de Juros Compostos?
-          </h2>
-          <p class="education-text">
-            Diferente dos juros simples — em que a remuneração incide apenas sobre o capital inicial —, nos <strong>juros compostos</strong> os rendimentos de cada período são incorporados ao saldo, passando a render juros no período seguinte (o famoso efeito <em>"juros sobre juros"</em>).
-          </p>
-
-          <div class="formula-box">
-            Fórmula Base: M = C × (1 + i)ᵗ
           </div>
+        </a>
 
-          <div class="education-grid">
-            <div class="education-item">
-              <h4>M (Montante Final)</h4>
-              <p>O saldo acumulado total ao término do período estipulado.</p>
+        <!-- Card 2: Calculadora de Reserva de Emergência -->
+        <a href="./reserva-emergencia/" class="glass-panel border-gradient border-gradient-profit tool-card">
+          <div class="tool-card-top">
+            <div class="tool-card-icon-wrapper" style="color: var(--profit-light);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
             </div>
-            <div class="education-item">
-              <h4>C (Capital Inicial)</h4>
-              <p>O valor monetário aplicado no momento zero da simulação.</p>
+            <div>
+              <h2 class="tool-card-title">Calculadora de Reserva de Emergência</h2>
+              <p class="tool-card-desc" style="margin-top: 0.5rem;">
+                Calcule o valor de proteção ideal com base na sua estabilidade profissional (CLT, Servidor Público ou Autônomo) e descubra em quanto tempo você atingirá sua meta.
+              </p>
             </div>
-            <div class="education-item">
-              <h4>i (Taxa de Juros)</h4>
-              <p>Percentual de rentabilidade aplicada proporcionalmente em cada intervalo (mês ou ano).</p>
-            </div>
-            <div class="education-item">
-              <h4>t (Tempo / Prazo)</h4>
-              <p>Número de meses ou anos em que o dinheiro permanece rendendo.</p>
+            <div class="tool-badges">
+              <span class="tool-badge">3, 6 ou 12 Meses</span>
+              <span class="tool-badge">Custo Fixo</span>
+              <span class="tool-badge">Capacidade de Poupança</span>
+              <span class="tool-badge">Meta de Segurança</span>
             </div>
           </div>
+          <div class="tool-card-cta">
+            <span>Acessar Simulador</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+      </section>
 
-          <p class="education-text" style="margin-top: 1.25rem;">
-            Quando há <strong>aportes mensais regulares</strong>, a cada novo mês o novo aporte se soma ao montante acumulado e passa também a gerar rendimentos futuros, acelerando expressivamente a curva de patrimônio no longo prazo.
-          </p>
+      <!-- SEÇÃO DE VANTAGENS -->
+      <section class="portal-features-section" aria-label="Vantagens">
+        <div class="portal-features-grid">
+          <div class="portal-feature-item feature-card">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              100% Gratuito & Direto
+            </h4>
+            <p>Sem cadastros, sem anúncios e sem limites de simulações. Acesse e calcule imediatamente de onde estiver.</p>
+          </div>
+
+          <div class="portal-feature-item feature-card">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--profit-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              Privacidade Absoluta
+            </h4>
+            <p>Seus dados financeiros não são enviados para nenhum servidor externo. Todos os cálculos rodam localmente no seu navegador.</p>
+          </div>
+
+          <div class="portal-feature-item feature-card">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              Design Moderno & Responsivo
+            </h4>
+            <p>Interface Dark Glassmorphism refinada, gráficos interativos fluidos e adaptação perfeita para celulares, tablets e computadores.</p>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- 7. FOOTER -->
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="container footer-content">
         <span>Desenvolvido com carinho por</span>
@@ -316,6 +178,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.ts"></script>
+    <script type="module" src="./src/portalMain.ts"></script>
   </body>
 </html>

@@ -172,10 +172,10 @@ function setupTableToggles(): void {
  */
 function init(): void {
   // 1. Aplica máscaras monetárias aos inputs com valores iniciais amigáveis
-  attachCurrencyMask(initialValueInput, 5000);   // R$ 5.000,00
-  attachCurrencyMask(monthlyDepositInput, 500);  // R$ 500,00
-  interestRateInput.value = '10';
-  periodInput.value = '5';
+  attachCurrencyMask(initialValueInput, 0);   // R$ 5.000,00
+  attachCurrencyMask(monthlyDepositInput, 0);  // R$ 500,00
+  interestRateInput.value = '0';
+  periodInput.value = '0';
 
   // 2. Inicializa eventos de formulário
   form.addEventListener('submit', (e) => {

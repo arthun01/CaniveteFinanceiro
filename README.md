@@ -1,38 +1,62 @@
-# 📈 Calculadora de Juros Compostos Online
+# 💰 FinHub — Suíte de Simuladores & Calculadoras Financeiras Online
 
-> Um simulador financeiro moderno, estático e de alta performance para projeção de investimentos e patrimônio com juros compostos e aportes periódicos.
+> Uma suíte moderna, estática e de alta performance de ferramentas financeiras para planejamento de patrimônio, investimentos e segurança financeira.
 
-Construído com **HTML5**, **CSS3 Moderno** e **TypeScript** estruturado com **Vite**, adotando a estética **Dark Glassmorphism** com animações fluidas via **GSAP** e gráficos interativos com **Chart.js**.
+Construído com **HTML5**, **CSS3 Moderno** e **TypeScript** estruturado com **Vite** em arquitetura multi-página (MPA), adotando a estética **Dark Glassmorphism** com animações fluidas via **GSAP** e gráficos interativos com **Chart.js**.
 
 ---
 
-## ✨ Funcionalidades
+## 🧭 Ferramentas Disponíveis no Portal
 
-- **Simulação Completa de Investimentos:**
-  - Definição de valor inicial e aporte mensal regular.
-  - Alternância de taxas de juros (**anual % a.a.** ou **mensal % a.m.**).
-  - Flexibilidade de período (**anos** ou **meses**).
+O portal inicial (`index.html`) oferece acesso direto a duas ferramentas essenciais:
+
+### 1. 📈 [Calculadora de Juros Compostos](./juros-compostos/)
+- **Projeção Exponencial:** Simulação de juros sobre juros com valor inicial e aportes mensais recorrentes.
+- **Flexibilidade:** Taxas de juros anuais (% a.a.) ou mensais (% a.m.) e prazos em anos ou meses.
 - **Resultados Tridimensionais:**
-  1. **Métricas em Destaque (Cards KPI):** Total Investido, Total em Juros e Valor Final Acumulado com contador numérico animado (efeito odômetro).
-  2. **Gráficos Interativos (Chart.js):**
-     - **Gráfico de Rosca (Donut):** Proporção visual entre o capital investido do bolso vs. rendimento em juros.
-     - **Gráfico de Barras Empilhadas:** Evolução temporal da curva de patrimônio mês a mês ou ano a ano.
-  3. **Tabela de Amortização & Evolução:**
-     - Toggle para alternar dinamicamente entre visualização **Mês a Mês** e **Ano a Ano**.
-     - Colunas com detalhamento de: *Período*, *Juros do Período*, *Total Investido*, *Total Juros* e *Acumulado*.
-- **Design System Dark Glassmorphism:**
-  - Painéis foscos com desfoque profundo (`backdrop-filter: blur(20px)`).
-  - Bordas com contorno iluminado via máscara gradiente (`mask-composite: exclude`).
-  - Totalmente responsivo (**Mobile-First**): otimizado para celulares, tablets e monitores ultrawide.
-- **Seção Didática Integrada:**
-  - Explicação acessível da fórmula matemática $M = C \times (1 + i)^t$ e o efeito dos aportes recorrentes.
+  - **KPIs Animados:** Total Investido, Total em Juros e Valor Final Acumulado com odômetro GSAP.
+  - **Gráfico de Rosca (Donut):** Proporção entre o capital do próprio bolso vs. rendimento gerado pelos juros.
+  - **Gráfico de Barras Empilhadas:** Evolução temporal da curva de crescimento do patrimônio.
+  - **Tabela de Amortização:** Alternância dinâmica entre **Mês a Mês** e **Ano a Ano**.
+- **Guia Didático:** Explicação da fórmula matemática $M = C \times (1 + i)^t$ e dicas financeiras.
+
+---
+
+### 2. 🛡️ [Calculadora de Reserva de Emergência](./reserva-emergencia/)
+- **Cálculo por Estabilidade Profissional:**
+  - 🏛️ **Servidor Público:** Recomendação de 3 meses de despesas fixas.
+  - 🏢 **Trabalhador CLT:** Recomendação de 6 meses de despesas fixas.
+  - 💼 **Autônomo / MEI / PJ:** Recomendação de 12 meses de despesas fixas.
+- **Planejamento de Metas & Prazos:**
+  - **Meta da Reserva Ideal (R$):** Valor total necessário para cobrir os custos fixos essenciais.
+  - **Tempo Estimado:** Em quantos meses/anos você atingirá a meta com seu aporte atual.
+  - **Taxa de Poupança:** Percentual do salário líquido direcionado à reserva.
+- **Visualizações Dinâmicas:**
+  - **Gráfico de Rosca:** Distribuição do salário mensal (Custo Fixo vs Aporte da Reserva vs Margem Livre).
+  - **Gráfico de Barras:** Evolução do saldo acumulado até ultrapassar a meta de proteção.
+  - **Tabela de Acúmulo:** Acompanhamento do progresso mês a mês com indicador de meta atingida.
+- **Guia Didático:** Explicação dos critérios de estabilidade e recomendações de onde alocar a reserva com liquidez diária (Tesouro Selic e CDB 100% CDI).
+
+---
+
+## 🎨 Design System & Skills Aplicadas
+
+- **Skill `glass-dark-ui`:**
+  - Superfícies com efeito de vidro fosco (`backdrop-filter: blur(20px)`).
+  - Bordas com contorno iluminado sutil através de máscara gradiente (`mask-composite: exclude`).
+  - Paleta Slate/Navy dark com contraste certificado (WCAG AA).
+- **Skill `gsap-frameworks`:**
+  - Animação de contagem numérica contínua tipo odômetro nos cards de resultado.
+  - Transições suaves e revelação em cascata (*stagger*).
+- **100% Responsivo (Mobile-First):**
+  - Adaptação completa de grids, gráficos e tabelas para smartphones, tablets e desktops.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
-- **Bundler & Dev Server:** [Vite](https://vitejs.dev/)
+- **Bundler & Build Tool:** [Vite](https://vitejs.dev/) (Multi-Page App com caminhos relativos)
 - **Estilização:** CSS3 puro com Custom Properties, Flexbox e CSS Grid
 - **Animações:** [GSAP 3](https://greensock.com/gsap/)
 - **Gráficos:** [Chart.js](https://www.chartjs.org/)
@@ -42,7 +66,7 @@ Construído com **HTML5**, **CSS3 Moderno** e **TypeScript** estruturado com **V
 ## 🚀 Como Rodar Localmente
 
 ### Pré-requisitos
-Certifique-se de ter o [Node.js](https://nodejs.org/) instalado (versão 18 ou superior).
+Ter o [Node.js](https://nodejs.org/) instalado (versão 18 ou superior).
 
 ### Passo a Passo
 
@@ -61,14 +85,14 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado (versão 18 ou s
    ```bash
    npm run dev
    ```
-   O terminal exibirá o endereço local, geralmente:
+   Acesse no navegador:
    👉 **`http://localhost:5173/`**
 
 4. **Gerar build de produção:**
    ```bash
    npm run build
    ```
-   Os arquivos finais otimizados serão gerados na pasta `dist/`.
+   Os arquivos finais otimizados de todas as páginas serão gerados na pasta `dist/`.
 
 5. **Visualizar o build localmente:**
    ```bash
@@ -77,93 +101,62 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado (versão 18 ou s
 
 ---
 
-## 🌐 Como Fazer o Deploy no GitHub Pages
+## 🌐 Deploy no GitHub Pages
 
-O projeto já está configurado com `base: './'` no [`vite.config.ts`](./vite.config.ts), o que garante que os scripts e folhas de estilo carreguem perfeitamente independentemente do subdiretório do repositório no GitHub Pages.
+O projeto está configurado com `base: './'` no [`vite.config.ts`](./vite.config.ts), permitindo que todas as páginas e assets funcionem perfeitamente no GitHub Pages sem erros de rota.
 
-Você pode realizar o deploy através de dois métodos:
+### Deploy Automático via GitHub Actions (Recomendado)
+O repositório já conta com o arquivo de workflow pronto em [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml).
 
----
-
-### Opção 1: Deploy Automático via GitHub Actions (Recomendado)
-
-O repositório já inclui o arquivo de workflow pronto em [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml).
-
-1. No seu repositório no GitHub, vá em **Settings** (Configurações).
-2. No menu lateral esquerdo, clique em **Pages**.
-3. Na seção **Build and deployment**:
-   - Em **Source**, selecione **GitHub Actions**.
-4. Faça um commit e envie para a branch principal:
+1. No seu repositório no GitHub, acesse **Settings > Pages**.
+2. Em **Build and deployment > Source**, escolha **GitHub Actions**.
+3. Faça o commit e envie para a branch `main`:
    ```bash
    git add .
-   git commit -m "feat: configuração inicial da calculadora de juros compostos"
+   git commit -m "feat: adicionar calculadora de reserva de emergência e portal multi-página"
    git push origin main
    ```
-5. Pronto! O GitHub Actions irá automaticamente compilar o TypeScript, gerar os arquivos otimizados e publicar o site. O link ficará disponível em:
+4. O GitHub Actions fará o build e a publicação automaticamente. O portal estará online em:
    `https://arthun01.github.io/calculadora_juros_compostos/`
 
 ---
 
-### Opção 2: Deploy com o pacote `gh-pages`
-
-Caso prefira publicar através de um comando no terminal:
-
-1. **Instale o pacote `gh-pages` como dependência de desenvolvimento:**
-   ```bash
-   npm install -D gh-pages
-   ```
-
-2. **Adicione os scripts no seu `package.json`:**
-   ```json
-   "scripts": {
-     "dev": "vite",
-     "build": "tsc && vite build",
-     "preview": "vite preview",
-     "predeploy": "npm run build",
-     "deploy": "gh-pages -d dist"
-   }
-   ```
-
-3. **Execute o comando de deploy:**
-   ```bash
-   npm run deploy
-   ```
-
-4. No GitHub, acesse **Settings > Pages** e certifique-se de que a **Source** está apontando para a branch `gh-pages` e pasta `/ (root)`.
-
----
-
-## 📁 Estrutura de Arquivos
+## 📁 Estrutura do Projeto
 
 ```text
-├── .github/
-│   └── workflows/
-│       └── deploy.yml      # Pipeline CI/CD automático para o GitHub Pages
-├── public/                 # Assets públicos estáticos
+├── .github/workflows/deploy.yml    # CI/CD para GitHub Pages
+├── index.html                      # Portal inicial com cards de ferramentas
+├── juros-compostos/
+│   └── index.html                  # Calculadora de Juros Compostos
+├── reserva-emergencia/
+│   └── index.html                  # Calculadora de Reserva de Emergência
 ├── src/
 │   ├── animations/
-│   │   └── animManager.ts  # Gerenciador de odômetro e animações GSAP
+│   │   ├── animManager.ts          # Odômetro GSAP para Juros Compostos
+│   │   └── reservaAnimManager.ts   # Odômetro GSAP para Reserva de Emergência
 │   ├── charts/
-│   │   └── chartManager.ts # Configuração dos gráficos Donut e Barras Chart.js
+│   │   ├── chartManager.ts         # Gráficos Chart.js de Juros Compostos
+│   │   └── reservaChartManager.ts  # Gráficos Chart.js de Reserva de Emergência
 │   ├── services/
-│   │   └── calculator.ts   # Motor matemático financeiro
+│   │   ├── calculator.ts           # Motor de cálculo de juros compostos
+│   │   └── reservaCalculator.ts    # Motor de cálculo da reserva de emergência
 │   ├── styles/
-│   │   ├── base.css        # Reset, tipografia e background com iluminação radial
-│   │   ├── components.css  # Estilização de formulários, botões, KPIs e tabela
-│   │   ├── glass.css       # Regras da skill glass-dark-ui (.glass-panel, .border-gradient)
-│   │   ├── responsive.css  # Adaptações mobile-first
-│   │   └── tokens.css      # Cores, espaçamentos e variáveis de design
+│   │   ├── base.css                # Reset e estilos globais
+│   │   ├── components.css          # Cards, botões, formulários e portal
+│   │   ├── glass.css               # Regras da skill glass-dark-ui
+│   │   ├── responsive.css          # Media queries mobile-first
+│   │   └── tokens.css              # Variáveis e cores de design
 │   ├── types/
-│   │   └── finance.ts      # Interfaces TypeScript de tipos financeiros
+│   │   ├── finance.ts              # Tipos para juros compostos
+│   │   └── reserva.ts              # Tipos para reserva de emergência
 │   ├── utils/
-│   │   ├── formatters.ts   # Formatação em Real (BRL) e porcentagens
-│   │   └── masks.ts        # Máscaras monetárias de input em tempo real
-│   └── main.ts             # Inicialização e fluxo de eventos
-├── index.html              # Estrutura HTML5 da página
-├── package.json            # Dependências e scripts npm
-├── tsconfig.json           # Configurações do TypeScript
-├── vite.config.ts          # Configuração do Vite com base relativa para deploy
-└── README.md               # Documentação do projeto
+│   │   ├── formatters.ts           # Formatadores monetários e percentuais
+│   │   └── masks.ts                # Máscaras de entrada em tempo real
+│   ├── main.ts                     # Controller de Juros Compostos
+│   ├── portalMain.ts               # Controller do Portal
+│   └── reservaMain.ts              # Controller de Reserva de Emergência
+├── vite.config.ts                  # Configuração Vite Multi-Página
+└── README.md                       # Documentação completa
 ```
 
 ---
@@ -177,4 +170,4 @@ Desenvolvido por **Arthur**
 
 ## 📄 Licença
 
-Este projeto está sob a licença [MIT](https://opensource.org/licenses/MIT). Sinta-se livre para usar e contribuir!
+Este projeto está sob a licença [MIT](https://opensource.org/licenses/MIT).

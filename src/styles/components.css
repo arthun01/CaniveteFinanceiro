@@ -504,3 +504,124 @@
 .footer-link:hover {
   color: #7dd3fc;
 }
+
+/* --- PORTAL / HUB INICIAL --- */
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.tool-card {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 56px rgba(2, 6, 23, 0.7), 0 0 32px var(--shadow-glow);
+  text-decoration: none;
+}
+
+.tool-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.tool-card-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tool-card-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.tool-card-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.tool-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.tool-badge {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-body);
+  border: 1px solid var(--border-subtle);
+}
+
+.tool-card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.tool-card:hover .tool-card-cta {
+  color: #7dd3fc;
+}
+
+.portal-features-section {
+  margin-bottom: 4rem;
+}
+
+.portal-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.portal-feature-item {
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--glass-fill-subtle);
+  border: 1px solid var(--border-subtle);
+}
+
+.portal-feature-item h4 {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.portal-feature-item p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
