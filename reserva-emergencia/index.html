@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Reserva de Emergência | Planejamento Financeiro</title>
+    <meta
+      name="description"
+      content="Calcule o valor ideal da sua reserva de emergência conforme sua profissão (CLT, Servidor ou Autônomo) e descubra em quanto tempo você atingirá sua meta."
+    />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="../assets/reservaEmergencia-CKyJoa4o.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-DlI75gyg.js">
+    <link rel="modulepreload" crossorigin href="../assets/formatters-CAs5GLaG.js">
+    <link rel="modulepreload" crossorigin href="../assets/chart-BdrZQ6Su.js">
+    <link rel="stylesheet" crossorigin href="../assets/index-BOwpTEbQ.css">
+  </head>
+  <body>
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <div class="container navbar-wrapper">
+      <nav class="navbar" aria-label="Navegação Principal">
+        <a href="../" class="logo">
+          <i class="logo-icon"></i>
+          CaniveteFinanceiro
+        </a>
+
+        <!-- Ações: Apoie + Dark Mode Toggle & Botão Hambúrguer Mobile -->
+        <div class="navbar-right">
+          <button type="button" class="btn-donate" id="open-donate-btn" aria-label="Apoiar o projeto">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span>Apoie</span>
+          </button>
+          <button type="button" class="theme-toggle-btn" aria-label="Alternar tema"></button>
+          <button type="button" id="hamburger-btn" class="hamburger-btn" aria-label="Abrir menu mobile" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- MENU MOBILE (DRAWER & BACKDROP) -->
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop"></div>
+    <aside id="mobile-menu" class="mobile-menu" aria-label="Menu Mobile">
+      <div>
+        <div class="mobile-menu-header">
+          <a href="../" class="logo">
+            <i class="logo-icon"></i>
+            CaniveteFinanceiro
+          </a>
+          <button type="button" id="close-menu-btn" class="mobile-menu-close" aria-label="Fechar menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="../" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            </svg>
+            Início
+          </a>
+          <a href="../juros-compostos/" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+              <polyline points="16 7 22 7 22 13"></polyline>
+            </svg>
+            Juros Compostos
+          </a>
+          <a href="../reserva-emergencia/" class="mobile-nav-link active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Reserva de Emergência
+          </a>
+          <a href="../imposto-de-renda/" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+              <line x1="7" y1="15" x2="7.01" y2="15"></line>
+              <line x1="11" y1="15" x2="13" y2="15"></line>
+            </svg>
+            Imposto de Renda
+          </a>
+          <button type="button" id="mobile-donate-btn" class="mobile-nav-link mobile-nav-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color: #e11d48;">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            Apoie o Projeto
+          </button>
+          <a href="https://github.com/arthun01/calculadora_juros_compostos" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            GitHub (@arthun01)
+          </a>
+        </div>
+      </div>
+      <div class="mobile-menu-footer">
+        <span>Alternar Tema</span>
+        <button type="button" class="theme-toggle-btn" aria-label="Alternar tema"></button>
+      </div>
+    </aside>
+
+    <!-- 1. HERO SECTION -->
+    <header class="hero container">
+      <div class="hero-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        Segurança & Planejamento
+      </div>
+      <h1 class="hero-title">
+        Calculadora de <span class="hero-title-gradient">Reserva de Emergência</span>
+      </h1>
+      <p class="hero-subtitle">
+        Calcule o montante ideal com base nos seus gastos essenciais e estabilidade de renda, e veja em quantos meses você alcançará sua meta de proteção.
+      </p>
+    </header>
+
+    <main class="container">
+      <!-- 2. FORMULÁRIO -->
+      <section class="calculator-form-card" aria-label="Formulário da Reserva de Emergência">
+        <form id="reserva-form" novalidate>
+          <div class="form-grid">
+            <!-- Modelo de Trabalho -->
+            <div class="input-group">
+              <label for="work-model" class="input-label">
+                Modelo de trabalho
+              </label>
+              <div class="input-wrapper">
+                <select id="work-model" class="form-input" style="background: transparent; color: var(--ink); cursor: pointer; font-weight: 600;">
+                  <option value="clt" selected>Trabalhador CLT (6 meses)</option>
+                  <option value="servidor_publico">Servidor Público (3 meses)</option>
+                  <option value="autonomo">Autônomo, MEI ou PJ (12 meses)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Salário Mensal -->
+            <div class="input-group">
+              <label for="monthly-salary" class="input-label">
+                Salário líquido mensal
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="monthly-salary"
+                  class="form-input"
+                  placeholder="R$ 0,00"
+                  inputmode="numeric"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Custo Fixo Mensal -->
+            <div class="input-group">
+              <label for="monthly-expenses" class="input-label">
+                Custo fixo mensal (gastos essenciais)
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="monthly-expenses"
+                  class="form-input"
+                  placeholder="R$ 0,00"
+                  inputmode="numeric"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Quanto Você Guarda por Mês -->
+            <div class="input-group">
+              <label for="monthly-savings" class="input-label">
+                Quanto você consegue guardar por mês
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="monthly-savings"
+                  class="form-input"
+                  placeholder="R$ 0,00"
+                  inputmode="numeric"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Já Possui Guardado (Opcional) -->
+            <div class="input-group">
+              <label for="current-savings" class="input-label">
+                Já tenho guardado (opcional)
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="current-savings"
+                  class="form-input"
+                  placeholder="R$ 0,00"
+                  inputmode="numeric"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="form-actions">
+            <button type="button" id="btn-clear" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+              </svg>
+              Limpar
+            </button>
+            <button type="submit" id="btn-calculate" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M16 10h.01"></path>
+                <path d="M12 10h.01"></path>
+                <path d="M8 10h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M8 18h.01"></path>
+              </svg>
+              Calcular Reserva
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 3. RESULTADOS (KPIS) -->
+      <section class="results-section" aria-label="Resultados da Reserva">
+        <div class="results-grid">
+          <!-- Meta da Reserva Ideal (Balance Card em Destaque) -->
+          <div class="kpi-card kpi-final balance-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Meta da Reserva Ideal</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-target" class="kpi-value amount">R$ 0,00</div>
+            <div class="kpi-footer">Cobertura total de gastos essenciais</div>
+          </div>
+
+          <!-- Tempo Necessário -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Tempo para Alcançar</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-time" class="kpi-value amount" style="color: var(--green);">0 meses</div>
+            <div class="kpi-footer">Mantendo seu aporte mensal constante</div>
+          </div>
+
+          <!-- Taxa de Poupança -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Taxa de Poupança</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-rate" class="kpi-value amount">0,0%</div>
+            <div class="kpi-footer">Percentual do seu salário guardado</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. GRÁFICOS (CHART.JS) -->
+      <section class="charts-section" aria-label="Gráficos de Reserva">
+        <div class="charts-grid">
+          <!-- Gráfico de Rosca: Alocação do Salário -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Distribuição do Salário</h3>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="chart-pie"></canvas>
+            </div>
+          </div>
+
+          <!-- Gráfico de Barras: Acúmulo até a Meta -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Evolução do Saldo até a Meta</h3>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="chart-evolution"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. TABELA DE EVOLUÇÃO -->
+      <section class="table-section" aria-label="Tabela de Evolução da Reserva">
+        <div class="table-card">
+          <div class="table-header">
+            <div>
+              <h3 class="table-title">Planejamento de Acúmulo</h3>
+              <div class="table-scroll-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Deslize para os lados para ver mais colunas
+              </div>
+            </div>
+            <div class="table-toggles seg" role="group" aria-label="Visualização da tabela">
+              <button type="button" id="toggle-monthly" class="table-toggle-btn active">
+                Mês a Mês
+              </button>
+              <button type="button" id="toggle-yearly" class="table-toggle-btn">
+                Ano a Ano
+              </button>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="evolution-table" id="evolution-table">
+              <thead>
+                <tr>
+                  <th scope="col" id="th-period">Mês</th>
+                  <th scope="col">Aporte do Período</th>
+                  <th scope="col">Saldo Acumulado</th>
+                  <th scope="col">% da Meta</th>
+                  <th scope="col">Faltante para Meta</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <!-- Linhas inseridas dinamicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SEÇÃO DIDÁTICA -->
+      <section class="education-section" aria-label="Como funciona a Reserva de Emergência">
+        <div class="education-card">
+          <h2 class="education-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--green);">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Quantos Meses Guardar na Reserva de Emergência?
+          </h2>
+          <p class="education-text">
+            A reserva de emergência é o alicerce da sua tranquilidade financeira. O propósito dela não é risco nem especulação, mas sim liquidez imediata para proteger você e sua família de imprevistos.
+          </p>
+
+          <div class="education-grid">
+            <div class="education-item">
+              <h4 style="color: var(--green);">Servidor Público (3 Meses)</h4>
+              <p>Devido à alta estabilidade e previsibilidade de renda, 3 meses de despesas fixas costumam ser suficientes para imprevistos pontuais.</p>
+            </div>
+            <div class="education-item">
+              <h4 style="color: var(--positive);">Trabalhador CLT (6 Meses)</h4>
+              <p>Recomenda-se 6 meses de custos fixos. Esse montante somado a FGTS e seguro-desemprego garante o tempo médio de recolocação profissional.</p>
+            </div>
+            <div class="education-item">
+              <h4 style="color: var(--red);">Autônomo / MEI / PJ (12 Meses)</h4>
+              <p>Com renda variável ou contratos flexíveis, 12 meses garantem a blindagem necessária contra oscilações de mercado e meses de baixa.</p>
+            </div>
+          </div>
+
+          <div class="formula-box" style="margin-top: 1.5rem;">
+            Onde investir a reserva? Em aplicações seguras com liquidez diária (D+0 ou D+1), como Tesouro Selic, CDBs com liquidez imediata (100% do CDI) ou contas remuneradas sem carência.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-left">
+          <span>Conheça o <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link footer-saldo-link">Saldo</a></span>
+        </div>
+        <div class="footer-right">
+          <span>Desenvolvido <span class="footer-carinho">com carinho </span>por</span>
+          <a href="https://github.com/arthun01" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            Arthur (@arthun01)
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MODAL "APOIE O PROJETO" -->
+    <dialog id="donate-dialog" class="donate-dialog">
+      <div class="dialog-top">
+        <div class="donate-title-group">
+          <span class="donate-icon-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </span>
+          <h3 class="donate-title">Apoie o CaniveteFinanceiro</h3>
+        </div>
+        <button type="button" id="close-donate-btn" class="close" aria-label="Fechar modal">✕</button>
+      </div>
+
+      <div class="donate-body">
+        <p class="donate-intro">
+          O <strong>CaniveteFinanceiro</strong> é uma plataforma 100% gratuita, de código aberto e sem anúncios. Se estas ferramentas te ajudaram em suas decisões patrimoniais, considere apoiar para manter o projeto vivo e evoluindo!
+        </p>
+
+        <div class="donate-card">
+          <div class="donate-card-header">
+            <span class="donate-tag">Chave Pix</span>
+            <span class="donate-card-hint">Qualquer valor incentiva muito 💚</span>
+          </div>
+          <div class="donate-pix-box">
+            <input type="text" id="pix-key-input" value="arthurramos7890@gmail.com" readonly aria-label="Chave Pix" />
+            <button type="button" id="copy-pix-btn" class="btn btn-primary donate-copy-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copy-pix-text">Copiar Chave Pix</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size: 13px; color: var(--muted); margin-bottom: 0.75rem;">Ou fortaleça dando uma estrela no repositório:</p>
+          <a href="https://github.com/arthun01/calculadora_juros_compostos" target="_blank" rel="noopener noreferrer" class="btn btn-secondary donate-github-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            <span>Ver no GitHub & Deixar uma Estrela ⭐</span>
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+  </body>
+</html>
