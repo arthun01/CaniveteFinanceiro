@@ -326,6 +326,12 @@
               <p style="font-size: 13px; color: var(--muted); margin-top: 4px;">
                 Demonstrativo auditável passo a passo da apuração do seu imposto retido.
               </p>
+              <div class="table-scroll-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Deslize horizontalmente se necessário
+              </div>
             </div>
           </div>
 
@@ -335,8 +341,8 @@
               <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green);"></span>
               1. Entrada e Valores
             </h4>
-            <div class="table-wrapper">
-              <table class="evolution-table" aria-label="Tabela de Entradas e Rendimentos">
+            <div class="table-container table-auto-height">
+              <table class="evolution-table breakdown-table" aria-label="Tabela de Entradas e Rendimentos">
                 <thead>
                   <tr>
                     <th>Rendimento</th>
@@ -357,8 +363,8 @@
               <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--positive);"></span>
               2. Deduções e Valores
             </h4>
-            <div class="table-wrapper">
-              <table class="evolution-table" aria-label="Tabela de Deduções Legais">
+            <div class="table-container table-auto-height">
+              <table class="evolution-table breakdown-table" aria-label="Tabela de Deduções Legais">
                 <thead>
                   <tr>
                     <th>Dedução Legal</th>
@@ -379,8 +385,8 @@
               <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green);"></span>
               3. Base de Cálculo, Alíquota e Valor do Imposto
             </h4>
-            <div class="table-wrapper">
-              <table class="evolution-table" aria-label="Tabela de Apuração do Imposto">
+            <div class="table-container table-auto-height">
+              <table class="evolution-table breakdown-table" aria-label="Tabela de Apuração do Imposto">
                 <thead>
                   <tr>
                     <th>Etapa do Cálculo</th>
@@ -414,8 +420,8 @@
           </p>
 
           <!-- Tabela Progressiva de Referência -->
-          <div class="table-wrapper" style="margin: 1.25rem 0; background: var(--card-bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px;">
-            <table class="evolution-table" aria-label="Tabela Progressiva Oficial">
+          <div class="table-container table-auto-height" style="margin: 1.25rem 0;">
+            <table class="evolution-table breakdown-table" aria-label="Tabela Progressiva Oficial">
               <thead>
                 <tr>
                   <th>Faixa de Renda (Base de Cálculo)</th>
