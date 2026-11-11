@@ -135,42 +135,43 @@ O repositório já conta com o arquivo de workflow pronto em [`.github/workflows
 
 ---
 
+## 🤖 AI-SDD — System Design Documents para IAs & Devs
+
+O projeto conta com uma pasta dedicada de especificações e design system para Agentes de IA e desenvolvedores em [`ai-sdd/`](./ai-sdd/):
+- **[`ai-sdd/01-visao-e-arquitetura.md`](./ai-sdd/01-visao-e-arquitetura.md):** Princípios de privacidade, arquitetura MPA e convenções.
+- **[`ai-sdd/02-design-system-e-ui.md`](./ai-sdd/02-design-system-e-ui.md):** Tokens de cor, tipografia Manrope + DM Sans, dark mode e componentes.
+- **[`ai-sdd/03-guia-criacao-novas-features.md`](./ai-sdd/03-guia-criacao-novas-features.md):** Checklist de 10 passos para criar uma nova calculadora em minutos.
+- **[`ai-sdd/04-padroes-de-codigo.md`](./ai-sdd/04-padroes-de-codigo.md):** Tipagem TypeScript estrita, ciclo de vida do Chart.js e funções puras.
+- **[`ai-sdd/roadmap-backlog.md`](./ai-sdd/roadmap-backlog.md):** Backlog estruturado para próximas calculadoras (SAC vs Price, CLT vs PJ, etc.).
+- **[`ai-sdd/sources/`](./ai-sdd/sources/):** Histórico e ideias originais preservadas.
+
+---
+
 ## 📁 Estrutura do Projeto
 
 ```text
 ├── .github/workflows/deploy.yml    # CI/CD para GitHub Pages
+├── ai-sdd/                         # AI-SDD: Especificações, Design System e Roadmap
 ├── index.html                      # Portal inicial com cards de ferramentas
 ├── juros-compostos/
 │   └── index.html                  # Calculadora de Juros Compostos
 ├── reserva-emergencia/
 │   └── index.html                  # Calculadora de Reserva de Emergência
+├── imposto-de-renda/
+│   └── index.html                  # Calculadora de Imposto de Renda (IRRF)
 ├── src/
-│   ├── animations/
-│   │   ├── animManager.ts          # Odômetro GSAP para Juros Compostos
-│   │   └── reservaAnimManager.ts   # Odômetro GSAP para Reserva de Emergência
-│   ├── charts/
-│   │   ├── chartManager.ts         # Gráficos Chart.js de Juros Compostos
-│   │   └── reservaChartManager.ts  # Gráficos Chart.js de Reserva de Emergência
-│   ├── services/
-│   │   ├── calculator.ts           # Motor de cálculo de juros compostos
-│   │   └── reservaCalculator.ts    # Motor de cálculo da reserva de emergência
-│   ├── styles/
-│   │   ├── base.css                # Reset e estilos globais
-│   │   ├── components.css          # Cards, botões, formulários e portal
-│   │   ├── glass.css               # Regras da skill glass-dark-ui
-│   │   ├── responsive.css          # Media queries mobile-first
-│   │   └── tokens.css              # Variáveis e cores de design
-│   ├── types/
-│   │   ├── finance.ts              # Tipos para juros compostos
-│   │   └── reserva.ts              # Tipos para reserva de emergência
-│   ├── utils/
-│   │   ├── formatters.ts           # Formatadores monetários e percentuais
-│   │   └── masks.ts                # Máscaras de entrada em tempo real
+│   ├── animations/                 # Animações de odômetro GSAP
+│   ├── charts/                     # Gerenciadores de gráficos Chart.js
+│   ├── services/                   # Motores de cálculo financeiro puros
+│   ├── styles/                     # Tokens, componentes e responsividade
+│   ├── types/                      # Tipagens TypeScript por domínio
+│   ├── utils/                      # Formatação, máscaras e navbar global
 │   ├── main.ts                     # Controller de Juros Compostos
 │   ├── portalMain.ts               # Controller do Portal
-│   └── reservaMain.ts              # Controller de Reserva de Emergência
+│   ├── reservaMain.ts              # Controller de Reserva de Emergência
+│   └── impostoRendaMain.ts         # Controller de Imposto de Renda
 ├── vite.config.ts                  # Configuração Vite Multi-Página
-└── README.md                       # Documentação completa
+└── README.md                       # Documentação principal
 ```
 
 ---
