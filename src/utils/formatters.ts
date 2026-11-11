@@ -31,3 +31,7 @@ export const formatPercent = (value: number, decimals = 2): string => {
 export const formatNumber = (value: number): string => {
   return new Intl.NumberFormat('pt-BR').format(value);
 };
+
+export const round2 = (value: number): number => {
+  return Math.round((value + Number.EPSILON) * 100) / 100;
+};

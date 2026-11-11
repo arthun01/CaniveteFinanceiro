@@ -33,6 +33,7 @@ Documentações completas das ferramentas atualmente em produção:
 - **[`features/02-reserva-emergencia.md`](./features/02-reserva-emergencia.md):** Cobertura por estabilidade profissional (CLT, Servidor, MEI), tempo de acúmulo e gráficos de distribuição.
 - **[`features/03-imposto-de-renda.md`](./features/03-imposto-de-renda.md):** Retenção na fonte (IRRF), deduções legais, tabelas progressivas do INSS e IRPF, e auditoria em 3 tabelas contábeis.
 - **[`features/04-portal-e-navegacao.md`](./features/04-portal-e-navegacao.md):** Hub inicial (`index.html`), navbar unificada, modal "Apoie o Projeto" com Chave Pix e persistência do tema.
+- **[`features/05-fundos-imobiliarios.md`](./features/05-fundos-imobiliarios.md):** Efeito Bola de Neve com reinvestimento de proventos, Número Mágico (Magic Number), gráfico de cotas do bolso vs rendimento e tabela de 2 anos.
 
 ---
 

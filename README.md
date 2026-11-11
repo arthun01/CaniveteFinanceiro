@@ -53,6 +53,16 @@ O portal inicial (`index.html`) oferece acesso direto a três ferramentas essenc
 
 ---
 
+### 4. 🏢 [Simulador de Fundos Imobiliários (FIIs)](./fundos-imobiliarios/)
+- **Efeito Bola de Neve:** Simulação de 2 anos (24 meses) reinvestindo 100% dos proventos recebidos na compra de novas cotas.
+- **Número Mágico (Magic Number):** Identificação de quantas cotas são necessárias para que o dividendo compre 1 cota nova todo mês sozinho.
+- **Visualizações Dinâmicas:**
+  - **Gráfico de Rosca:** Proporção entre cotas compradas com dinheiro do bolso vs. cotas ganhas de graça com os proventos.
+  - **Tabela Mês a Mês:** Acompanhamento de 24 meses com colunas de cotas acumuladas, patrimônio em R$, rendimento, cotas compradas e aporte.
+- **Guia Didático:** Explicação da isenção de IR para pessoas físicas e mecânica de reinvestimento.
+
+---
+
 ## 🎨 Design System & Skills Aplicadas
 
 - **Skill `glass-dark-ui`:**
@@ -163,6 +173,8 @@ O projeto conta com uma pasta dedicada de especificações e design system para 
 │   └── index.html                  # Calculadora de Reserva de Emergência
 ├── imposto-de-renda/
 │   └── index.html                  # Calculadora de Imposto de Renda (IRRF)
+├── fundos-imobiliarios/
+│   └── index.html                  # Simulador de Fundos Imobiliários (FIIs)
 ├── src/
 │   ├── animations/                 # Animações de odômetro GSAP
 │   ├── charts/                     # Gerenciadores de gráficos Chart.js

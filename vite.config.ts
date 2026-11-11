@@ -13,6 +13,7 @@ export default defineConfig({
         jurosCompostos: resolve(__dirname, 'juros-compostos/index.html'),
         reservaEmergencia: resolve(__dirname, 'reserva-emergencia/index.html'),
         impostoRenda: resolve(__dirname, 'imposto-de-renda/index.html'),
+        fundosImobiliarios: resolve(__dirname, 'fundos-imobiliarios/index.html'),
       },
     },
   },

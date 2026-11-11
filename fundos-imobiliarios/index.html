@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador de Fundos Imobiliários (FIIs) | Efeito Bola de Neve</title>
+    <meta
+      name="description"
+      content="Simule seus investimentos em Fundos Imobiliários (FIIs). Veja o efeito bola de neve reinvestindo dividendos mês a mês, a tabela de 2 anos e o Número Mágico."
+    />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../src/styles/tokens.css" />
+    <link rel="stylesheet" href="../src/styles/glass.css" />
+    <link rel="stylesheet" href="../src/styles/base.css" />
+    <link rel="stylesheet" href="../src/styles/components.css" />
+    <link rel="stylesheet" href="../src/styles/responsive.css" />
+  </head>
+  <body>
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <div class="container navbar-wrapper">
+      <nav class="navbar" aria-label="Navegação Principal">
+        <a href="../" class="logo">
+          <i class="logo-icon"></i>
+          CaniveteFinanceiro
+        </a>
+
+        <!-- Ações: Apoie + Dark Mode Toggle & Botão Hambúrguer Mobile -->
+        <div class="navbar-right">
+          <button type="button" class="btn-donate" id="open-donate-btn" aria-label="Apoiar o projeto">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span>Apoie</span>
+          </button>
+          <button type="button" class="theme-toggle-btn" aria-label="Alternar tema"></button>
+          <button type="button" id="hamburger-btn" class="hamburger-btn" aria-label="Abrir menu mobile" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- MENU MOBILE (DRAWER & BACKDROP) -->
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop"></div>
+    <aside id="mobile-menu" class="mobile-menu" aria-label="Menu Mobile">
+      <div>
+        <div class="mobile-menu-header">
+          <a href="../" class="logo">
+            <i class="logo-icon"></i>
+            CaniveteFinanceiro
+          </a>
+          <button type="button" id="close-menu-btn" class="mobile-menu-close" aria-label="Fechar menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="../" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Início (Portal)
+          </a>
+          <a href="../juros-compostos/" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Juros Compostos
+          </a>
+          <a href="../reserva-emergencia/" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Reserva de Emergência
+          </a>
+          <a href="../imposto-de-renda/" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Imposto de Renda
+          </a>
+          <a href="../fundos-imobiliarios/" class="mobile-nav-link active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+              <line x1="9" y1="22" x2="9" y2="22.01"></line>
+              <line x1="15" y1="22" x2="15" y2="22.01"></line>
+              <line x1="9" y1="6" x2="9" y2="6.01"></line>
+              <line x1="15" y1="6" x2="15" y2="6.01"></line>
+              <line x1="9" y1="10" x2="9" y2="10.01"></line>
+              <line x1="15" y1="10" x2="15" y2="10.01"></line>
+              <line x1="9" y1="14" x2="9" y2="14.01"></line>
+              <line x1="15" y1="14" x2="15" y2="14.01"></line>
+            </svg>
+            Fundos Imobiliários
+          </a>
+          <div class="mobile-menu-divider"></div>
+          <button type="button" id="mobile-donate-btn" class="mobile-nav-link mobile-nav-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color: #e11d48;">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            Apoie o Projeto
+          </button>
+          <a href="https://github.com/arthun01/CaniveteFinanceiro" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            <span>CaniveteFinanceiro</span>
+          </a>
+        </div>
+      </div>
+      <div class="mobile-menu-footer">
+        <span>Alternar Tema</span>
+        <button type="button" class="theme-toggle-btn" aria-label="Alternar tema"></button>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          RENDA PASSIVA & EFEITO BOLA DE NEVE
+        </div>
+        <h1 class="hero-title">Simulador de Fundos Imobiliários</h1>
+        <p class="hero-subtitle">
+          Veja o poder dos juros compostos com dividendos mensais isentos de IR. Descubra em quantos meses o próprio fundo passa a comprar cotas sozinho sem sair 1 centavo do seu bolso.
+        </p>
+      </section>
+
+      <!-- ÁREA DE SIMULAÇÃO (GRID: FORM + RESULTADOS) -->
+      <section class="calc-grid">
+        <!-- COLUNA 1: FORMULÁRIO -->
+        <div class="calc-col-form">
+          <div class="calculator-form-card glass-panel border-gradient">
+            <h2 class="card-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                <line x1="9" y1="22" x2="9" y2="22.01"></line>
+                <line x1="15" y1="22" x2="15" y2="22.01"></line>
+                <line x1="9" y1="6" x2="9" y2="6.01"></line>
+                <line x1="15" y1="6" x2="15" y2="6.01"></line>
+              </svg>
+              Dados do Fundo (FII)
+            </h2>
+
+            <form id="fii-form" novalidate>
+              <!-- Nome / Ticker (Opcional) -->
+              <div class="form-group">
+                <label for="fii-ticker">
+                  Nome do Fundo / Ticker <span style="font-weight: 400; color: var(--muted); font-size: 11px;">(opcional)</span>
+                </label>
+                <div class="input-wrapper">
+                  <input type="text" id="fii-ticker" class="form-input" placeholder="Ex: MXRF11, HGLG11" maxlength="10" />
+                </div>
+              </div>
+
+              <!-- Dividend Yield Anual (%) -->
+              <div class="form-group">
+                <label for="fii-dy">Dividend Yield Anual (DY % a.a.)</label>
+                <div class="input-wrapper">
+                  <input type="text" id="fii-dy" class="form-input" placeholder="11,5%" />
+                  <span class="input-suffix">% a.a.</span>
+                </div>
+              </div>
+
+              <!-- Valor Atual da Cota (R$) -->
+              <div class="form-group">
+                <label for="fii-valor-cota">Valor Atual da Cota</label>
+                <div class="input-wrapper">
+                  <input type="text" id="fii-valor-cota" class="form-input" placeholder="R$ 10,20" />
+                </div>
+              </div>
+
+              <!-- Nº de Cotas Inicial (Mês 1) -->
+              <div class="form-group">
+                <label for="fii-cotas-iniciais">
+                  Nº de Cotas Inicial <span style="font-weight: 400; color: var(--muted); font-size: 11px;">(mês 1, opcional)</span>
+                </label>
+                <div class="input-wrapper">
+                  <input type="number" id="fii-cotas-iniciais" class="form-input" placeholder="0" min="0" step="1" />
+                  <span class="input-suffix">cotas</span>
+                </div>
+              </div>
+
+              <!-- Investimento Mensal (em número de cotas) -->
+              <div class="form-group">
+                <label for="fii-cotas-mensais">Investimento Mensal do Bolso</label>
+                <div class="input-wrapper">
+                  <input type="number" id="fii-cotas-mensais" class="form-input" placeholder="10" min="0" step="1" />
+                  <span class="input-suffix">cotas/mês</span>
+                </div>
+              </div>
+
+              <!-- Prazo da Simulação -->
+              <div class="form-group">
+                <label for="fii-prazo">Período da Simulação</label>
+                <div class="input-wrapper">
+                  <select id="fii-prazo" class="form-input" style="cursor: pointer;">
+                    <option value="24" selected>2 anos (24 meses)</option>
+                    <option value="36">3 anos (36 meses)</option>
+                    <option value="60">5 anos (60 meses)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" style="flex: 2;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  Simular Projeção
+                </button>
+                <button type="button" id="btn-clear" class="btn btn-secondary" style="flex: 1;">
+                  Limpar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- COLUNA 2: RESULTADOS, GRÁFICO E TABELA -->
+        <div class="calc-col-results">
+          <!-- CARDS DE KPI -->
+          <div class="kpi-grid">
+            <!-- 1. Patrimônio Final -->
+            <div class="stat glass-panel border-gradient">
+              <div class="stat-label">
+                <span class="stat-icon">💰</span>
+                Patrimônio em Cotas
+              </div>
+              <strong id="kpi-patrimonio">R$ 0,00</strong>
+              <small id="kpi-patrimonio-sub">0 cotas totais</small>
+            </div>
+
+            <!-- 2. Rendimento Mensal no Fim -->
+            <div class="stat glass-panel border-gradient">
+              <div class="stat-label">
+                <span class="stat-icon">📈</span>
+                Rendimento Mensal
+              </div>
+              <strong id="kpi-rendimento-mensal" style="color: var(--positive);">R$ 0,00/mês</strong>
+              <small id="kpi-rendimento-sub">Dividendos isentos de IR</small>
+            </div>
+
+            <!-- 3. Cotas Ganhas de Graça (Bola de Neve) -->
+            <div class="stat glass-panel border-gradient">
+              <div class="stat-label">
+                <span class="stat-icon">❄️</span>
+                Efeito Bola de Neve
+              </div>
+              <strong id="kpi-cotas-rendimento" style="color: var(--green);">0 cotas</strong>
+              <small id="kpi-cotas-sub">Compradas só com proventos</small>
+            </div>
+
+            <!-- 4. Número Mágico -->
+            <div class="stat glass-panel border-gradient">
+              <div class="stat-label">
+                <span class="stat-icon">🎯</span>
+                Número Mágico
+              </div>
+              <strong id="kpi-magic-number">0 cotas</strong>
+              <small id="kpi-magic-status">Para comprar 1 cota todo mês sozinho</small>
+            </div>
+          </div>
+
+          <!-- GRÁFICO DE PIZZA (DO BOLSO vs RENDIMENTOS) -->
+          <div class="chart-card glass-panel border-gradient" style="margin-top: 1.5rem;">
+            <div class="chart-header">
+              <h3 class="chart-title">Origem das Cotas Acumuladas</h3>
+              <span class="hero-badge" style="margin: 0; font-size: 10px;">Proporção</span>
+            </div>
+            <p style="font-size: 13px; color: var(--muted); margin: 0 0 1rem;">
+              Relação de quantas cotas saíram do seu bolso vs. quantas foram compradas 100% pelos rendimentos:
+            </p>
+            <div class="chart-canvas-wrapper" style="height: 250px;">
+              <canvas id="chart-pie"></canvas>
+            </div>
+          </div>
+
+          <!-- TABELA DE EVOLUÇÃO MÊS A MÊS -->
+          <div class="table-card glass-panel border-gradient" style="margin-top: 1.5rem;">
+            <div class="table-header">
+              <h3 class="table-title">Simulação Mês a Mês (Reinvestimento Total)</h3>
+              <span class="hero-badge" style="margin: 0; font-size: 10px;">24 Meses</span>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="evolution-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Mês</th>
+                    <th scope="col">Quantas Cotas Tenho?</th>
+                    <th scope="col">Valor das Cotas</th>
+                    <th scope="col">Rendimento</th>
+                    <th scope="col">Quantas Cotas Eu Compro?</th>
+                    <th scope="col">Do Bolso</th>
+                  </tr>
+                </thead>
+                <tbody id="fii-table-body">
+                  <!-- Injetado dinamicamente via TypeScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUIA DIDÁTICO / EXPLICAÇÃO DE FIIS -->
+      <section class="guide-section glass-panel border-gradient" style="margin: 3rem auto 2rem;">
+        <h2 class="guide-title" style="display: flex; align-items: center; gap: 0.6rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Como Funciona o Efeito Bola de Neve nos Fundos Imobiliários?
+        </h2>
+
+        <div class="guide-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">❄️ O Efeito Bola de Neve</h3>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0;">
+              Quando você reinveste 100% dos dividendos recebidos para comprar novas cotas, no mês seguinte essas novas cotas também geram rendimentos. Com o tempo, a renda gerada pelo fundo supera o seu próprio aporte do bolso.
+            </p>
+          </div>
+
+          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">🎯 O que é o Número Mágico?</h3>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0;">
+              O <strong>Magic Number</strong> é o ponto de virada onde o dividendo mensal que você recebe é suficiente para comprar pelo menos 1 cota inteira a mercado sem você precisar colocar dinheiro do próprio bolso.
+            </p>
+          </div>
+
+          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">🛡️ Isenção de Imposto de Renda</h3>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0;">
+              Para pessoas físicas, os rendimentos periódicos distribuídos por Fundos Imobiliários negociados em bolsa são <strong>100% isentos de Imposto de Renda</strong> pela legislação brasileira vigente (Lei 11.033/04).
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-left">
+          <span>Conheça o <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link footer-saldo-link">Saldo<sup>&reg;</sup></a></span>
+        </div>
+        <div class="footer-right">
+          <span>Desenvolvido <span class="footer-carinho">com carinho </span>por</span>
+          <a href="https://github.com/arthun01" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            Arthur (@arthun01)
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MODAL "APOIE O PROJETO" -->
+    <dialog id="donate-dialog" class="donate-dialog">
+      <div class="dialog-top">
+        <div class="donate-title-group">
+          <span class="donate-icon-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </span>
+          <h3 class="donate-title">Apoie o CaniveteFinanceiro</h3>
+        </div>
+        <button type="button" id="close-donate-btn" class="close" aria-label="Fechar modal">✕</button>
+      </div>
+
+      <div class="donate-body">
+        <p class="donate-intro">
+          O <strong>CaniveteFinanceiro</strong> é uma plataforma 100% gratuita, de código aberto e sem anúncios. Se estas ferramentas te ajudaram em suas decisões patrimoniais, considere apoiar para manter o projeto vivo e evoluindo!
+        </p>
+
+        <div class="donate-card">
+          <div class="donate-card-header">
+            <span class="donate-tag">Chave Pix</span>
+            <span style="font-size: 11px; color: var(--muted);">Qualquer valor incentiva muito 💚</span>
+          </div>
+          <div class="donate-pix-box">
+            <input type="text" id="pix-key-input" value="arthur.rv@gmail.com" readonly aria-label="Chave Pix" />
+            <button type="button" id="copy-pix-btn" class="btn btn-primary" style="min-height: 40px; padding: 0 16px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copy-pix-text">Copiar Chave Pix</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size: 13px; color: var(--muted); margin-bottom: 0.75rem;">Ou fortaleça dando uma estrela no repositório:</p>
+          <a href="https://github.com/arthun01/CaniveteFinanceiro" target="_blank" rel="noopener noreferrer" class="btn btn-secondary donate-github-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            <span>CaniveteFinanceiro</span>
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="../src/fiiMain.ts"></script>
+  </body>
+</html>
