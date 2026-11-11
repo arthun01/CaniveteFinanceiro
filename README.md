@@ -117,21 +117,26 @@ Ter o [Node.js](https://nodejs.org/) instalado (versão 18 ou superior).
 
 ## 🌐 Deploy no GitHub Pages
 
-O projeto está configurado com `base: './'` no [`vite.config.ts`](./vite.config.ts), permitindo que todas as páginas e assets funcionem perfeitamente no GitHub Pages sem erros de rota.
+O projeto está configurado com `base: './'` no [`vite.config.ts`](./vite.config.ts), permitindo que todas as páginas e assets funcionem perfeitamente no GitHub Pages sem depender de runners do GitHub Actions.
 
-### Deploy Automático via GitHub Actions (Recomendado)
-O repositório já conta com o arquivo de workflow pronto em [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml).
+### Como Publicar com 1 Comando (`npm run deploy`)
 
-1. No seu repositório no GitHub, acesse **Settings > Pages**.
-2. Em **Build and deployment > Source**, escolha **GitHub Actions**.
-3. Faça o commit e envie para a branch `main`:
+O projeto utiliza a biblioteca [`gh-pages`](https://www.npmjs.com/package/gh-pages) para compilar e subir os arquivos da pasta `dist/` diretamente para a branch de publicação `gh-pages`:
+
+1. **Execute o comando de deploy:**
    ```bash
-   git add .
-   git commit -m "feat: adicionar calculadora de reserva de emergência e portal multi-página"
-   git push origin main
+   npm run deploy
    ```
-4. O GitHub Actions fará o build e a publicação automaticamente. O portal estará online em:
-   `https://arthun01.github.io/CaniveteFinanceiro`
+   *(Este comando roda automaticamente o `npm run build` e publica a pasta `dist/` na branch `gh-pages` do seu repositório).*
+
+2. **Configure o GitHub Pages (apenas na 1ª vez):**
+   - Acesse: **[Settings > Pages](https://github.com/arthun01/CaniveteFinanceiro/settings/pages)**
+   - Em **Build and deployment > Source**, selecione: **`Deploy from a branch`**
+   - Em **Branch**, selecione: **`gh-pages`** / pasta **`/(root)`**
+   - Clique em **Save**.
+
+3. **Pronto!** Em poucos instantes seu site estará disponível no ar em:  
+   👉 **`https://arthun01.github.io/CaniveteFinanceiro/`**
 
 ---
 
@@ -150,7 +155,6 @@ O projeto conta com uma pasta dedicada de especificações e design system para 
 ## 📁 Estrutura do Projeto
 
 ```text
-├── .github/workflows/deploy.yml    # CI/CD para GitHub Pages
 ├── ai-sdd/                         # AI-SDD: Especificações, Design System e Roadmap
 ├── index.html                      # Portal inicial com cards de ferramentas
 ├── juros-compostos/

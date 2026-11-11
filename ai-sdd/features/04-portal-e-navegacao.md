@@ -44,7 +44,7 @@ Gerenciado globalmente em `src/utils/navbar.ts`:
 - **Chave Pix Oficial:** `arthur.rv@gmail.com`
 - **Funcionalidade Copiar:** Copia a chave via `navigator.clipboard.writeText` com fallback para `document.execCommand('copy')`.
 - Altera o texto do botão de "Copiar" para "Copiado! ✓" por 2,5 segundos.
-- Link direto para o repositório GitHub com estrela: `https://github.com/arthun01/calculadora_juros_compostos`.
+- Link direto para o repositório GitHub com estrela: `https://github.com/arthun01/CaniveteFinanceiro`.
 - **Adaptação Mobile:** `width: calc(100vw - 24px)`, padding otimizado, sem quebra horizontal, fechamento com toque fora da caixa de diálogo.
 
 ---
