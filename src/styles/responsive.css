@@ -227,6 +227,47 @@
   .footer-carinho {
     display: none !important;
   }
+
+  /* Modal Apoie em Telas Médias / Tablets */
+  dialog.donate-dialog {
+    width: calc(100vw - 28px);
+    max-width: 440px;
+    padding: 22px 18px;
+    border-radius: 20px;
+    margin: auto;
+  }
+
+  .donate-dialog .dialog-top {
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+
+  .donate-title {
+    font-size: 16.5px;
+    letter-spacing: -0.3px;
+  }
+
+  .donate-pix-box {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .donate-pix-box input {
+    width: 100%;
+    text-align: center;
+    font-size: 13.5px;
+    font-weight: 600;
+    min-height: 42px;
+    height: 42px;
+  }
+
+  .donate-copy-btn {
+    width: 100%;
+    min-height: 42px;
+    height: 42px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -301,5 +342,106 @@
 
   .footer {
     padding: 32px 16px 40px;
+  }
+
+  /* Modal Apoie no Mobile */
+  dialog.donate-dialog {
+    width: calc(100vw - 20px);
+    max-width: 440px;
+    padding: 18px 14px;
+    border-radius: 18px;
+    margin: auto;
+  }
+
+  .donate-dialog .dialog-top {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+
+  .donate-title {
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+  }
+
+  .donate-icon-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .donate-icon-badge svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .donate-dialog .close {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .donate-body {
+    gap: 1rem;
+  }
+
+  .donate-intro {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .donate-card {
+    padding: 14px 12px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .donate-card-header {
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .donate-card-hint {
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+
+  /* No mobile empilha o input e botão para a chave Pix ficar 100% legível e o botão grande e fácil de tocar */
+  .donate-pix-box {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .donate-pix-box input {
+    width: 100%;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 8px 10px;
+    min-height: 40px;
+    height: 40px;
+    background: var(--card-bg);
+    border-radius: 10px;
+  }
+
+  .donate-copy-btn {
+    width: 100% !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+  }
+
+  .donate-github-btn {
+    width: 100%;
+    min-height: 42px;
+    font-size: 12px;
+    padding: 10px 12px;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.3;
   }
 }

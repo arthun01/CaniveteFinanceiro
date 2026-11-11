@@ -1068,30 +1068,71 @@
 dialog.donate-dialog {
   border: 1px solid var(--line);
   border-radius: 22px;
-  padding: 28px;
-  width: min(520px, calc(100% - 32px));
+  padding: 26px;
+  width: min(500px, calc(100vw - 32px));
+  max-width: 500px;
   max-height: 90vh;
+  max-height: 90dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-sizing: border-box;
   color: var(--ink);
   background: var(--card-bg);
-  box-shadow: 0 30px 100px rgba(16, 42, 52, 0.25);
+  box-shadow: 0 24px 80px rgba(16, 42, 52, 0.28);
   margin: auto;
 }
 
+dialog.donate-dialog[open] {
+  animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 dialog.donate-dialog::backdrop {
-  background: rgba(16, 45, 40, 0.45);
-  backdrop-filter: blur(5px);
+  background: rgba(16, 45, 40, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .donate-dialog .dialog-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.donate-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.donate-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 750;
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: -0.3px;
 }
 
 .donate-icon-badge {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
   border-radius: 10px;
   background: #fde2e4;
   color: #e11d48;
@@ -1106,13 +1147,14 @@ dialog.donate-dialog::backdrop {
 }
 
 .donate-dialog .close {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--card-bg-daily);
   border: 1px solid var(--line);
   color: var(--muted);
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1134,7 +1176,7 @@ dialog.donate-dialog::backdrop {
 .donate-intro {
   font-size: 14px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -1146,16 +1188,19 @@ dialog.donate-dialog::backdrop {
   background: var(--card-bg-daily);
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 18px 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-sizing: border-box;
 }
 
 .donate-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .donate-tag {
@@ -1168,25 +1213,54 @@ dialog.donate-dialog::backdrop {
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 3px 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.donate-card-hint {
+  font-size: 11px;
+  color: var(--muted);
 }
 
 .donate-pix-box {
   display: flex;
   gap: 8px;
   align-items: center;
+  width: 100%;
 }
 
 .donate-pix-box input {
   flex: 1;
-  min-height: 40px;
-  height: 40px;
+  min-width: 0;
+  min-height: 42px;
+  height: 42px;
   border: 1px solid var(--line);
   background: var(--card-bg);
   border-radius: 10px;
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--ink);
   font-family: monospace;
+  box-sizing: border-box;
+}
+
+.donate-copy-btn {
+  min-height: 42px;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 12.5px;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.donate-github-btn {
+  width: 100%;
+  text-decoration: none;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 13.5px;
+  min-height: 44px;
 }
 
 .mobile-nav-btn {
