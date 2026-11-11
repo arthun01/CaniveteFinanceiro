@@ -86,8 +86,8 @@ Ter o [Node.js](https://nodejs.org/) instalado (versão 18 ou superior).
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/arthun01/calculadora_juros_compostos.git
-   cd calculadora_juros_compostos
+   git clone https://github.com/arthun01/CaniveteFinanceiro
+   cd CaniveteFinanceiro
    ```
 
 2. **Instale as dependências:**
