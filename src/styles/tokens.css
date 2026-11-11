@@ -1,4 +1,4 @@
-/* Design Tokens - Alinhados com a Aplicação Externa */
+/* Design Tokens — Suporte Completo a Light e Dark Mode */
 :root {
   /* Cores Principais da Marca */
   --green: #183f35;
@@ -24,7 +24,7 @@
   --red-bg: #fbefeb;
   --positive: #3c7254;
 
-  /* Aliases para compatibilidade */
+  /* Aliases */
   --accent: #183f35;
   --accent-hover: #123028;
   --accent-glow: rgba(24, 63, 53, 0.15);
@@ -44,8 +44,56 @@
   --radius-xl: 22px;
   --radius-pill: 9999px;
 
-  /* Sombras Sutis */
+  /* Sombras */
   --shadow-sm: 0 1px 3px rgba(24, 63, 53, 0.05);
   --shadow-md: 0 4px 14px rgba(24, 63, 53, 0.06);
   --shadow-lg: 0 12px 32px rgba(24, 63, 53, 0.08);
+
+  /* Gráficos Tokens */
+  --chart-grid: #f0f1eb;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #e4e8df;
+  --chart-tooltip-text: #203c33;
+}
+
+/* --- TEMA ESCURO (DARK MODE) --- */
+[data-theme="dark"] {
+  --green: #23584a;
+  --green-hover: #1a4539;
+  --green-soft: rgba(215, 245, 139, 0.12);
+  --green-subtle: #192a24;
+
+  --lime: #d7f58b;
+  --lime-dark: #a2cd6b;
+  --lime-chip: rgba(215, 245, 139, 0.18);
+
+  --bg: #0c1512;
+  --card-bg: #14221d;
+  --card-bg-subtle: #192a24;
+  --card-bg-daily: #172722;
+
+  --ink: #f0f7f3;
+  --muted: #8b9f94;
+  --line: #22372f;
+  --line-subtle: #1a2c25;
+
+  --red: #f87171;
+  --red-bg: rgba(248, 113, 113, 0.15);
+  --positive: #4ade80;
+
+  --accent: #d7f58b;
+  --accent-hover: #e4f9ab;
+  --accent-glow: rgba(215, 245, 139, 0.15);
+  --profit: #4ade80;
+  --profit-light: #4ade80;
+  --invested: #8b9f94;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  --chart-grid: #1e332b;
+  --chart-tooltip-bg: #14221d;
+  --chart-tooltip-border: #22372f;
+  --chart-tooltip-text: #f0f7f3;
 }

@@ -22,12 +22,11 @@
   }
 
   .nav-links {
-    gap: 0.35rem;
-    font-size: 12px;
+    display: none;
   }
 
-  .nav-link {
-    padding: 5px 10px;
+  .hamburger-btn {
+    display: flex;
   }
 
   .hero {

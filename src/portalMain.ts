@@ -1,6 +1,9 @@
 import { gsap } from 'gsap';
+import { setupNavbar } from './utils/navbar';
 
-export function initPortalAnimations(): void {
+export function initPortal(): void {
+  setupNavbar();
+
   gsap.from('.portal-hero-badge, .portal-title, .portal-subtitle', {
     y: 24,
     opacity: 0,
@@ -29,7 +32,7 @@ export function initPortalAnimations(): void {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPortalAnimations);
+  document.addEventListener('DOMContentLoaded', initPortal);
 } else {
-  initPortalAnimations();
+  initPortal();
 }

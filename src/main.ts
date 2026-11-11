@@ -3,6 +3,7 @@ import { formatCurrency } from './utils/formatters';
 import { calculateCompoundInterest } from './services/calculator';
 import { chartManager } from './charts/chartManager';
 import { animManager } from './animations/animManager';
+import { setupNavbar } from './utils/navbar';
 import {
   RateFrequency,
   PeriodType,
@@ -171,9 +172,12 @@ function setupTableToggles(): void {
  * Inicialização da Aplicação
  */
 function init(): void {
-  // 1. Aplica máscaras monetárias aos inputs com valores iniciais amigáveis
-  attachCurrencyMask(initialValueInput, 0);   // R$ 5.000,00
-  attachCurrencyMask(monthlyDepositInput, 0);  // R$ 500,00
+  // 0. Configura a navegação (Dark Mode & Menu Hambúrguer)
+  setupNavbar();
+
+  // 1. Aplica máscaras monetárias aos inputs com valores zerados
+  attachCurrencyMask(initialValueInput, 0);
+  attachCurrencyMask(monthlyDepositInput, 0);
   interestRateInput.value = '0';
   periodInput.value = '0';
 
@@ -193,7 +197,15 @@ function init(): void {
   // 4. Inicia animações de entrada GSAP
   animManager.initEntranceAnimations();
 
-  // 5. Executa a primeira simulação inicial para a página já abrir vibrante e com dados
+  // 5. Redesenha gráficos ao alternar o tema
+  window.addEventListener('theme-changed', () => {
+    if (currentResult) {
+      const preferYearly = currentTableGrouping === 'years' || currentResult.totalMonths > 36;
+      chartManager.updateCharts(currentResult, preferYearly);
+    }
+  });
+
+  // 6. Executa a primeira simulação inicial
   executeSimulation();
 }
 

@@ -32,8 +32,12 @@ export class ChartManager {
     this.renderEvolutionChart(result, preferYearly);
   }
 
+  private isDarkMode(): boolean {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+
   /**
-   * 1. Gráfico de Rosca: Total Investido vs Total em Juros (Cores da Aplicação Externa)
+   * 1. Gráfico de Rosca: Total Investido vs Total em Juros
    */
   private renderProportionChart(result: SimulationResult): void {
     const canvas = document.getElementById('chart-pie') as HTMLCanvasElement;
@@ -43,9 +47,14 @@ export class ChartManager {
       this.pieChart.destroy();
     }
 
+    const isDark = this.isDarkMode();
     const total = result.totalFinal || 1;
     const pctInvested = ((result.totalInvested / total) * 100).toFixed(1);
     const pctInterest = ((result.totalInterest / total) * 100).toFixed(1);
+
+    const investedColor = isDark ? '#255c4d' : '#dfe8d5';
+    const interestColor = isDark ? '#d7f58b' : '#183f35';
+    const borderColor = isDark ? '#14221d' : '#ffffff';
 
     this.pieChart = new Chart(canvas, {
       type: 'doughnut',
@@ -57,11 +66,8 @@ export class ChartManager {
         datasets: [
           {
             data: [result.totalInvested, result.totalInterest],
-            backgroundColor: [
-              '#dfe8d5', // Sage suave / Investido
-              '#183f35', // Verde escuro da marca / Juros
-            ],
-            borderColor: ['#ffffff', '#ffffff'],
+            backgroundColor: [investedColor, interestColor],
+            borderColor: [borderColor, borderColor],
             borderWidth: 2,
             hoverOffset: 6,
           },
@@ -75,7 +81,7 @@ export class ChartManager {
           legend: {
             position: 'bottom',
             labels: {
-              color: '#69756c',
+              color: isDark ? '#8b9f94' : '#69756c',
               font: {
                 family: 'DM Sans, sans-serif',
                 size: 12,
@@ -87,10 +93,10 @@ export class ChartManager {
             },
           },
           tooltip: {
-            backgroundColor: '#ffffff',
-            titleColor: '#203c33',
-            bodyColor: '#69756c',
-            borderColor: '#e4e8df',
+            backgroundColor: isDark ? '#14221d' : '#ffffff',
+            titleColor: isDark ? '#f0f7f3' : '#203c33',
+            bodyColor: isDark ? '#8b9f94' : '#69756c',
+            borderColor: isDark ? '#22372f' : '#e4e8df',
             borderWidth: 1,
             padding: 12,
             boxPadding: 6,
@@ -118,6 +124,7 @@ export class ChartManager {
       this.barChart.destroy();
     }
 
+    const isDark = this.isDarkMode();
     const useYearly = preferYearly || result.totalMonths > 36;
     let labels: string[] = [];
     let investedData: number[] = [];
@@ -133,6 +140,11 @@ export class ChartManager {
       interestData = result.monthlyRecords.map((r) => r.totalInterest);
     }
 
+    const investedBg = isDark ? '#255c4d' : '#dfe8d5';
+    const investedBorder = isDark ? '#2d6d5c' : '#cbd7c1';
+    const interestBg = isDark ? '#d7f58b' : '#183f35';
+    const interestBorder = isDark ? '#e2fab0' : '#123028';
+
     this.barChart = new Chart(canvas, {
       type: 'bar',
       data: {
@@ -141,8 +153,8 @@ export class ChartManager {
           {
             label: 'Total Investido',
             data: investedData,
-            backgroundColor: '#dfe8d5',
-            borderColor: '#cbd7c1',
+            backgroundColor: investedBg,
+            borderColor: investedBorder,
             borderWidth: 1,
             borderRadius: 4,
             stack: 'evolution',
@@ -150,8 +162,8 @@ export class ChartManager {
           {
             label: 'Juros Acumulados',
             data: interestData,
-            backgroundColor: '#183f35',
-            borderColor: '#123028',
+            backgroundColor: interestBg,
+            borderColor: interestBorder,
             borderWidth: 1,
             borderRadius: 4,
             stack: 'evolution',
@@ -169,10 +181,10 @@ export class ChartManager {
           x: {
             stacked: true,
             grid: {
-              color: '#f0f1eb',
+              color: isDark ? '#22372f' : '#f0f1eb',
             },
             ticks: {
-              color: '#69756c',
+              color: isDark ? '#8b9f94' : '#69756c',
               font: {
                 family: 'DM Sans, sans-serif',
                 size: 11,
@@ -185,10 +197,10 @@ export class ChartManager {
           y: {
             stacked: true,
             grid: {
-              color: '#f0f1eb',
+              color: isDark ? '#22372f' : '#f0f1eb',
             },
             ticks: {
-              color: '#69756c',
+              color: isDark ? '#8b9f94' : '#69756c',
               font: {
                 family: 'DM Sans, sans-serif',
                 size: 11,
@@ -202,7 +214,7 @@ export class ChartManager {
             position: 'top',
             align: 'end',
             labels: {
-              color: '#69756c',
+              color: isDark ? '#8b9f94' : '#69756c',
               font: {
                 family: 'DM Sans, sans-serif',
                 size: 12,
@@ -213,10 +225,10 @@ export class ChartManager {
             },
           },
           tooltip: {
-            backgroundColor: '#ffffff',
-            titleColor: '#203c33',
-            bodyColor: '#69756c',
-            borderColor: '#e4e8df',
+            backgroundColor: isDark ? '#14221d' : '#ffffff',
+            titleColor: isDark ? '#f0f7f3' : '#203c33',
+            bodyColor: isDark ? '#8b9f94' : '#69756c',
+            borderColor: isDark ? '#22372f' : '#e4e8df',
             borderWidth: 1,
             padding: 12,
             callbacks: {

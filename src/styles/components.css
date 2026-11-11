@@ -11,10 +11,158 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1.5rem;
-  background: #ffffff;
+  background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--card-bg-daily);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.hamburger-btn {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--card-bg-daily);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+/* Mobile Menu Drawer & Backdrop */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 21, 18, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.mobile-menu-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: var(--card-bg);
+  border-left: 1px solid var(--line);
+  z-index: 100;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-lg);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.mobile-menu-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--card-bg-daily);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.mobile-menu-footer {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
 }
 
 .logo {
@@ -784,4 +932,148 @@
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+/* --- AJUSTES ESPECÍFICOS DO DARK MODE --- */
+[data-theme="dark"] .calculator-form-card,
+[data-theme="dark"] .kpi-card,
+[data-theme="dark"] .chart-card,
+[data-theme="dark"] .table-card,
+[data-theme="dark"] .tool-card,
+[data-theme="dark"] .portal-feature-item,
+[data-theme="dark"] .footer {
+  background: var(--card-bg);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .input-wrapper {
+  background: var(--card-bg);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .form-input {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .input-select {
+  background: var(--card-bg-daily);
+  color: var(--lime);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .input-select option {
+  background-color: var(--card-bg);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--card-bg-daily);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--green-subtle);
+}
+
+[data-theme="dark"] .table-container {
+  background: var(--card-bg);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .evolution-table th {
+  background: var(--card-bg-subtle);
+  border-bottom-color: var(--line);
+  color: var(--muted);
+}
+
+[data-theme="dark"] .evolution-table td {
+  border-bottom-color: var(--line-subtle);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .evolution-table tbody tr:hover {
+  background: var(--card-bg-daily);
+}
+
+[data-theme="dark"] .seg,
+[data-theme="dark"] .table-toggles {
+  background: var(--card-bg-daily);
+}
+
+[data-theme="dark"] .seg button.active,
+[data-theme="dark"] .table-toggle-btn.active {
+  background: var(--card-bg);
+  color: var(--lime);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .education-card {
+  background: var(--card-bg-daily);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .education-item {
+  background: var(--card-bg);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .formula-box {
+  background: var(--card-bg);
+  color: var(--lime);
+  border-left-color: var(--lime);
+}
+
+[data-theme="dark"] .tool-badges .tool-badge {
+  background: var(--card-bg-daily);
+  color: var(--muted);
+}
+
+[data-theme="dark"] .tool-card-icon-wrapper {
+  background: var(--card-bg-daily);
+  color: var(--lime);
+}
+
+[data-theme="dark"] .tool-card-cta {
+  border-top-color: var(--line);
+  color: var(--lime);
+}
+
+[data-theme="dark"] .hero-badge,
+[data-theme="dark"] .eyebrow {
+  background: var(--green-soft);
+  color: var(--lime);
+}
+
+[data-theme="dark"] .kpi-icon {
+  background: var(--card-bg-daily);
+  color: var(--lime);
+}
+
+[data-theme="dark"] .kpi-card.kpi-profit .kpi-icon {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--positive);
+}
+
+[data-theme="dark"] .kpi-card.kpi-final {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+[data-theme="dark"] .kpi-card.kpi-final .kpi-icon {
+  background: rgba(215, 245, 139, 0.2);
+  color: var(--lime);
+}
+
+[data-theme="dark"] .btn-primary {
+  background: var(--lime);
+  color: #0c1512;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: #e4f9ab;
+}
+
+[data-theme="dark"] .footer-link {
+  color: var(--lime);
 }
