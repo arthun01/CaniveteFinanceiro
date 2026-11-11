@@ -727,6 +727,24 @@
   font-weight: 700;
 }
 
+.table-row-total td {
+  background: var(--card-bg-daily);
+  font-weight: 700;
+  border-top: 1px solid var(--line);
+  border-bottom: 2px solid var(--line);
+}
+
+.table-row-highlight td {
+  background: var(--green-soft);
+  color: var(--green);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .table-row-highlight td {
+  background: rgba(215, 245, 139, 0.12);
+  color: var(--lime);
+}
+
 /* --- SEÇÃO DIDÁTICA (.note) --- */
 .education-section {
   margin-bottom: 3.5rem;
@@ -801,8 +819,8 @@
 /* --- PORTAL / HUB INICIAL --- */
 .portal-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 1040px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 1180px;
   margin: 2rem auto 3.5rem;
   gap: 28px;
 }

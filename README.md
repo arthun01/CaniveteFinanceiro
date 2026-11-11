@@ -8,7 +8,7 @@ Construído com **HTML5**, **CSS3 Moderno** e **TypeScript** estruturado com **V
 
 ## 🧭 Ferramentas Disponíveis no Portal
 
-O portal inicial (`index.html`) oferece acesso direto a duas ferramentas essenciais:
+O portal inicial (`index.html`) oferece acesso direto a três ferramentas essenciais:
 
 ### 1. 📈 [Calculadora de Juros Compostos](./juros-compostos/)
 - **Projeção Exponencial:** Simulação de juros sobre juros com valor inicial e aportes mensais recorrentes.
@@ -24,9 +24,9 @@ O portal inicial (`index.html`) oferece acesso direto a duas ferramentas essenci
 
 ### 2. 🛡️ [Calculadora de Reserva de Emergência](./reserva-emergencia/)
 - **Cálculo por Estabilidade Profissional:**
-  - 🏛️ **Servidor Público:** Recomendação de 3 meses de despesas fixas.
-  - 🏢 **Trabalhador CLT:** Recomendação de 6 meses de despesas fixas.
-  - 💼 **Autônomo / MEI / PJ:** Recomendação de 12 meses de despesas fixas.
+  - 🏛️ **Servidor Público:** 3 meses de despesas fixas.
+  - 🏢 **Trabalhador CLT:** 6 meses de despesas fixas.
+  - 💼 **Autônomo / MEI / PJ:** 12 meses de despesas fixas.
 - **Planejamento de Metas & Prazos:**
   - **Meta da Reserva Ideal (R$):** Valor total necessário para cobrir os custos fixos essenciais.
   - **Tempo Estimado:** Em quantos meses/anos você atingirá a meta com seu aporte atual.
@@ -36,6 +36,20 @@ O portal inicial (`index.html`) oferece acesso direto a duas ferramentas essenci
   - **Gráfico de Barras:** Evolução do saldo acumulado até ultrapassar a meta de proteção.
   - **Tabela de Acúmulo:** Acompanhamento do progresso mês a mês com indicador de meta atingida.
 - **Guia Didático:** Explicação dos critérios de estabilidade e recomendações de onde alocar a reserva com liquidez diária (Tesouro Selic e CDB 100% CDI).
+
+---
+
+### 3. 🧾 [Calculadora de Imposto de Renda](./imposto-de-renda/)
+- **Cálculo de Retenção na Fonte (IRRF):**
+  - Apuração exata do imposto devido com base na Tabela Progressiva Mensal oficial.
+  - Dedução legal fixa de R$ 189,59 por dependente/mês.
+  - Deduções completas de pensão alimentícia, despesas médicas e gastos com ensino.
+- **Relatório em Três Tabelas Auditáveis:**
+  - 1. **Entrada e Valores:** Salário bruto e rendimentos tributáveis.
+  - 2. **Deduções e Valores:** Detalhamento de cada dedução aplicada.
+  - 3. **Base de Cálculo, Alíquota e Imposto:** Parcela a deduzir, alíquota nominal, imposto retido e alíquota efetiva real.
+- **Sem Gráficos:** Focado 100% em números, clareza contábil e tabelas diretas.
+- **Guia Didático:** Tabela progressiva de referência com todas as faixas e alíquotas oficiais.
 
 ---
 
