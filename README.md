@@ -131,7 +131,7 @@ O repositório já conta com o arquivo de workflow pronto em [`.github/workflows
    git push origin main
    ```
 4. O GitHub Actions fará o build e a publicação automaticamente. O portal estará online em:
-   `https://arthun01.github.io/calculadora_juros_compostos/`
+   `https://arthun01.github.io/CaniveteFinanceiro`
 
 ---
 
