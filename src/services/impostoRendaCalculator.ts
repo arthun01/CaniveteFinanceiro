@@ -5,6 +5,50 @@ import type {
 } from '../types/impostoRenda';
 
 /**
+ * Tabela Progressiva Oficial do INSS (Previdência Social para Empregados)
+ */
+export interface INSSFaixa {
+  min: number;
+  max: number;
+  rate: number;
+}
+
+export const TABELA_PROGRESSIVA_INSS: INSSFaixa[] = [
+  { min: 0, max: 1412.0, rate: 0.075 },
+  { min: 1412.0, max: 2666.68, rate: 0.09 },
+  { min: 2666.68, max: 4000.03, rate: 0.12 },
+  { min: 4000.03, max: 7786.02, rate: 0.14 },
+];
+
+export const TETO_SALARIO_INSS = 7786.02;
+export const TETO_DESCONTO_INSS = 908.86;
+
+/**
+ * Calcula o desconto do INSS pela tabela progressiva oficial
+ */
+export function calculateINSS(grossSalary: number): {
+  inssDiscount: number;
+  inssEffectiveRate: number;
+} {
+  if (grossSalary <= 0) return { inssDiscount: 0, inssEffectiveRate: 0 };
+
+  const cappedSalary = Math.min(grossSalary, TETO_SALARIO_INSS);
+  let totalINSS = 0;
+
+  for (const faixa of TABELA_PROGRESSIVA_INSS) {
+    if (cappedSalary > faixa.min) {
+      const taxableInFaixa = Math.min(cappedSalary, faixa.max) - faixa.min;
+      totalINSS += taxableInFaixa * faixa.rate;
+    }
+  }
+
+  const inssDiscount = +Math.min(totalINSS, TETO_DESCONTO_INSS).toFixed(2);
+  const inssEffectiveRate = +(grossSalary > 0 ? (inssDiscount / grossSalary) * 100 : 0).toFixed(2);
+
+  return { inssDiscount, inssEffectiveRate };
+}
+
+/**
  * Valor legal de dedução mensal por dependente (Receita Federal)
  */
 export const DEDUCAO_POR_DEPENDENTE_MENSAL = 189.59;
@@ -85,20 +129,28 @@ export function calculateImpostoRenda(input: ImpostoRendaInput): ImpostoRendaRes
   const alimonyExpenses = Math.max(0, input.alimonyExpenses || 0);
   const medicalExpenses = Math.max(0, input.medicalExpenses || 0);
 
-  // 1. Cálculo das deduções
-  const dependentsDeduction = dependentsCount * DEDUCAO_POR_DEPENDENTE_MENSAL;
-  const totalDeductions =
-    dependentsDeduction + alimonyExpenses + medicalExpenses + educationExpenses;
+  // 1. Cálculo do INSS (Previdência Oficial)
+  const { inssDiscount, inssEffectiveRate } = calculateINSS(grossSalary);
 
-  // 2. Base de cálculo do IR (Salário bruto – deduções)
-  const taxableBase = Math.max(0, grossSalary - totalDeductions);
+  // 2. Cálculo das demais deduções legais
+  const dependentsDeduction = +(dependentsCount * DEDUCAO_POR_DEPENDENTE_MENSAL).toFixed(2);
+  const totalDeductions = +(
+    inssDiscount +
+    dependentsDeduction +
+    alimonyExpenses +
+    medicalExpenses +
+    educationExpenses
+  ).toFixed(2);
 
-  // 3. Identificação da faixa da tabela progressiva
+  // 3. Base de cálculo do IR (Salário bruto – deduções com INSS)
+  const taxableBase = Math.max(0, +(grossSalary - totalDeductions).toFixed(2));
+
+  // 4. Identificação da faixa da tabela progressiva
   const faixa = getFaixaIR(taxableBase);
   const aliquotaNominal = faixa.aliquota;
   const deductionParcel = faixa.deducao;
 
-  // 4. Cálculo do imposto devido
+  // 5. Cálculo do imposto devido
   // Fórmula: IR = (Base de Cálculo × Alíquota %) - Parcela a Deduzir
   let taxDue = 0;
   if (aliquotaNominal > 0 && taxableBase > 0) {
@@ -106,30 +158,34 @@ export function calculateImpostoRenda(input: ImpostoRendaInput): ImpostoRendaRes
     taxDue = Math.max(0, +taxDue.toFixed(2));
   }
 
-  // 5. Alíquota efetiva real e salário líquido
+  // 6. Alíquota efetiva real e total de descontos
   const effectiveRate =
     grossSalary > 0 && taxDue > 0
       ? +((taxDue / grossSalary) * 100).toFixed(2)
       : 0;
 
-  const netSalary = Math.max(0, +(grossSalary - taxDue).toFixed(2));
+  const totalMandatoryDiscounts = +(inssDiscount + taxDue).toFixed(2);
+  const netSalary = Math.max(0, +(grossSalary - totalMandatoryDiscounts).toFixed(2));
   const isExempt = taxDue === 0;
 
   return {
     input,
     grossSalary,
+    inssDiscount,
+    inssEffectiveRate,
     dependentsCount,
-    dependentsDeduction: +dependentsDeduction.toFixed(2),
+    dependentsDeduction,
     alimonyExpenses,
     medicalExpenses,
     educationExpenses,
-    totalDeductions: +totalDeductions.toFixed(2),
-    taxableBase: +taxableBase.toFixed(2),
+    totalDeductions,
+    taxableBase,
     faixa,
     aliquotaNominal,
     deductionParcel,
     taxDue,
     effectiveRate,
+    totalMandatoryDiscounts,
     netSalary,
     isExempt,
   };

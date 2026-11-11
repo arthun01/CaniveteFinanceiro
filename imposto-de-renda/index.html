@@ -272,16 +272,25 @@
             <div class="kpi-footer">Salário formalizado inicial</div>
           </div>
 
-          <!-- KPI 2: Total de Deduções -->
+          <!-- KPI 2: Desconto do INSS -->
           <div class="kpi-card kpi-profit">
+            <div class="kpi-header">
+              <span class="kpi-label">Desconto do INSS</span>
+            </div>
+            <div class="kpi-value" id="kpi-inss">R$ 0,00</div>
+            <div class="kpi-footer">Previdência oficial progressiva</div>
+          </div>
+
+          <!-- KPI 3: Total de Deduções -->
+          <div class="kpi-card">
             <div class="kpi-header">
               <span class="kpi-label">Total de Deduções</span>
             </div>
             <div class="kpi-value" id="kpi-deductions">R$ 0,00</div>
-            <div class="kpi-footer">Dependentes, pensão, saúde e ensino</div>
+            <div class="kpi-footer">INSS, dependentes, pensão, saúde e ensino</div>
           </div>
 
-          <!-- KPI 3: Base de Cálculo do IR -->
+          <!-- KPI 4: Base de Cálculo do IR -->
           <div class="kpi-card">
             <div class="kpi-header">
               <span class="kpi-label">Base de Cálculo do IR</span>
@@ -290,22 +299,22 @@
             <div class="kpi-footer">Renda Bruta menos deduções legais</div>
           </div>
 
-          <!-- KPI 4: Alíquota Efetiva Real -->
+          <!-- KPI 5: Alíquota Efetiva Real -->
           <div class="kpi-card">
             <div class="kpi-header">
-              <span class="kpi-label">Alíquota Efetiva Real</span>
+              <span class="kpi-label">Alíquota Efetiva do IR</span>
             </div>
             <div class="kpi-value" id="kpi-effective">0,0%</div>
-            <div class="kpi-footer">Desconto real sobre o total bruto</div>
+            <div class="kpi-footer">Desconto real de IR sobre o salário</div>
           </div>
 
-          <!-- KPI 5: Salário Líquido Após IR -->
+          <!-- KPI 6: Salário Líquido Estimado -->
           <div class="kpi-card">
             <div class="kpi-header">
-              <span class="kpi-label">Salário Líquido (após IR)</span>
+              <span class="kpi-label">Salário Líquido Estimado</span>
             </div>
             <div class="kpi-value" id="kpi-net">R$ 0,00</div>
-            <div class="kpi-footer">Rendimento disponível estimado</div>
+            <div class="kpi-footer">Após descontos de INSS e IRRF</div>
           </div>
         </div>
 
@@ -445,11 +454,14 @@
           </div>
 
           <div class="formula-box">
-            IR = (Salário Bruto – Deduções) × (Alíquota %) – Parcela a Deduzir
+            Base de Cálculo = Salário Bruto – INSS – Deduções Legais
+            <br />
+            IR = (Base de Cálculo × Alíquota %) – Parcela a Deduzir
           </div>
 
           <p class="education-text">
-            <strong>Deduções admitidas por lei:</strong><br />
+            <strong>Deduções admitidas por lei que reduzem o imposto:</strong><br />
+            • <strong>Previdência Oficial (INSS):</strong> Deduzido compulsoriamente antes da apuração do IR através da tabela progressiva oficial (7,5% a 14% até o teto de contribuição).<br />
             • <strong>Dependentes:</strong> Abatimento fixo legal de <strong>R$ 189,59 por mês</strong> para cada dependente declarado.<br />
             • <strong>Pensão alimentícia:</strong> 100% dedutível da base de cálculo quando fixada por acordo judicial ou escritura pública.<br />
             • <strong>Despesas com saúde e ensino:</strong> Reduzem a base tributável mensal e compõem o ajuste na Declaração Anual de Imposto de Renda.

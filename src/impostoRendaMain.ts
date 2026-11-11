@@ -76,6 +76,11 @@ function renderBreakdownTables(res: ImpostoRendaResult): void {
         : 'Nenhum dependente informado';
 
     tableDeducoesBody.innerHTML = `
+      <tr class="table-row-highlight">
+        <td><strong>Previdência Oficial (INSS)</strong></td>
+        <td>Desconto progressivo automático (${formatPercent(res.inssEffectiveRate, 2)} efetivo)</td>
+        <td class="col-highlight-profit"><strong>${formatCurrency(res.inssDiscount)}</strong></td>
+      </tr>
       <tr>
         <td><strong>Dedução por Dependentes</strong></td>
         <td>${dependentesText}</td>
@@ -98,7 +103,7 @@ function renderBreakdownTables(res: ImpostoRendaResult): void {
       </tr>
       <tr class="table-row-total">
         <td><strong>Total Geral de Deduções</strong></td>
-        <td>Total abatido da renda para compor a base</td>
+        <td>Soma do INSS e demais deduções legais</td>
         <td class="col-highlight-profit"><strong>${formatCurrency(res.totalDeductions)}</strong></td>
       </tr>
     `;
@@ -118,7 +123,7 @@ function renderBreakdownTables(res: ImpostoRendaResult): void {
     tableCalculoBody.innerHTML = `
       <tr>
         <td><strong>Base de Cálculo do Imposto</strong></td>
-        <td>Salário Bruto (${formatCurrency(res.grossSalary)}) – Deduções (${formatCurrency(res.totalDeductions)})</td>
+        <td>Salário Bruto (${formatCurrency(res.grossSalary)}) – Deduções Totais (${formatCurrency(res.totalDeductions)})</td>
         <td class="col-highlight-total"><strong>${formatCurrency(res.taxableBase)}</strong></td>
       </tr>
       <tr>
@@ -142,14 +147,19 @@ function renderBreakdownTables(res: ImpostoRendaResult): void {
         <td class="col-highlight-profit" style="font-size: 16px;"><strong>${formatCurrency(res.taxDue)}</strong></td>
       </tr>
       <tr>
-        <td><strong>Alíquota Efetiva Real</strong></td>
-        <td>Percentual do imposto real sobre o salário bruto total</td>
+        <td><strong>Alíquota Efetiva do IRRF</strong></td>
+        <td>Percentual do imposto retido sobre o salário bruto total</td>
         <td><strong>${formatPercent(res.effectiveRate, 2)}</strong></td>
       </tr>
       <tr>
+        <td><strong>Total Descontado em Folha</strong></td>
+        <td>Desconto do INSS (${formatCurrency(res.inssDiscount)}) + IRRF (${formatCurrency(res.taxDue)})</td>
+        <td class="col-highlight-profit"><strong>${formatCurrency(res.totalMandatoryDiscounts)}</strong></td>
+      </tr>
+      <tr class="table-row-total">
         <td><strong>Salário Líquido Estimado</strong></td>
-        <td>Renda bruta mensal menos o IRRF descontado</td>
-        <td class="col-highlight-total" style="font-size: 15px;"><strong>${formatCurrency(res.netSalary)}</strong></td>
+        <td>Renda bruta mensal menos os descontos obrigatórios (INSS + IRRF)</td>
+        <td class="col-highlight-total" style="font-size: 16px;"><strong>${formatCurrency(res.netSalary)}</strong></td>
       </tr>
     `;
   }
@@ -178,13 +188,14 @@ function executeSimulation(animateReveal = false): void {
     if (currentResult.grossSalary === 0) {
       kpiSummaryText.textContent = 'Informe sua renda mensal para calcular a retenção.';
     } else if (currentResult.isExempt) {
-      kpiSummaryText.textContent =
-        'Sua base de cálculo está dentro do limite de isenção da Receita Federal (até R$ 2.428,80).';
+      kpiSummaryText.textContent = `Base de ${formatCurrency(
+        currentResult.taxableBase
+      )} isenta de IRRF (INSS de ${formatCurrency(currentResult.inssDiscount)} deduzido).`;
     } else {
       kpiSummaryText.textContent = `Alíquota efetiva de ${formatPercent(
         currentResult.effectiveRate,
         2
-      )} sobre a renda bruta de ${formatCurrency(currentResult.grossSalary)}.`;
+      )} sobre a renda bruta de ${formatCurrency(currentResult.grossSalary)} (INSS: ${formatCurrency(currentResult.inssDiscount)}).`;
     }
   }
 
@@ -192,6 +203,7 @@ function executeSimulation(animateReveal = false): void {
   impostoRendaAnimManager.animateCounters(
     currentResult.taxDue,
     currentResult.grossSalary,
+    currentResult.inssDiscount,
     currentResult.totalDeductions,
     currentResult.taxableBase,
     currentResult.effectiveRate,

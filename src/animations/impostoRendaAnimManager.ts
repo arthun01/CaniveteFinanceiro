@@ -7,6 +7,7 @@ export class ImpostoRendaAnimManager {
   private previousValues = {
     taxDue: 0,
     grossSalary: 0,
+    inssDiscount: 0,
     totalDeductions: 0,
     taxableBase: 0,
     effectiveRate: 0,
@@ -36,6 +37,7 @@ export class ImpostoRendaAnimManager {
   public animateCounters(
     taxDue: number,
     grossSalary: number,
+    inssDiscount: number,
     totalDeductions: number,
     taxableBase: number,
     effectiveRate: number,
@@ -43,6 +45,7 @@ export class ImpostoRendaAnimManager {
   ): void {
     const elTaxDue = document.getElementById('kpi-tax-due');
     const elGross = document.getElementById('kpi-gross');
+    const elInss = document.getElementById('kpi-inss');
     const elDeductions = document.getElementById('kpi-deductions');
     const elBase = document.getElementById('kpi-base');
     const elEffective = document.getElementById('kpi-effective');
@@ -84,7 +87,24 @@ export class ImpostoRendaAnimManager {
       });
     }
 
-    // 3. Total de Deduções
+    // 3. Desconto do INSS
+    if (elInss) {
+      const inssObj = { val: this.previousValues.inssDiscount };
+      this.currentTweens['inssDiscount'] = gsap.to(inssObj, {
+        val: inssDiscount,
+        duration: 1.0,
+        ease: 'power2.out',
+        onUpdate: () => {
+          elInss.textContent = formatCurrency(inssObj.val);
+        },
+        onComplete: () => {
+          this.previousValues.inssDiscount = inssDiscount;
+          elInss.textContent = formatCurrency(inssDiscount);
+        },
+      });
+    }
+
+    // 4. Total de Deduções
     if (elDeductions) {
       const dedObj = { val: this.previousValues.totalDeductions };
       this.currentTweens['totalDeductions'] = gsap.to(dedObj, {

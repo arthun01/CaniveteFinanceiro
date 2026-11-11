@@ -22,18 +22,21 @@ export interface TabelaIRFaixa {
 export interface ImpostoRendaResult {
   input: ImpostoRendaInput;
   grossSalary: number;
+  inssDiscount: number;          // Desconto do INSS pela tabela progressiva oficial
+  inssEffectiveRate: number;     // Alíquota efetiva do INSS (%)
   dependentsCount: number;
   dependentsDeduction: number;   // dependentesCount * 189.59
   alimonyExpenses: number;
   medicalExpenses: number;
   educationExpenses: number;
-  totalDeductions: number;       // Soma de todas as deduções
+  totalDeductions: number;       // Soma de todas as deduções (INSS + dependentes + pensão + saúde + educação)
   taxableBase: number;           // Base de cálculo = Salário Bruto - Total de Deduções
   faixa: TabelaIRFaixa;
   aliquotaNominal: number;       // Alíquota percentual da faixa
   deductionParcel: number;       // Parcela a deduzir da faixa
-  taxDue: number;                // Valor do imposto que será retido
-  effectiveRate: number;         // Alíquota efetiva = (taxDue / grossSalary) * 100
-  netSalary: number;             // Salário líquido após IR = grossSalary - taxDue
+  taxDue: number;                // Valor do imposto retido na fonte (IRRF)
+  effectiveRate: number;         // Alíquota efetiva do IR = (taxDue / grossSalary) * 100
+  totalMandatoryDiscounts: number; // Total descontado em folha (INSS + IRRF)
+  netSalary: number;             // Salário líquido após descontos em folha = grossSalary - INSS - taxDue
   isExempt: boolean;             // Se é isento de imposto
 }
