@@ -12,12 +12,31 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-links {
+    gap: 0.35rem;
+    font-size: 12px;
+  }
+
+  .nav-link {
+    padding: 5px 10px;
+  }
+
   .hero {
-    padding: 2.5rem 0.5rem 1.5rem;
+    padding: 2.25rem 0.5rem 1.25rem;
   }
 
   .hero-title {
-    font-size: 2.1rem;
+    font-size: 26px;
+    letter-spacing: -0.8px;
   }
 
   .calculator-form-card {
@@ -43,11 +62,13 @@
   }
 
   .kpi-card {
-    padding: 1.25rem;
-    min-height: auto;
+    padding: 18px 20px;
   }
 
-  /* Ajustes dos Gráficos em Telas Médias/Pequenas */
+  .kpi-value {
+    font-size: 26px;
+  }
+
   .charts-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
@@ -55,16 +76,15 @@
 
   .chart-card {
     padding: 1.25rem 1rem;
-    overflow: hidden;
   }
 
   .chart-canvas-wrapper {
-    height: 260px;
+    height: 250px;
     width: 100%;
   }
 
   .table-card {
-    padding: 1.25rem 0.75rem;
+    padding: 1.25rem 1rem;
   }
 
   .table-header {
@@ -72,12 +92,14 @@
     align-items: flex-start;
   }
 
-  .table-toggles {
+  .table-toggles,
+  .seg {
     width: 100%;
     display: flex;
   }
 
-  .table-toggle-btn {
+  .table-toggle-btn,
+  .seg button {
     flex: 1;
     text-align: center;
   }
@@ -85,24 +107,38 @@
   .education-card {
     padding: 1.5rem 1.25rem;
   }
+
+  .portal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .tool-card {
+    padding: 22px;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding-left: 0.85rem;
-    padding-right: 0.85rem;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
-  .hero-badge {
-    font-size: 0.78rem;
+  .navbar {
+    padding: 0.6rem 0.85rem;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .hero-badge,
+  .eyebrow {
+    font-size: 10px;
   }
 
   .hero-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .kpi-value {
-    font-size: 1.5rem;
+    font-size: 13px;
   }
 
   .calculator-form-card {
@@ -110,24 +146,20 @@
   }
 
   .chart-card {
-    padding: 1rem 0.75rem;
-  }
-
-  .chart-header {
-    margin-bottom: 1rem;
-  }
-
-  .chart-title {
-    font-size: 1.05rem;
+    padding: 1rem 0.85rem;
   }
 
   .chart-canvas-wrapper {
-    height: 240px;
+    height: 230px;
   }
 
   .evolution-table th,
   .evolution-table td {
-    padding: 0.65rem 0.75rem;
-    font-size: 0.82rem;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .footer {
+    padding: 20px 14px;
   }
 }

@@ -33,7 +33,7 @@ export class ReservaChartManager {
   }
 
   /**
-   * 1. Gráfico de Rosca: Alocação do Salário Mensal (Custo Fixo vs Aporte de Reserva vs Livre)
+   * 1. Gráfico de Rosca: Alocação do Salário Mensal (Cores da Aplicação Externa)
    */
   private renderProportionChart(result: ReservaResult): void {
     const canvas = document.getElementById('chart-pie') as HTMLCanvasElement;
@@ -55,15 +55,11 @@ export class ReservaChartManager {
           {
             data: [expenses, savings, freeMargin],
             backgroundColor: [
-              'rgba(244, 63, 94, 0.85)',   // Rose / Custo Fixo
-              'rgba(16, 185, 129, 0.85)',  // Esmeralda / Aporte
-              'rgba(56, 189, 248, 0.85)',  // Azul / Livre
+              '#ad493a', // Vermelho suave da marca / Custo Fixo
+              '#183f35', // Verde escuro da marca / Aporte
+              '#dfe8d5', // Sage suave / Livre
             ],
-            borderColor: [
-              'rgba(244, 63, 94, 1)',
-              'rgba(16, 185, 129, 1)',
-              'rgba(56, 189, 248, 1)',
-            ],
+            borderColor: ['#ffffff', '#ffffff', '#ffffff'],
             borderWidth: 2,
             hoverOffset: 6,
           },
@@ -72,14 +68,14 @@ export class ReservaChartManager {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        cutout: '68%',
+        cutout: '70%',
         plugins: {
           legend: {
             position: 'bottom',
             labels: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 11,
                 weight: 'bold',
               },
@@ -89,10 +85,10 @@ export class ReservaChartManager {
             },
           },
           tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            titleColor: '#f8fafc',
-            bodyColor: '#e2e8f0',
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#ffffff',
+            titleColor: '#203c33',
+            bodyColor: '#69756c',
+            borderColor: '#e4e8df',
             borderWidth: 1,
             padding: 12,
             callbacks: {
@@ -110,7 +106,7 @@ export class ReservaChartManager {
   }
 
   /**
-   * 2. Gráfico de Barras: Acúmulo do Patrimônio até a Meta
+   * 2. Gráfico de Barras: Acúmulo do Saldo até a Meta
    */
   private renderEvolutionChart(result: ReservaResult, preferYearly: boolean): void {
     const canvas = document.getElementById('chart-evolution') as HTMLCanvasElement;
@@ -129,13 +125,13 @@ export class ReservaChartManager {
       labels = result.yearlyRecords.map((r) => `Ano ${r.year}`);
       dataValues = result.yearlyRecords.map((r) => r.accumulated);
       backgroundColors = result.yearlyRecords.map((r) =>
-        r.isTargetReached ? 'rgba(16, 185, 129, 0.85)' : 'rgba(56, 189, 248, 0.8)'
+        r.isTargetReached ? '#183f35' : '#dfe8d5'
       );
     } else {
       labels = result.monthlyRecords.map((r) => `Mês ${r.month}`);
       dataValues = result.monthlyRecords.map((r) => r.accumulated);
       backgroundColors = result.monthlyRecords.map((r) =>
-        r.isTargetReached ? 'rgba(16, 185, 129, 0.85)' : 'rgba(56, 189, 248, 0.8)'
+        r.isTargetReached ? '#183f35' : '#dfe8d5'
       );
     }
 
@@ -148,7 +144,7 @@ export class ReservaChartManager {
             label: 'Saldo Acumulado',
             data: dataValues,
             backgroundColor: backgroundColors,
-            borderColor: backgroundColors.map((c) => c.replace('0.85', '1').replace('0.8', '1')),
+            borderColor: backgroundColors.map((c) => (c === '#183f35' ? '#123028' : '#cbd7c1')),
             borderWidth: 1,
             borderRadius: 4,
           },
@@ -160,12 +156,12 @@ export class ReservaChartManager {
         scales: {
           x: {
             grid: {
-              color: 'rgba(255, 255, 255, 0.04)',
+              color: '#f0f1eb',
             },
             ticks: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 11,
               },
               autoSkip: true,
@@ -175,12 +171,12 @@ export class ReservaChartManager {
           },
           y: {
             grid: {
-              color: 'rgba(255, 255, 255, 0.05)',
+              color: '#f0f1eb',
             },
             ticks: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 11,
               },
               callback: (value) => formatCompactCurrency(value as number),
@@ -192,10 +188,10 @@ export class ReservaChartManager {
             display: false,
           },
           tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            titleColor: '#f8fafc',
-            bodyColor: '#e2e8f0',
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#ffffff',
+            titleColor: '#203c33',
+            bodyColor: '#69756c',
+            borderColor: '#e4e8df',
             borderWidth: 1,
             padding: 12,
             callbacks: {

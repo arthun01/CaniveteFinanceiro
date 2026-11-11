@@ -1,51 +1,51 @@
+/* Design Tokens - Alinhados com a Aplicação Externa */
 :root {
-  /* Cores de Fundo Principais */
-  --bg-0: #020617;
-  --bg-1: #0b1220;
-  --bg-2: #0f172a;
+  /* Cores Principais da Marca */
+  --green: #183f35;
+  --green-hover: #123028;
+  --green-soft: #eff4e7;
+  --green-subtle: #f0f4e9;
+  
+  --lime: #d7f58b;
+  --lime-dark: #87aa65;
+  --lime-chip: rgba(215, 245, 139, 0.25);
+  
+  --bg: #f7f8f2;
+  --card-bg: #ffffff;
+  --card-bg-subtle: #f0f4e9;
+  --card-bg-daily: #eef2e5;
+  
+  --ink: #203c33;
+  --muted: #69756c;
+  --line: #e4e8df;
+  --line-subtle: #f0f1eb;
+  
+  --red: #ad493a;
+  --red-bg: #fbefeb;
+  --positive: #3c7254;
 
-  /* Superfícies Glassmorphism */
-  --glass-fill: rgba(15, 23, 42, 0.55);
-  --glass-fill-strong: rgba(15, 23, 42, 0.82);
-  --glass-fill-subtle: rgba(30, 41, 59, 0.35);
-  --glass-input-bg: rgba(15, 23, 42, 0.65);
+  /* Aliases para compatibilidade */
+  --accent: #183f35;
+  --accent-hover: #123028;
+  --accent-glow: rgba(24, 63, 53, 0.15);
+  --profit: #183f35;
+  --profit-light: #3c7254;
+  --invested: #69756c;
 
   /* Tipografia */
-  --text-main: #f8fafc;
-  --text-body: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-subtle: #64748b;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Cores de Destaque Semânticas */
-  --accent: #38bdf8;          /* Azul elétrico vibrante */
-  --accent-hover: #0284c7;
-  --accent-glow: rgba(56, 189, 248, 0.35);
-
-  --profit: #10b981;          /* Verde esmeralda para rendimentos e juros */
-  --profit-light: #34d399;
-  --profit-glow: rgba(16, 185, 129, 0.25);
-
-  --invested: #818cf8;        /* Índigo para capital próprio aportado */
-  --invested-glow: rgba(129, 140, 248, 0.25);
-
-  --warning: #f59e0b;
-  --danger: #f43f5e;
-  --danger-hover: #e11d48;
-
-  /* Bordas & Sombras */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(255, 255, 255, 0.15);
-  --shadow-surface: 0 20px 48px rgba(2, 6, 23, 0.5);
-  --shadow-glow: 0 0 32px rgba(56, 189, 248, 0.15);
-
-  /* Raios de borda */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  /* Bordas e Raios */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
   --radius-pill: 9999px;
 
-  /* Fontes */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* Sombras Sutis */
+  --shadow-sm: 0 1px 3px rgba(24, 63, 53, 0.05);
+  --shadow-md: 0 4px 14px rgba(24, 63, 53, 0.06);
+  --shadow-lg: 0 12px 32px rgba(24, 63, 53, 0.08);
 }

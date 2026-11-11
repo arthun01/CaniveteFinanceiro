@@ -9,10 +9,9 @@ import {
   CategoryScale,
   LinearScale,
 } from 'chart.js';
-import { SimulationResult } from '../types/finance';
+import type { SimulationResult } from '../types/finance';
 import { formatCurrency, formatCompactCurrency } from '../utils/formatters';
 
-// Registra os módulos necessários do Chart.js para manter o bundle enxuto
 Chart.register(
   ArcElement,
   Tooltip,
@@ -28,16 +27,13 @@ export class ChartManager {
   private pieChart: Chart | null = null;
   private barChart: Chart | null = null;
 
-  /**
-   * Atualiza ou inicializa ambos os gráficos com base no resultado da simulação
-   */
   public updateCharts(result: SimulationResult, preferYearly = false): void {
     this.renderProportionChart(result);
     this.renderEvolutionChart(result, preferYearly);
   }
 
   /**
-   * 1. Gráfico de Rosca/Pizza: Total Investido vs Total em Juros
+   * 1. Gráfico de Rosca: Total Investido vs Total em Juros (Cores da Aplicação Externa)
    */
   private renderProportionChart(result: SimulationResult): void {
     const canvas = document.getElementById('chart-pie') as HTMLCanvasElement;
@@ -62,13 +58,10 @@ export class ChartManager {
           {
             data: [result.totalInvested, result.totalInterest],
             backgroundColor: [
-              'rgba(129, 140, 248, 0.85)', // Índigo / Investido
-              'rgba(16, 185, 129, 0.85)',  // Esmeralda / Juros
+              '#dfe8d5', // Sage suave / Investido
+              '#183f35', // Verde escuro da marca / Juros
             ],
-            borderColor: [
-              'rgba(129, 140, 248, 1)',
-              'rgba(16, 185, 129, 1)',
-            ],
+            borderColor: ['#ffffff', '#ffffff'],
             borderWidth: 2,
             hoverOffset: 6,
           },
@@ -77,27 +70,27 @@ export class ChartManager {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        cutout: '68%',
+        cutout: '70%',
         plugins: {
           legend: {
             position: 'bottom',
             labels: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 12,
                 weight: 'bold',
               },
-              padding: 16,
+              padding: 14,
               usePointStyle: true,
               pointStyle: 'circle',
             },
           },
           tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            titleColor: '#f8fafc',
-            bodyColor: '#e2e8f0',
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#ffffff',
+            titleColor: '#203c33',
+            bodyColor: '#69756c',
+            borderColor: '#e4e8df',
             borderWidth: 1,
             padding: 12,
             boxPadding: 6,
@@ -115,7 +108,7 @@ export class ChartManager {
   }
 
   /**
-   * 2. Gráfico de Barras Verticais: Evolução ao Longo do Tempo (Barras Empilhadas)
+   * 2. Gráfico de Barras Empilhadas: Evolução Temporal
    */
   private renderEvolutionChart(result: SimulationResult, preferYearly: boolean): void {
     const canvas = document.getElementById('chart-evolution') as HTMLCanvasElement;
@@ -125,9 +118,7 @@ export class ChartManager {
       this.barChart.destroy();
     }
 
-    // Se o período for maior que 24 meses ou usuário preferir anual, usa anos
     const useYearly = preferYearly || result.totalMonths > 36;
-
     let labels: string[] = [];
     let investedData: number[] = [];
     let interestData: number[] = [];
@@ -150,8 +141,8 @@ export class ChartManager {
           {
             label: 'Total Investido',
             data: investedData,
-            backgroundColor: 'rgba(129, 140, 248, 0.8)',
-            borderColor: '#818cf8',
+            backgroundColor: '#dfe8d5',
+            borderColor: '#cbd7c1',
             borderWidth: 1,
             borderRadius: 4,
             stack: 'evolution',
@@ -159,8 +150,8 @@ export class ChartManager {
           {
             label: 'Juros Acumulados',
             data: interestData,
-            backgroundColor: 'rgba(16, 185, 129, 0.8)',
-            borderColor: '#10b981',
+            backgroundColor: '#183f35',
+            borderColor: '#123028',
             borderWidth: 1,
             borderRadius: 4,
             stack: 'evolution',
@@ -178,12 +169,12 @@ export class ChartManager {
           x: {
             stacked: true,
             grid: {
-              color: 'rgba(255, 255, 255, 0.04)',
+              color: '#f0f1eb',
             },
             ticks: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 11,
               },
               autoSkip: true,
@@ -194,12 +185,12 @@ export class ChartManager {
           y: {
             stacked: true,
             grid: {
-              color: 'rgba(255, 255, 255, 0.05)',
+              color: '#f0f1eb',
             },
             ticks: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 11,
               },
               callback: (value) => formatCompactCurrency(value as number),
@@ -211,21 +202,21 @@ export class ChartManager {
             position: 'top',
             align: 'end',
             labels: {
-              color: '#94a3b8',
+              color: '#69756c',
               font: {
-                family: 'Inter, sans-serif',
+                family: 'DM Sans, sans-serif',
                 size: 12,
-                weight: 500,
+                weight: 'bold',
               },
               boxWidth: 12,
               usePointStyle: true,
             },
           },
           tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            titleColor: '#f8fafc',
-            bodyColor: '#e2e8f0',
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#ffffff',
+            titleColor: '#203c33',
+            bodyColor: '#69756c',
+            borderColor: '#e4e8df',
             borderWidth: 1,
             padding: 12,
             callbacks: {
@@ -244,9 +235,6 @@ export class ChartManager {
     });
   }
 
-  /**
-   * Destrói instâncias ativas
-   */
   public destroy(): void {
     this.pieChart?.destroy();
     this.barChart?.destroy();
