@@ -12,14 +12,24 @@ export function initPortal(): void {
     ease: 'power3.out',
   });
 
-  gsap.from('.tool-card', {
-    y: 36,
-    opacity: 0,
-    duration: 0.9,
-    stagger: 0.15,
-    delay: 0.2,
-    ease: 'power3.out',
-  });
+  if (window.innerWidth <= 768) {
+    gsap.from('.mobile-portal-banner', {
+      y: 28,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.25,
+      ease: 'power3.out',
+    });
+  } else {
+    gsap.from('.tool-card', {
+      y: 36,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.15,
+      delay: 0.2,
+      ease: 'power3.out',
+    });
+  }
 
   gsap.from('.feature-card', {
     y: 20,

@@ -1,4 +1,4 @@
-# 💰 FinHub — Suíte de Simuladores & Calculadoras Financeiras Online
+# 💰 CaniveteFinanceiro — Suíte de Simuladores & Calculadoras Financeiras Online
 
 > Uma suíte moderna, estática e de alta performance de ferramentas financeiras para planejamento de patrimônio, investimentos e segurança financeira.
 

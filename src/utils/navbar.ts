@@ -5,7 +5,7 @@
 export type Theme = 'light' | 'dark';
 
 export function getInitialTheme(): Theme {
-  const saved = localStorage.getItem('finhub-theme') as Theme | null;
+  const saved = localStorage.getItem('canivete-financeiro-theme') as Theme | null;
   if (saved === 'light' || saved === 'dark') return saved;
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     return 'dark';
@@ -15,7 +15,7 @@ export function getInitialTheme(): Theme {
 
 export function setTheme(theme: Theme): void {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('finhub-theme', theme);
+  localStorage.setItem('canivete-financeiro-theme', theme);
   updateThemeIcons(theme);
   window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
 }
@@ -97,10 +97,66 @@ export function setupNavbar(): void {
     link.addEventListener('click', closeMenu);
   });
 
-  // Fecha ao pressionar ESC
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
-      closeMenu();
+  // 3. Modal "Apoie o Projeto"
+  const donateDialog = document.getElementById('donate-dialog') as HTMLDialogElement | null;
+  const openDonateBtns = document.querySelectorAll('#open-donate-btn, #mobile-donate-btn');
+  const closeDonateBtn = document.getElementById('close-donate-btn');
+  const copyPixBtn = document.getElementById('copy-pix-btn');
+  const pixKeyInput = document.getElementById('pix-key-input') as HTMLInputElement | null;
+  const copyPixText = document.getElementById('copy-pix-text');
+
+  function openDonate() {
+    closeMenu();
+    if (donateDialog && typeof donateDialog.showModal === 'function') {
+      donateDialog.showModal();
+    }
+  }
+
+  function closeDonate() {
+    if (donateDialog && typeof donateDialog.close === 'function') {
+      donateDialog.close();
+    }
+  }
+
+  openDonateBtns.forEach((btn) => {
+    btn.addEventListener('click', openDonate);
+  });
+
+  closeDonateBtn?.addEventListener('click', closeDonate);
+
+  // Fecha dialog ao clicar no backdrop
+  donateDialog?.addEventListener('click', (e) => {
+    const rect = donateDialog.getBoundingClientRect();
+    const isInDialog =
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width;
+    if (!isInDialog) {
+      closeDonate();
     }
   });
+
+  // Copiar Chave Pix
+  copyPixBtn?.addEventListener('click', async () => {
+    if (!pixKeyInput) return;
+    try {
+      await navigator.clipboard.writeText(pixKeyInput.value);
+      if (copyPixText) copyPixText.textContent = 'Copiado! ✓';
+      setTimeout(() => {
+        if (copyPixText) copyPixText.textContent = 'Copiar';
+      }, 2500);
+    } catch {
+      pixKeyInput.select();
+      document.execCommand('copy');
+      if (copyPixText) copyPixText.textContent = 'Copiado! ✓';
+      setTimeout(() => {
+        if (copyPixText) copyPixText.textContent = 'Copiar';
+      }, 2500);
+    }
+  });
+
+  // 4. Botão do Banner Mobile do Portal (se presente na página)
+  const bannerOpenMenuBtn = document.getElementById('banner-open-menu-btn');
+  bannerOpenMenuBtn?.addEventListener('click', openMenu);
 }

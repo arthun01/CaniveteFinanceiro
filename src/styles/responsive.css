@@ -22,7 +22,11 @@
   }
 
   .nav-links {
-    display: none;
+    display: none !important;
+  }
+
+  .btn-donate {
+    display: none !important;
   }
 
   .hamburger-btn {
@@ -107,13 +111,22 @@
     padding: 1.5rem 1.25rem;
   }
 
+  /* Oculta os cards das calculadoras no mobile; acesso é pelo menu hambúrguer */
   .portal-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    display: none !important;
   }
 
-  .tool-card {
-    padding: 22px;
+  .mobile-portal-banner {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 28px 20px;
+    margin: 1.5rem auto 2.5rem;
+    box-shadow: var(--shadow-sm);
   }
 }
 
