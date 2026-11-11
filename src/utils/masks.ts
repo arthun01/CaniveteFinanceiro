@@ -37,11 +37,18 @@ export function parseIntegerInput(value: string): number {
 /**
  * Aplica máscara de moeda brasileira em tempo real no elemento input
  */
-export function attachCurrencyMask(inputEl: HTMLInputElement, initialValue = 0): void {
-  inputEl.value = formatCurrencyInputValue(initialValue);
+export function attachCurrencyMask(inputEl: HTMLInputElement, initialValue?: number | null): void {
+  if (initialValue !== undefined && initialValue !== null) {
+    inputEl.value = formatCurrencyInputValue(initialValue);
+  }
 
   inputEl.addEventListener('input', () => {
-    const rawVal = parseCurrencyInput(inputEl.value);
+    const cleanDigits = inputEl.value.replace(/\D/g, '');
+    if (!cleanDigits) {
+      inputEl.value = '';
+      return;
+    }
+    const rawVal = parseFloat(cleanDigits) / 100;
     inputEl.value = formatCurrencyInputValue(rawVal);
   });
 

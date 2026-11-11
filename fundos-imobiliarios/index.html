@@ -147,180 +147,218 @@
         </p>
       </section>
 
-      <!-- ÁREA DE SIMULAÇÃO (GRID: FORM + RESULTADOS) -->
-      <section class="calc-grid">
-        <!-- COLUNA 1: FORMULÁRIO -->
-        <div class="calc-col-form">
-          <div class="calculator-form-card glass-panel border-gradient">
-            <h2 class="card-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-                <line x1="9" y1="22" x2="9" y2="22.01"></line>
-                <line x1="15" y1="22" x2="15" y2="22.01"></line>
-                <line x1="9" y1="6" x2="9" y2="6.01"></line>
-                <line x1="15" y1="6" x2="15" y2="6.01"></line>
+      <!-- FORMULÁRIO -->
+      <section class="calculator-form-card glass-panel border-gradient" aria-label="Dados do Fundo Imobiliário">
+        <h2 class="card-title" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+            <line x1="9" y1="22" x2="9" y2="22.01"></line>
+            <line x1="15" y1="22" x2="15" y2="22.01"></line>
+            <line x1="9" y1="6" x2="9" y2="6.01"></line>
+            <line x1="15" y1="6" x2="15" y2="6.01"></line>
+          </svg>
+          Dados do Fundo (FII)
+        </h2>
+
+        <form id="fii-form" class="calc-form" novalidate>
+          <div class="form-grid">
+            <!-- Nome / Ticker (Opcional) -->
+            <div class="input-group">
+              <label for="fii-ticker" class="input-label">
+                <span>Nome / Ticker do Fundo</span>
+                <span style="font-weight: 400; color: var(--muted); font-size: 11px;">(opcional)</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="text" id="fii-ticker" class="form-input" placeholder="Ex: MXRF11, HGLG11" maxlength="10" />
+              </div>
+            </div>
+
+            <!-- Dividend Yield Anual (%) -->
+            <div class="input-group">
+              <label for="fii-dy" class="input-label">
+                <span>Dividend Yield Anual (DY)</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="text" id="fii-dy" class="form-input" placeholder="Ex: 11,5" />
+                <span class="input-suffix">% a.a.</span>
+              </div>
+            </div>
+
+            <!-- Valor Atual da Cota (R$) -->
+            <div class="input-group">
+              <label for="fii-valor-cota" class="input-label">
+                <span>Valor Atual da Cota</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="text" id="fii-valor-cota" class="form-input" placeholder="R$ 0,00" />
+              </div>
+            </div>
+
+            <!-- Nº de Cotas Inicial (Mês 1) -->
+            <div class="input-group">
+              <label for="fii-cotas-iniciais" class="input-label">
+                <span>Nº de Cotas Inicial</span>
+                <span style="font-weight: 400; color: var(--muted); font-size: 11px;">(mês 1, opcional)</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="number" id="fii-cotas-iniciais" class="form-input" placeholder="0" min="0" step="1" />
+                <span class="input-suffix">cotas</span>
+              </div>
+            </div>
+
+            <!-- Investimento Mensal (em número de cotas) -->
+            <div class="input-group">
+              <label for="fii-cotas-mensais" class="input-label">
+                <span>Investimento Mensal</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="number" id="fii-cotas-mensais" class="form-input" placeholder="0" min="0" step="1" />
+                <span class="input-suffix">cotas/mês</span>
+              </div>
+            </div>
+
+            <!-- Prazo da Simulação -->
+            <div class="input-group">
+              <label for="fii-prazo" class="input-label">
+                <span>Período da Simulação</span>
+              </label>
+              <div class="input-wrapper">
+                <select id="fii-prazo" class="form-input" style="cursor: pointer;">
+                  <option value="24" selected>2 anos (24 meses)</option>
+                  <option value="36">3 anos (36 meses)</option>
+                  <option value="60">5 anos (60 meses)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="form-actions">
+            <button type="button" id="btn-clear" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
               </svg>
-              Dados do Fundo (FII)
-            </h2>
+              Limpar
+            </button>
+            <button type="submit" id="btn-calculate" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Simular Projeção
+            </button>
+          </div>
+        </form>
+      </section>
 
-            <form id="fii-form" novalidate>
-              <!-- Nome / Ticker (Opcional) -->
-              <div class="form-group">
-                <label for="fii-ticker">
-                  Nome do Fundo / Ticker <span style="font-weight: 400; color: var(--muted); font-size: 11px;">(opcional)</span>
-                </label>
-                <div class="input-wrapper">
-                  <input type="text" id="fii-ticker" class="form-input" placeholder="Ex: MXRF11, HGLG11" maxlength="10" />
-                </div>
+      <!-- RESULTADOS EM NÚMEROS (CARDS DE KPI COM ESPAÇAMENTO GENEROSO) -->
+      <section class="results-section" aria-label="Resultados da Simulação" style="margin-bottom: 2.5rem;">
+        <div class="results-grid">
+          <!-- 1. Patrimônio em Cotas (Hero Card) -->
+          <div class="kpi-card kpi-final balance-card" style="padding: 26px 24px; min-height: 140px;">
+            <div class="kpi-header">
+              <span class="kpi-title">Patrimônio em Cotas</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2V5z"></path>
+                </svg>
               </div>
+            </div>
+            <div id="kpi-patrimonio" class="kpi-value amount" style="margin: 10px 0;">R$ 0,00</div>
+            <div id="kpi-patrimonio-sub" class="kpi-footer">0 cotas totais</div>
+          </div>
 
-              <!-- Dividend Yield Anual (%) -->
-              <div class="form-group">
-                <label for="fii-dy">Dividend Yield Anual (DY % a.a.)</label>
-                <div class="input-wrapper">
-                  <input type="text" id="fii-dy" class="form-input" placeholder="11,5%" />
-                  <span class="input-suffix">% a.a.</span>
-                </div>
+          <!-- 2. Rendimento Mensal -->
+          <div class="kpi-card kpi-profit" style="padding: 26px 24px; min-height: 140px;">
+            <div class="kpi-header">
+              <span class="kpi-title">Rendimento Mensal</span>
+              <div class="kpi-icon" style="background: var(--green-soft); color: var(--positive);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
               </div>
+            </div>
+            <div id="kpi-rendimento-mensal" class="kpi-value amount" style="color: var(--positive); margin: 10px 0;">R$ 0,00/mês</div>
+            <div id="kpi-rendimento-sub" class="kpi-footer">Dividendos isentos de IR</div>
+          </div>
 
-              <!-- Valor Atual da Cota (R$) -->
-              <div class="form-group">
-                <label for="fii-valor-cota">Valor Atual da Cota</label>
-                <div class="input-wrapper">
-                  <input type="text" id="fii-valor-cota" class="form-input" placeholder="R$ 10,20" />
-                </div>
+          <!-- 3. Efeito Bola de Neve (Cotas Reinvestidas) -->
+          <div class="kpi-card" style="padding: 26px 24px; min-height: 140px;">
+            <div class="kpi-header">
+              <span class="kpi-title">Efeito Bola de Neve</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="17 1 21 5 17 9"></polyline>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                  <polyline points="7 23 3 19 7 15"></polyline>
+                  <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                </svg>
               </div>
+            </div>
+            <div id="kpi-cotas-rendimento" class="kpi-value amount" style="margin: 10px 0;">0 cotas</div>
+            <div id="kpi-cotas-sub" class="kpi-footer">Compradas só com proventos</div>
+          </div>
 
-              <!-- Nº de Cotas Inicial (Mês 1) -->
-              <div class="form-group">
-                <label for="fii-cotas-iniciais">
-                  Nº de Cotas Inicial <span style="font-weight: 400; color: var(--muted); font-size: 11px;">(mês 1, opcional)</span>
-                </label>
-                <div class="input-wrapper">
-                  <input type="number" id="fii-cotas-iniciais" class="form-input" placeholder="0" min="0" step="1" />
-                  <span class="input-suffix">cotas</span>
-                </div>
+          <!-- 4. Número Mágico -->
+          <div class="kpi-card" style="padding: 26px 24px; min-height: 140px;">
+            <div class="kpi-header">
+              <span class="kpi-title">Número Mágico</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
               </div>
-
-              <!-- Investimento Mensal (em número de cotas) -->
-              <div class="form-group">
-                <label for="fii-cotas-mensais">Investimento Mensal do Bolso</label>
-                <div class="input-wrapper">
-                  <input type="number" id="fii-cotas-mensais" class="form-input" placeholder="10" min="0" step="1" />
-                  <span class="input-suffix">cotas/mês</span>
-                </div>
-              </div>
-
-              <!-- Prazo da Simulação -->
-              <div class="form-group">
-                <label for="fii-prazo">Período da Simulação</label>
-                <div class="input-wrapper">
-                  <select id="fii-prazo" class="form-input" style="cursor: pointer;">
-                    <option value="24" selected>2 anos (24 meses)</option>
-                    <option value="36">3 anos (36 meses)</option>
-                    <option value="60">5 anos (60 meses)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="submit" class="btn btn-primary" style="flex: 2;">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                  Simular Projeção
-                </button>
-                <button type="button" id="btn-clear" class="btn btn-secondary" style="flex: 1;">
-                  Limpar
-                </button>
-              </div>
-            </form>
+            </div>
+            <div id="kpi-magic-number" class="kpi-value amount" style="margin: 10px 0;">0 cotas</div>
+            <div id="kpi-magic-status" class="kpi-footer">Para comprar 1 cota todo mês sozinho</div>
           </div>
         </div>
+      </section>
 
-        <!-- COLUNA 2: RESULTADOS, GRÁFICO E TABELA -->
-        <div class="calc-col-results">
-          <!-- CARDS DE KPI -->
-          <div class="kpi-grid">
-            <!-- 1. Patrimônio Final -->
-            <div class="stat glass-panel border-gradient">
-              <div class="stat-label">
-                <span class="stat-icon">💰</span>
-                Patrimônio em Cotas
-              </div>
-              <strong id="kpi-patrimonio">R$ 0,00</strong>
-              <small id="kpi-patrimonio-sub">0 cotas totais</small>
-            </div>
+      <!-- GRÁFICO DE PIZZA (DO BOLSO vs RENDIMENTOS) -->
+      <section class="charts-section" aria-label="Origem das Cotas Acumuladas" style="margin-bottom: 2.5rem;">
+        <div class="chart-card glass-panel border-gradient">
+          <div class="chart-header">
+            <h3 class="chart-title">Origem das Cotas Acumuladas</h3>
+            <span class="hero-badge" style="margin: 0; font-size: 10px;">Proporção</span>
+          </div>
+          <p style="font-size: 13px; color: var(--muted); margin: 0 0 1.25rem;">
+            Relação de quantas cotas saíram do seu bolso vs. quantas foram compradas 100% pelos rendimentos reinvestidos:
+          </p>
+          <div class="chart-canvas-wrapper" style="height: 260px;">
+            <canvas id="chart-pie"></canvas>
+          </div>
+        </div>
+      </section>
 
-            <!-- 2. Rendimento Mensal no Fim -->
-            <div class="stat glass-panel border-gradient">
-              <div class="stat-label">
-                <span class="stat-icon">📈</span>
-                Rendimento Mensal
-              </div>
-              <strong id="kpi-rendimento-mensal" style="color: var(--positive);">R$ 0,00/mês</strong>
-              <small id="kpi-rendimento-sub">Dividendos isentos de IR</small>
-            </div>
-
-            <!-- 3. Cotas Ganhas de Graça (Bola de Neve) -->
-            <div class="stat glass-panel border-gradient">
-              <div class="stat-label">
-                <span class="stat-icon">❄️</span>
-                Efeito Bola de Neve
-              </div>
-              <strong id="kpi-cotas-rendimento" style="color: var(--green);">0 cotas</strong>
-              <small id="kpi-cotas-sub">Compradas só com proventos</small>
-            </div>
-
-            <!-- 4. Número Mágico -->
-            <div class="stat glass-panel border-gradient">
-              <div class="stat-label">
-                <span class="stat-icon">🎯</span>
-                Número Mágico
-              </div>
-              <strong id="kpi-magic-number">0 cotas</strong>
-              <small id="kpi-magic-status">Para comprar 1 cota todo mês sozinho</small>
-            </div>
+      <!-- TABELA DE EVOLUÇÃO MÊS A MÊS -->
+      <section class="table-section" aria-label="Simulação Mês a Mês">
+        <div class="table-card glass-panel border-gradient">
+          <div class="table-header">
+            <h3 class="table-title">Simulação Mês a Mês (Reinvestimento Total)</h3>
+            <span id="badge-prazo" class="hero-badge" style="margin: 0; font-size: 10px;">24 Meses</span>
           </div>
 
-          <!-- GRÁFICO DE PIZZA (DO BOLSO vs RENDIMENTOS) -->
-          <div class="chart-card glass-panel border-gradient" style="margin-top: 1.5rem;">
-            <div class="chart-header">
-              <h3 class="chart-title">Origem das Cotas Acumuladas</h3>
-              <span class="hero-badge" style="margin: 0; font-size: 10px;">Proporção</span>
-            </div>
-            <p style="font-size: 13px; color: var(--muted); margin: 0 0 1rem;">
-              Relação de quantas cotas saíram do seu bolso vs. quantas foram compradas 100% pelos rendimentos:
-            </p>
-            <div class="chart-canvas-wrapper" style="height: 250px;">
-              <canvas id="chart-pie"></canvas>
-            </div>
-          </div>
-
-          <!-- TABELA DE EVOLUÇÃO MÊS A MÊS -->
-          <div class="table-card glass-panel border-gradient" style="margin-top: 1.5rem;">
-            <div class="table-header">
-              <h3 class="table-title">Simulação Mês a Mês (Reinvestimento Total)</h3>
-              <span class="hero-badge" style="margin: 0; font-size: 10px;">24 Meses</span>
-            </div>
-
-            <div class="table-wrapper">
-              <table class="evolution-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Mês</th>
-                    <th scope="col">Quantas Cotas Tenho?</th>
-                    <th scope="col">Valor das Cotas</th>
-                    <th scope="col">Rendimento</th>
-                    <th scope="col">Quantas Cotas Eu Compro?</th>
-                    <th scope="col">Do Bolso</th>
-                  </tr>
-                </thead>
-                <tbody id="fii-table-body">
-                  <!-- Injetado dinamicamente via TypeScript -->
-                </tbody>
-              </table>
-            </div>
+          <div class="table-wrapper">
+            <table class="evolution-table">
+              <thead>
+                <tr>
+                  <th scope="col">Mês</th>
+                  <th scope="col">Quantas Cotas Tenho?</th>
+                  <th scope="col">Valor das Cotas</th>
+                  <th scope="col">Rendimento</th>
+                  <th scope="col">Quantas Cotas Eu Compro?</th>
+                  <th scope="col">Do Bolso</th>
+                </tr>
+              </thead>
+              <tbody id="fii-table-body">
+                <!-- Injetado dinamicamente via TypeScript -->
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -337,22 +375,22 @@
         </h2>
 
         <div class="guide-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
-          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px;">
-            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">❄️ O Efeito Bola de Neve</h3>
+          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 22px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">O Efeito Bola de Neve</h3>
             <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0;">
               Quando você reinveste 100% dos dividendos recebidos para comprar novas cotas, no mês seguinte essas novas cotas também geram rendimentos. Com o tempo, a renda gerada pelo fundo supera o seu próprio aporte do bolso.
             </p>
           </div>
 
-          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px;">
-            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">🎯 O que é o Número Mágico?</h3>
+          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 22px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">O que é o Número Mágico?</h3>
             <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0;">
               O <strong>Magic Number</strong> é o ponto de virada onde o dividendo mensal que você recebe é suficiente para comprar pelo menos 1 cota inteira a mercado sem você precisar colocar dinheiro do próprio bolso.
             </p>
           </div>
 
-          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px;">
-            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">🛡️ Isenção de Imposto de Renda</h3>
+          <div class="guide-card" style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 22px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Isenção de Imposto de Renda</h3>
             <p style="font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0;">
               Para pessoas físicas, os rendimentos periódicos distribuídos por Fundos Imobiliários negociados em bolsa são <strong>100% isentos de Imposto de Renda</strong> pela legislação brasileira vigente (Lei 11.033/04).
             </p>

@@ -15,27 +15,35 @@ Simular a criação e aceleração do **Efeito Bola de Neve** (*Snowball Effect*
 
 | Campo | Tipo | Descrição | Padrão | Validação |
 | :--- | :--- | :--- | :--- | :--- |
-| **Nome / Ticker** | Texto | Código do FII na B3 (ex: MXRF11, HGLG11) | MXRF11 | Opcional |
-| **Dividend Yield Anual** | Numérico (%) | Proventos projetados no ano (DY % a.a.) | 11,5% | >= 0 |
-| **Valor da Cota** | Moeda (R$) | Preço de mercado atual da cota | R$ 10,20 | > 0 |
-| **Nº de Cotas Inicial** | Inteiro | Cotas já detidas na largada (mês 1) | 100 | >= 0 (Opcional) |
-| **Aporte Mensal** | Inteiro | Quantas cotas compra todo mês com dinheiro do bolso | 10 | >= 0 |
+| **Nome / Ticker** | Texto | Código do FII na B3 (ex: MXRF11, HGLG11) | Em branco | Opcional |
+| **Dividend Yield Anual** | Numérico (%) | Proventos projetados no ano (DY % a.a.) | Em branco | >= 0 |
+| **Valor da Cota** | Moeda (R$) | Preço de mercado atual da cota | Em branco | > 0 |
+| **Nº de Cotas Inicial** | Inteiro | Cotas já detidas na largada (mês 1) | Em branco | >= 0 (Opcional) |
+| **Aporte Mensal** | Inteiro | Quantas cotas compra todo mês com dinheiro do bolso | Em branco | >= 0 |
 | **Período** | Seleção | 2 anos (24 meses - padrão), 3 anos ou 5 anos | 24 meses | >= 1 |
+
+> **Nota de UX:** Todos os campos iniciam naturalmente vazios/limpos, exibindo placeholders didáticos. O botão "Limpar" reseta todos os inputs para vazio e exibe a mensagem de aguardo de dados na tabela e no gráfico.
 
 ---
 
 ## 3. 🧮 Lógica Matemática & Regras de Negócio
 
-### 3.1 Proventos Mensais Isentos
+### 3.1 Regra do Primeiro Mês Zerado (Cotas Iniciais = 0)
+Quando o investidor informa **0** cotas iniciais (ou deixa o campo em branco):
+- **Mês 1:** É 100% zerado. `Cotas Início = 0`, `Rendimento = R$ 0,00`, `Cotas Reinvestidas = 0`, `Patrimônio = R$ 0,00`.
+- **Mês 2 em diante:** O primeiro aporte entra no Mês 2, passando a gerar rendimentos a partir daí.
+- Se o usuário informar cotas iniciais $> 0$ (ex: 100 cotas), o Mês 1 já reflete essas cotas ativas gerando proventos.
+
+### 3.2 Proventos Mensais Isentos
 O cálculo utiliza a taxa equivalente mensal de rendimento:
 $$i_{mensal} = (1 + DY_{anual})^{\frac{1}{12}} - 1$$
 $$\text{Dividendo por Cota} = \text{Valor da Cota} \times i_{mensal}$$
 
-### 3.2 O Efeito Bola de Neve (Reinvestimento com Cotas Inteiras)
+### 3.3 O Efeito Bola de Neve (Reinvestimento com Cotas Inteiras)
 Na B3, fundos imobiliários são transacionados em lotes padrão de cotas inteiras (sem frações fracionárias). Portanto, o simulador implementa a dinâmica real de mercado:
 
 A cada mês $t$:
-1. **Cotas Ativas:** $\text{Cotas que Rendem} = \text{Cotas Acumuladas Anterior} + \text{Aporte do Bolso}$.
+1. **Cotas Ativas:** As cotas acumuladas geram dividendos no início do mês.
 2. **Dividendo do Mês (R$):** $\text{Rendimento} = \text{Cotas Ativas} \times \text{Dividendo por Cota}$.
 3. **Caixa Total para Reinvestir:** $\text{Disponível} = \text{Rendimento} + \text{Sobra Anterior}$.
 4. **Cotas Compradas com Rendimento:**
@@ -43,7 +51,7 @@ A cada mês $t$:
 5. **Sobra em Caixa (Residual para o próximo mês):**
    $$\text{Sobra} = \text{Disponível} - (\text{Cotas Reinvestidas} \times \text{Valor da Cota})$$
 6. **Total de Cotas Acumuladas no Fim do Mês:**
-   $$\text{Total Cotas} = \text{Cotas Ativas} + \text{Cotas Reinvestidas}$$
+   $$\text{Total Cotas} = \text{Cotas Ativas} + \text{Aporte Deste Mês} + \text{Cotas Reinvestidas}$$
 
 ### 3.3 Número Mágico (Magic Number)
 O ponto de virada onde o investidor passa a ganhar pelo menos 1 cota inteira por mês apenas com proventos:

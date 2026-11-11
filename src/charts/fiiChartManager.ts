@@ -48,25 +48,39 @@ export class FiiChartManager {
     // Cores alinhadas com o Design System oficial
     const bolsoColor = isDark ? '#8b9f94' : '#69756c';       // Muted / Neutro
     const reinvestidasColor = isDark ? '#4ade80' : '#183f35'; // Verde / Ganho
+    const emptyColor = isDark ? '#22372f' : '#e4e8df';        // Estado vazio
     const borderColor = isDark ? '#14221d' : '#ffffff';
     const textColor = isDark ? '#f0f7f3' : '#203c33';
     const tooltipBg = isDark ? '#14221d' : '#ffffff';
     const tooltipBorder = isDark ? '#22372f' : '#e4e8df';
 
+    const chartData = total > 0 ? {
+      labels: ['Cotas do Próprio Bolso', 'Cotas por Rendimentos (Bola de Neve)'],
+      datasets: [
+        {
+          data: [cotasBolso, cotasReinvestidas],
+          backgroundColor: [bolsoColor, reinvestidasColor],
+          borderColor: [borderColor, borderColor],
+          borderWidth: 2,
+          hoverOffset: 6,
+        },
+      ],
+    } : {
+      labels: ['Aguardando dados da simulação'],
+      datasets: [
+        {
+          data: [1],
+          backgroundColor: [emptyColor],
+          borderColor: [borderColor],
+          borderWidth: 2,
+          hoverOffset: 0,
+        },
+      ],
+    };
+
     this.pieChart = new Chart(canvas, {
       type: 'doughnut',
-      data: {
-        labels: ['Cotas do Próprio Bolso', 'Cotas por Rendimentos (Bola de Neve)'],
-        datasets: [
-          {
-            data: [cotasBolso, cotasReinvestidas],
-            backgroundColor: [bolsoColor, reinvestidasColor],
-            borderColor: [borderColor, borderColor],
-            borderWidth: 2,
-            hoverOffset: 6,
-          },
-        ],
-      },
+      data: chartData,
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -89,6 +103,7 @@ export class FiiChartManager {
             },
           },
           tooltip: {
+            enabled: total > 0,
             backgroundColor: tooltipBg,
             borderColor: tooltipBorder,
             borderWidth: 1,
