@@ -1098,17 +1098,24 @@ dialog.donate-dialog::backdrop {
   margin-top: auto;
   border-top: 1px solid var(--line);
   padding: 24px 28px;
-  text-align: center;
   background: var(--card-bg);
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .footer-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 12px;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 13px;
   color: var(--muted);
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-link {
@@ -1117,10 +1124,21 @@ dialog.donate-dialog::backdrop {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+.footer-saldo-link {
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-carinho {
+  display: inline;
 }
 
 /* --- AJUSTES ESPECÍFICOS DO DARK MODE --- */
