@@ -27,6 +27,7 @@ function htmlPartialsPlugin(): Plugin {
         else if (normalized.includes('reserva-emergencia')) activePage = 'reserva-emergencia';
         else if (normalized.includes('imposto-de-renda')) activePage = 'imposto-de-renda';
         else if (normalized.includes('fundos-imobiliarios')) activePage = 'fundos-imobiliarios';
+        else if (normalized.includes('financiamento')) activePage = 'financiamento';
 
         function loadPartial(name: string): string {
           const file = resolve(partialsDir, `${name}.html`);
@@ -71,6 +72,7 @@ export default defineConfig({
         reservaEmergencia: resolve(__dirname, 'reserva-emergencia/index.html'),
         impostoRenda: resolve(__dirname, 'imposto-de-renda/index.html'),
         fundosImobiliarios: resolve(__dirname, 'fundos-imobiliarios/index.html'),
+        financiamento: resolve(__dirname, 'financiamento/index.html'),
       },
     },
   },

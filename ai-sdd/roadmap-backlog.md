@@ -11,6 +11,7 @@ Abaixo estão as 4 calculadoras mais solicitadas e prioritárias para expansão 
 ---
 
 ### 1. 🏠 Simulador de Financiamento Imobiliário: SAC vs. PRICE
+> *Nota: O motor da Tabela Price com Prestações Fixas do Banco Central foi implementado na feature `/financiamento/` ([`features/06-financiamento-prestacoes-fixas.md`](./features/06-financiamento-prestacoes-fixas.md)). O comparativo imobiliário completo com seguros MIP/DFI e SAC vs PRICE permanece planejado como evolução.*
 - **Proposta de Valor:** Ajudar o comprador a comparar o custo total e o comportamento das parcelas entre a Tabela SAC (amortização constante, parcelas decrescentes) e a Tabela PRICE (parcelas fixas).
 - **Inputs Sugeridos:**
   - Valor do Imóvel (R$)

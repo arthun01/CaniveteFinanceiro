@@ -364,6 +364,21 @@
   color: #a4b0a7;
 }
 
+.form-input[readonly] {
+  cursor: default;
+  color: var(--muted);
+}
+
+.input-wrapper:has(.form-input[readonly]) {
+  background: rgba(24, 63, 53, 0.04);
+  border-color: rgba(24, 63, 53, 0.15);
+}
+
+[data-theme="dark"] .input-wrapper:has(.form-input[readonly]) {
+  background: rgba(215, 245, 139, 0.04);
+  border-color: rgba(215, 245, 139, 0.15);
+}
+
 .input-with-select {
   display: flex;
 }
