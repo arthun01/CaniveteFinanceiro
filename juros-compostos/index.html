@@ -3,23 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Juros Compostos Online | Simulação Financeira</title>
+    <title>Calculadora de Juros Compostos Online com Aportes | CaniveteFinanceiro</title>
     <meta
       name="description"
-      content="Simule seus investimentos com juros compostos online. Veja gráficos interativos, projeção mês a mês e ano a ano do seu patrimônio."
+      content="Simule o crescimento do seu patrimônio com juros compostos e aportes mensais. Visualize gráficos interativos de evolução e tabela detalhada mês a mês."
     />
-    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Arthur (@arthun01)" />
+    <meta name="theme-color" content="#183f35" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arthun01.github.io/CaniveteFinanceiro/juros-compostos/" />
+
+    <!-- Favicon & PWA Manifest -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../favicon.svg" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CaniveteFinanceiro" />
+    <meta property="og:url" content="https://arthun01.github.io/CaniveteFinanceiro/juros-compostos/" />
+    <meta property="og:title" content="Calculadora de Juros Compostos Online com Aportes" />
+    <meta property="og:description" content="Simule o poder multiplicador do tempo e dos aportes regulares. Veja gráficos interativos e tabela de evolução mês a mês e ano a ano." />
+    <meta property="og:image" content="https://arthun01.github.io/CaniveteFinanceiro/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://arthun01.github.io/CaniveteFinanceiro/juros-compostos/" />
+    <meta name="twitter:title" content="Calculadora de Juros Compostos Online com Aportes" />
+    <meta name="twitter:description" content="Simule o crescimento do seu patrimônio com juros sobre juros e aportes recorrentes." />
+    <meta name="twitter:image" content="https://arthun01.github.io/CaniveteFinanceiro/og-image.png" />
+
+    <!-- Preconnect Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Estilos Estruturais -->
     <link rel="stylesheet" href="../src/styles/tokens.css" />
     <link rel="stylesheet" href="../src/styles/glass.css" />
     <link rel="stylesheet" href="../src/styles/base.css" />
     <link rel="stylesheet" href="../src/styles/components.css" />
     <link rel="stylesheet" href="../src/styles/responsive.css" />
+
+    <!-- Dados Estruturados Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Calculadora de Juros Compostos Online",
+            "url": "https://arthun01.github.io/CaniveteFinanceiro/juros-compostos/",
+            "description": "Simulador de crescimento patrimonial com juros compostos, aportes regulares, gráficos interativos e tabela de evolução mês a mês.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "pt-BR",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://arthun01.github.io/CaniveteFinanceiro/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Juros Compostos",
+                "item": "https://arthun01.github.io/CaniveteFinanceiro/juros-compostos/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <include-navbar />

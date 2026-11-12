@@ -3,23 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simulador de Fundos Imobiliários (FIIs) | Efeito Bola de Neve</title>
+    <title>Simulador de Fundos Imobiliários (FIIs) e Efeito Bola de Neve | CaniveteFinanceiro</title>
     <meta
       name="description"
-      content="Simule seus investimentos em Fundos Imobiliários (FIIs). Veja o efeito bola de neve reinvestindo dividendos mês a mês, a tabela de 2 anos e o Número Mágico."
+      content="Simule o efeito bola de neve reinvestindo 100% dos dividendos isentos de Fundos Imobiliários. Calcule o Número Mágico (Magic Number) e veja a evolução em 2 anos."
     />
-    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Arthur (@arthun01)" />
+    <meta name="theme-color" content="#183f35" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arthun01.github.io/CaniveteFinanceiro/fundos-imobiliarios/" />
+
+    <!-- Favicon & PWA Manifest -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../favicon.svg" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CaniveteFinanceiro" />
+    <meta property="og:url" content="https://arthun01.github.io/CaniveteFinanceiro/fundos-imobiliarios/" />
+    <meta property="og:title" content="Simulador de Fundos Imobiliários (FIIs) e Efeito Bola de Neve" />
+    <meta property="og:description" content="Veja o poder do reinvestimento de dividendos isentos de IR na B3 e descubra o Número Mágico para o fundo comprar cotas sozinho." />
+    <meta property="og:image" content="https://arthun01.github.io/CaniveteFinanceiro/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://arthun01.github.io/CaniveteFinanceiro/fundos-imobiliarios/" />
+    <meta name="twitter:title" content="Simulador de Fundos Imobiliários (FIIs) e Efeito Bola de Neve" />
+    <meta name="twitter:description" content="Simulação de reinvestimento total de proventos e cálculo do Magic Number de FIIs." />
+    <meta name="twitter:image" content="https://arthun01.github.io/CaniveteFinanceiro/og-image.png" />
+
+    <!-- Preconnect Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Estilos Estruturais -->
     <link rel="stylesheet" href="../src/styles/tokens.css" />
     <link rel="stylesheet" href="../src/styles/glass.css" />
     <link rel="stylesheet" href="../src/styles/base.css" />
     <link rel="stylesheet" href="../src/styles/components.css" />
     <link rel="stylesheet" href="../src/styles/responsive.css" />
+
+    <!-- Dados Estruturados Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Simulador de Fundos Imobiliários (FIIs)",
+            "url": "https://arthun01.github.io/CaniveteFinanceiro/fundos-imobiliarios/",
+            "description": "Simulador financeiro para projeção do efeito bola de neve com reinvestimento de dividendos de FIIs e cálculo do Magic Number.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "pt-BR",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://arthun01.github.io/CaniveteFinanceiro/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Fundos Imobiliários",
+                "item": "https://arthun01.github.io/CaniveteFinanceiro/fundos-imobiliarios/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <include-navbar />
