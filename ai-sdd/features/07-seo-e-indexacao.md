@@ -1,8 +1,8 @@
 # 🔍 Feature Spec — SEO Técnico, Metadados & Indexação nos Buscadores
 
 > **Origem:** Baseado em [`sources/ideia-indexacao-google-search.md`](../sources/ideia-indexacao-google-search.md).  
-> **Domínio Canônico:** `https://arthun01.github.io/CaniveteFinanceiro/`  
-> **Arquivos:** `public/robots.txt`, `public/sitemap.xml`, `public/site.webmanifest`, `public/og-image.png`, `public/og-image.svg`, e as 6 páginas HTML do projeto.
+> **Domínio Canônico:** `https://arthurrv.me/CaniveteFinanceiro/`  
+> **Arquivos:** `public/robots.txt`, `public/sitemap.xml`, `public/site.webmanifest`, `public/og-image.png`, `public/og-image.svg`, `public/google993760524e52a627.html`, e as 6 páginas HTML do projeto.
 
 ---
 
@@ -17,12 +17,12 @@ Todas as páginas possuem URLs canônicas absolutas com protocolo HTTPS e barra 
 
 | Página / Ferramenta | Rota Canônica |
 | :--- | :--- |
-| **Portal Inicial** | `https://arthun01.github.io/CaniveteFinanceiro/` |
-| **Calculadora de Juros Compostos** | `https://arthun01.github.io/CaniveteFinanceiro/juros-compostos/` |
-| **Calculadora de Reserva de Emergência** | `https://arthun01.github.io/CaniveteFinanceiro/reserva-emergencia/` |
-| **Calculadora de Imposto de Renda (IRRF)** | `https://arthun01.github.io/CaniveteFinanceiro/imposto-de-renda/` |
-| **Simulador de Fundos Imobiliários (FIIs)** | `https://arthun01.github.io/CaniveteFinanceiro/fundos-imobiliarios/` |
-| **Simulador de Financiamento (Tabela Price)** | `https://arthun01.github.io/CaniveteFinanceiro/financiamento/` |
+| **Portal Inicial** | `https://arthurrv.me/CaniveteFinanceiro/` |
+| **Calculadora de Juros Compostos** | `https://arthurrv.me/CaniveteFinanceiro/juros-compostos/` |
+| **Calculadora de Reserva de Emergência** | `https://arthurrv.me/CaniveteFinanceiro/reserva-emergencia/` |
+| **Calculadora de Imposto de Renda (IRRF)** | `https://arthurrv.me/CaniveteFinanceiro/imposto-de-renda/` |
+| **Simulador de Fundos Imobiliários (FIIs)** | `https://arthurrv.me/CaniveteFinanceiro/fundos-imobiliarios/` |
+| **Simulador de Financiamento (Tabela Price)** | `https://arthurrv.me/CaniveteFinanceiro/financiamento/` |
 
 ---
 
@@ -68,7 +68,7 @@ Implementados no `<head>` de cada arquivo:
   - `browserRequirements: "Requires JavaScript"`
   - `offers: { @type: "Offer", price: "0", priceCurrency: "BRL" }`
 - `BreadcrumbList`:
-  - Nível 1: Início (`https://arthun01.github.io/CaniveteFinanceiro/`)
+  - Nível 1: Início (`https://arthurrv.me/CaniveteFinanceiro/`)
   - Nível 2: Nome da ferramenta específica.
 
 ---
@@ -78,10 +78,10 @@ Implementados no `<head>` de cada arquivo:
 ### 6.1 Google Search Console
 1. Acesse: **[Google Search Console](https://search.google.com/search-console)**.
 2. Em **Selecionar tipo de propriedade**, escolha **Prefixo do URL** e insira:  
-   `https://arthun01.github.io/CaniveteFinanceiro/`
+   `https://arthurrv.me/CaniveteFinanceiro/`
 3. **Verificação de Propriedade:**
-   - **Opção A (Recomendada via HTML Tag):** copie o código da tag `<meta name="google-site-verification" content="..." />` e insira no `<head>` de `index.html`.
-   - **Opção B (Via arquivo HTML):** baixe o arquivo de verificação fornecido pelo Google (ex: `google123456789.html`) e salve dentro da pasta `public/`.
+   - O arquivo de verificação baixado (`google993760524e52a627.html`) já foi incluído na pasta `public/` e será publicado na raiz do site.
+   - A meta tag `<meta name="google-site-verification" content="google993760524e52a627" />` também foi adicionada ao `<head>` do `index.html`.
 4. Após publicar (`npm run deploy`), clique em **Verificar**.
 5. No menu lateral, acesse **Sitemaps**, digite `sitemap.xml` no campo de envio e clique em **Enviar**.
 6. Em **Inspeção de URL**, teste a URL inicial e clique em **Solicitar Indexação**.
@@ -89,4 +89,4 @@ Implementados no `<head>` de cada arquivo:
 ### 6.2 Bing Webmaster Tools
 1. Acesse: **[Bing Webmaster Tools](https://www.bing.com/webmasters)**.
 2. É possível sincronizar automaticamente todas as configurações diretamente com sua conta do Google Search Console com apenas 1 clique.
-3. Ou insira a URL do sitemap: `https://arthun01.github.io/CaniveteFinanceiro/sitemap.xml`.
+3. Ou insira a URL do sitemap: `https://arthurrv.me/CaniveteFinanceiro/sitemap.xml`.

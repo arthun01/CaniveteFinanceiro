@@ -146,12 +146,12 @@ O projeto utiliza a biblioteca [`gh-pages`](https://www.npmjs.com/package/gh-pag
    - Clique em **Save**.
 
 3. **Pronto!** Em poucos instantes seu site estará disponível no ar em:  
-   👉 **`https://arthun01.github.io/CaniveteFinanceiro/`**
+   👉 **`https://arthurrv.me/CaniveteFinanceiro/`**
 
 4. **SEO & Rastreamento nos Buscadores:**
-   - **Sitemap XML:** `https://arthun01.github.io/CaniveteFinanceiro/sitemap.xml`
-   - **Robots.txt:** `https://arthun01.github.io/CaniveteFinanceiro/robots.txt`
-   - **Open Graph Banner:** `https://arthun01.github.io/CaniveteFinanceiro/og-image.png` (1200x630)
+   - **Sitemap XML:** `https://arthurrv.me/CaniveteFinanceiro/sitemap.xml`
+   - **Robots.txt:** `https://arthurrv.me/CaniveteFinanceiro/robots.txt`
+   - **Open Graph Banner:** `https://arthurrv.me/CaniveteFinanceiro/og-image.png` (1200x630)
    - Metadados canônicos, Open Graph, Twitter Cards e Schema.org (JSON-LD) prontos para indexação no Google Search Console e Bing Webmaster Tools.
 
 ---
