@@ -1,0 +1,22 @@
+{
+  "name": "CaniveteFinanceiro — Simuladores Financeiros",
+  "short_name": "CaniveteFinanceiro",
+  "description": "Suíte moderna de simuladores e calculadoras financeiras online gratuitas",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#183f35",
+  "theme_color": "#183f35",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "./favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

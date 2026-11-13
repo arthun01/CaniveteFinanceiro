@@ -3,12 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Imposto de Renda | CaniveteFinanceiro</title>
+    <title>Calculadora de Imposto de Renda Retido na Fonte (IRRF) | CaniveteFinanceiro</title>
     <meta
       name="description"
-      content="Calcule com precisão o valor do Imposto de Renda retido na fonte (IRRF), considerando dependentes, despesas médicas, pensão alimentícia e ensino conforme a tabela progressiva."
+      content="Simule o imposto de renda retido na fonte conforme a tabela progressiva oficial da Receita Federal. Calcule deduções de dependentes, saúde, pensão e ensino."
     />
-    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Arthur (@arthun01)" />
+    <meta name="theme-color" content="#183f35" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arthun01.github.io/CaniveteFinanceiro/imposto-de-renda/" />
+
+    <!-- Favicon & PWA Manifest -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../favicon.svg" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CaniveteFinanceiro" />
+    <meta property="og:url" content="https://arthun01.github.io/CaniveteFinanceiro/imposto-de-renda/" />
+    <meta property="og:title" content="Calculadora de Imposto de Renda Retido na Fonte (IRRF)" />
+    <meta property="og:description" content="Apuração precisa da retenção na fonte do IRRF conforme a legislação brasileira e tabela progressiva oficial da Receita Federal." />
+    <meta property="og:image" content="https://arthun01.github.io/CaniveteFinanceiro/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://arthun01.github.io/CaniveteFinanceiro/imposto-de-renda/" />
+    <meta name="twitter:title" content="Calculadora de Imposto de Renda Retido na Fonte (IRRF)" />
+    <meta name="twitter:description" content="Simulação do IRRF na fonte com deduções de dependentes, previdência, despesas médicas e pensão." />
+    <meta name="twitter:image" content="https://arthun01.github.io/CaniveteFinanceiro/og-image.png" />
 
     <!-- Google Fonts: Manrope e DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +48,47 @@
     />
 
     <!-- Estilos Estruturais e Temáticos -->
+
+    <!-- Dados Estruturados Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Calculadora de Imposto de Renda (IRRF)",
+            "url": "https://arthun01.github.io/CaniveteFinanceiro/imposto-de-renda/",
+            "description": "Calculadora tributária para simulação do imposto de renda retido na fonte conforme a tabela progressiva e deduções legais da Receita Federal.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "pt-BR",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://arthun01.github.io/CaniveteFinanceiro/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Imposto de Renda",
+                "item": "https://arthun01.github.io/CaniveteFinanceiro/imposto-de-renda/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
     <script type="module" crossorigin src="../assets/impostoRenda-DHuKadT9.js"></script>
     <link rel="modulepreload" crossorigin href="../assets/index-Dj0hJipJ.js">
     <link rel="modulepreload" crossorigin href="../assets/formatters-CdjjqVE6.js">
@@ -435,14 +505,14 @@
       <!-- 5. SEÇÃO DIDÁTICA: TABELA PROGRESSIVA OFICIAL E GUIA DO IR -->
       <section class="education-section" aria-label="Guia do Imposto de Renda">
         <div class="education-card">
-          <h3 class="education-title">
+          <h2 class="education-title">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="16" x2="12" y2="12"></line>
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
             Tabela Progressiva Oficial & Como Funciona o IR
-          </h3>
+          </h2>
 
           <p class="education-text">
             O <strong>Imposto de Renda Retido na Fonte (IRRF)</strong> é deduzido mensalmente da folha de pagamento com base em uma tabela progressiva, na qual as alíquotas aumentam proporcionalmente ao rendimento do contribuinte.

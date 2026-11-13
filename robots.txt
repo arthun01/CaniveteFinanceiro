@@ -1,0 +1,8 @@
+# Robots.txt para CaniveteFinanceiro
+# https://arthun01.github.io/CaniveteFinanceiro/
+
+User-agent: *
+Allow: /
+
+# Localização oficial do sitemap XML
+Sitemap: https://arthun01.github.io/CaniveteFinanceiro/sitemap.xml
