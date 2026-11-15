@@ -130,10 +130,10 @@ function updateViabilityStatus(result: MargemLucroResult): void {
     if (kpiMarkupTitle) kpiMarkupTitle.textContent = 'Markup Negativo';
 
     if (kpiLucroSub) {
-      kpiLucroSub.textContent = `⚠️ Prejuízo de ${formatCurrency(Math.abs(result.lucroBrutoUnitario))} por unidade`;
+      kpiLucroSub.textContent = `Prejuízo de ${formatCurrency(Math.abs(result.lucroBrutoUnitario))} por unidade`;
     }
     if (kpiMargemSub) {
-      kpiMargemSub.textContent = `⚠️ Preço abaixo do custo (${formatPercent(result.margemLucroPct, 2)})`;
+      kpiMargemSub.textContent = `Preço abaixo do custo (${formatPercent(result.margemLucroPct, 2)})`;
     }
     if (kpiMarkupSub) {
       kpiMarkupSub.textContent = `Multiplicador defasado: ${result.markupMultiplicador.toFixed(2)}x`;
@@ -150,7 +150,7 @@ function updateViabilityStatus(result: MargemLucroResult): void {
         </svg>
       `;
       viabilityText.innerHTML = `
-        <strong>⚠️ Venda Inviabilizada (Prejuízo Real):</strong> O preço de venda (${formatCurrency(result.valorVendaUnitario)}) é inferior ao custo de compra (${formatCurrency(result.valorCompraUnitario)}), gerando um prejuízo de <strong>${formatCurrency(Math.abs(result.lucroBrutoTotal))}</strong> na operação.
+        <strong>Venda Inviabilizada (Prejuízo Real):</strong> O preço de venda (${formatCurrency(result.valorVendaUnitario)}) é inferior ao custo de compra (${formatCurrency(result.valorCompraUnitario)}), gerando um prejuízo de <strong>${formatCurrency(Math.abs(result.lucroBrutoTotal))}</strong> na operação.
       `;
     }
 
@@ -187,7 +187,7 @@ function updateViabilityStatus(result: MargemLucroResult): void {
         </svg>
       `;
       viabilityText.innerHTML = `
-        <strong>⚠️ Ponto de Equilíbrio (0% de Margem):</strong> O valor cobrado apenas empata com o custo de compra. Qualquer despesa com imposto, taxa de maquininha ou frete deixará a venda no vermelho.
+        <strong>Ponto de Equilíbrio (0% de Margem):</strong> O valor cobrado apenas empata com o custo de compra. Qualquer despesa com imposto, taxa de maquininha ou frete deixará a venda no vermelho.
       `;
     }
 
@@ -223,7 +223,7 @@ function updateViabilityStatus(result: MargemLucroResult): void {
         </svg>
       `;
       viabilityText.innerHTML = `
-        <strong>⚠️ Margem de Lucro Baixa (${formatPercent(result.margemLucroPct, 2)}):</strong> Uma margem inferior a 10% deixa pouca folga financeira para cobrir impostos (Simples Nacional) e taxas de cartão (3% a 5%).
+        <strong>Margem de Lucro Baixa (${formatPercent(result.margemLucroPct, 2)}):</strong> Uma margem inferior a 10% deixa pouca folga financeira para cobrir impostos (Simples Nacional) e taxas de cartão (3% a 5%).
       `;
     }
 
@@ -259,7 +259,7 @@ function updateViabilityStatus(result: MargemLucroResult): void {
         </svg>
       `;
       viabilityText.innerHTML = `
-        <strong>✅ Precificação Viável e Saudável:</strong> Margem de <strong>${formatPercent(result.margemLucroPct, 2)}</strong> com lucro bruto de <strong>${formatCurrency(result.lucroBrutoTotal)}</strong> (${formatCurrency(result.lucroBrutoUnitario)} por unidade).
+        <strong>Precificação Viável e Saudável:</strong> Margem de <strong>${formatPercent(result.margemLucroPct, 2)}</strong> com lucro bruto de <strong>${formatCurrency(result.lucroBrutoTotal)}</strong> (${formatCurrency(result.lucroBrutoUnitario)} por unidade).
       `;
     }
 
