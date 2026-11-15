@@ -8,7 +8,7 @@ Construído com **HTML5**, **CSS3 Moderno** e **TypeScript** estruturado com **V
 
 ## 🧭 Ferramentas Disponíveis no Portal
 
-O portal inicial (`index.html`) oferece acesso direto a três ferramentas essenciais:
+O portal inicial (`index.html`) oferece acesso direto a seis ferramentas essenciais:
 
 ### 1. 📈 [Calculadora de Juros Compostos](./juros-compostos/)
 - **Projeção Exponencial:** Simulação de juros sobre juros com valor inicial e aportes mensais recorrentes.
@@ -60,6 +60,28 @@ O portal inicial (`index.html`) oferece acesso direto a três ferramentas essenc
   - **Gráfico de Rosca:** Proporção entre cotas compradas com dinheiro do bolso vs. cotas ganhas de graça com os proventos.
   - **Tabela Mês a Mês:** Acompanhamento de 24 meses com colunas de cotas acumuladas, patrimônio em R$, rendimento, cotas compradas e aporte.
 - **Guia Didático:** Explicação da isenção de IR para pessoas físicas e mecânica de reinvestimento.
+
+---
+
+### 5. 🏦 [Simulador de Financiamento com Prestações Fixas (Tabela Price)](./financiamento/)
+- **Calculadora do Cidadão (Banco Central):** Recriação do simulador oficial para financiamentos de veículos, CDC e empréstimos bancários.
+- **Resolução de 4 Parâmetros:** Calcule o Valor da Prestação ($p$), Valor Financiado ($q_0$), Taxa de Juros Real ($j$) via bisseção ou Prazo em Meses ($n$).
+- **Visualizações Dinâmicas:**
+  - **Gráfico de Rosca:** Proporção entre o valor amortizado da dívida vs. juros pagos ao credor.
+  - **Tabela de Amortização Price:** Cronograma mês a mês detalhando prestação, juros decrescentes, amortização crescente e saldo devedor.
+- **Guia Didático:** Explicação do Sistema Francês de Amortização e direito a desconto na liquidação antecipada.
+
+---
+
+### 6. 🏷️ [Calculadora de Margem de Lucro & Markup](./margem-de-lucro/)
+- **Precificação Inteligente:** Cálculo de Lucro Bruto, Margem de Lucro sobre a Venda e Markup Multiplicador / Percentual sobre o Custo.
+- **Dois Modos de Operação:**
+  - *Calcular Margem:* a partir do custo de compra e preço de venda.
+  - *Formar Preço de Venda:* a partir do custo de compra e margem de lucro desejada ($M < 100\%$).
+- **Visualizações Dinâmicas:**
+  - **Gráfico de Rosca:** Proporção entre o custo de aquisição da mercadoria e o lucro bruto gerado.
+  - **Tabela de Sensibilidade:** Simulação instantânea de precificação para 8 faixas de margem (10% a 80%) com clique interativo para aplicar.
+- **Guia Didático:** Desmistificação da diferença crítica entre Margem (de cima para baixo) e Markup (de baixo para cima), ilustrado com o caso clássico de R$ 5,00 e R$ 15,00.
 
 ---
 

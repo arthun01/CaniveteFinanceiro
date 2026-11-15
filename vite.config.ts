@@ -28,6 +28,7 @@ function htmlPartialsPlugin(): Plugin {
         else if (normalized.includes('imposto-de-renda')) activePage = 'imposto-de-renda';
         else if (normalized.includes('fundos-imobiliarios')) activePage = 'fundos-imobiliarios';
         else if (normalized.includes('financiamento')) activePage = 'financiamento';
+        else if (normalized.includes('margem-de-lucro')) activePage = 'margem-de-lucro';
 
         function loadPartial(name: string): string {
           const file = resolve(partialsDir, `${name}.html`);
@@ -73,6 +74,7 @@ export default defineConfig({
         impostoRenda: resolve(__dirname, 'imposto-de-renda/index.html'),
         fundosImobiliarios: resolve(__dirname, 'fundos-imobiliarios/index.html'),
         financiamento: resolve(__dirname, 'financiamento/index.html'),
+        margemDeLucro: resolve(__dirname, 'margem-de-lucro/index.html'),
       },
     },
   },
