@@ -102,11 +102,20 @@ O usuário pode clicar diretamente em qualquer linha da tabela para carregar aut
 2. **Seletor de Modo:**
    - *Modo A: Tenho o Preço de Venda (Calcular Margem)*
    - *Modo B: Tenho a Margem Desejada (Formar Preço)*
-3. **Cards de KPI:**
-   - Lucro Bruto Total (com lucro unitário no rodapé)
-   - Margem de Lucro (%) (com indicação "Sob o faturamento")
-   - Markup Percentual (com multiplicador ex: 3,0x no rodapé)
-   - Faturamento Total (com gasto total de custo no rodapé)
+3. **Cards de KPI & Feedback Visual de Viabilidade:**
+   - **Venda Inviabilizada / Prejuízo ($L < 0$):**
+     - Números do Lucro Bruto, Margem e Markup tingidos em **vermelho vivo** (`var(--red)` via `.kpi-loss`).
+     - Títulos dos cards mudam dinamicamente para *Prejuízo Total*, *Margem Negativa* e *Markup Negativo*.
+     - Borda do campo de entrada de venda fica destacada em vermelho.
+     - **Banner de Alerta de Prejuízo** (`#viability-banner.loss`) informando com exatidão a perda financeira total e unitária da operação.
+     - **Gráfico de Rosca:** Projeta a fatia em vermelho (`lossColor`), com label explícito de *"Prejuízo (Perda Líquida)"*.
+     - **Tabela de Sensibilidade:** Adiciona linha de alerta no topo em vermelho com o valor atual inviável para contraste com as faixas saudáveis.
+   - **Ponto de Equilíbrio / Zero Lucro ($L = 0$):**
+     - Números e ícones em tom de **atenção âmbar** (`.kpi-warning`), alertando que a operação empata com o custo e não cobre impostos ou custos operacionais.
+   - **Margem Apertada ($0 < M < 10\%$):**
+     - Alerta âmbar preventivo sobre taxas de cartão de crédito e Simples Nacional.
+   - **Operação Saudável ($M \ge 10\%$):**
+     - Destaque em **verde floresta/positivo** (`.kpi-profit`), confirmando a viabilidade comercial.
 4. **Gráfico Doughnut (Chart.js):**
    - Proporção visual entre Custo de Aquisição e Lucro Bruto.
    - Suporte a tema Claro e Escuro.

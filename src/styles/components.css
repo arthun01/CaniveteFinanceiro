@@ -565,6 +565,69 @@
   color: var(--positive);
 }
 
+.kpi-card.kpi-loss .kpi-value {
+  color: var(--red) !important;
+}
+
+.kpi-card.kpi-loss .kpi-icon {
+  background: var(--red-bg) !important;
+  color: var(--red) !important;
+}
+
+.kpi-card.kpi-loss .kpi-footer {
+  color: var(--red) !important;
+  font-weight: 600;
+}
+
+.kpi-card.kpi-warning .kpi-value {
+  color: #d97706 !important;
+}
+
+.kpi-card.kpi-warning .kpi-icon {
+  background: rgba(217, 119, 6, 0.12) !important;
+  color: #d97706 !important;
+}
+
+.kpi-card.kpi-warning .kpi-footer {
+  color: #d97706 !important;
+  font-weight: 600;
+}
+
+/* Banner de Viabilidade de Venda / Operação */
+.viability-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 13.5px;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.viability-banner.loss {
+  background: var(--red-bg);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: var(--red);
+}
+
+.viability-banner.warning {
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  color: #b45309;
+}
+
+[data-theme="dark"] .viability-banner.warning {
+  color: #fbbf24;
+}
+
+.viability-banner.profit {
+  background: var(--green-soft);
+  border: 1px solid rgba(60, 114, 84, 0.25);
+  color: var(--profit);
+}
+
 /* --- SEÇÃO DE GRÁFICOS --- */
 .charts-section {
   margin-bottom: 2.5rem;

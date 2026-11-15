@@ -212,11 +212,17 @@
 
       <!-- RESULTADOS EM NÚMEROS (CARDS DE KPI) -->
       <section class="results-section" aria-label="Resultados da Precificação" style="margin-bottom: 2.5rem;">
+        <!-- BANNER DE STATUS DE VIABILIDADE DA VENDA -->
+        <div id="viability-banner" class="viability-banner" style="display: none;" role="status">
+          <div id="viability-icon" style="flex-shrink: 0;"></div>
+          <div id="viability-text" style="font-weight: 500;"></div>
+        </div>
+
         <div class="results-grid">
           <!-- 1. Lucro Bruto Total -->
-          <div class="kpi-card balance-card" style="padding: 26px 24px; min-height: 140px;">
+          <div id="card-kpi-lucro" class="kpi-card balance-card" style="padding: 26px 24px; min-height: 140px;">
             <div class="kpi-header">
-              <span class="kpi-title">Lucro Bruto Total</span>
+              <span id="kpi-lucro-title" class="kpi-title">Lucro Bruto Total</span>
               <div class="kpi-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
@@ -228,9 +234,9 @@
           </div>
 
           <!-- 2. Margem de Lucro (%) -->
-          <div class="kpi-card kpi-profit" style="padding: 26px 24px; min-height: 140px;">
+          <div id="card-kpi-margem" class="kpi-card kpi-profit" style="padding: 26px 24px; min-height: 140px;">
             <div class="kpi-header">
-              <span class="kpi-title">Margem de Lucro</span>
+              <span id="kpi-margem-title" class="kpi-title">Margem de Lucro</span>
               <div class="kpi-icon" style="background: var(--green-soft); color: var(--green);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="19" y1="5" x2="5" y2="19"></line>
@@ -244,9 +250,9 @@
           </div>
 
           <!-- 3. Markup Multiplicador & % -->
-          <div class="kpi-card" style="padding: 26px 24px; min-height: 140px;">
+          <div id="card-kpi-markup" class="kpi-card" style="padding: 26px 24px; min-height: 140px;">
             <div class="kpi-header">
-              <span class="kpi-title">Markup Percentual</span>
+              <span id="kpi-markup-title" class="kpi-title">Markup Percentual</span>
               <div class="kpi-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -259,7 +265,7 @@
           </div>
 
           <!-- 4. Faturamento / Venda Total -->
-          <div class="kpi-card" style="padding: 26px 24px; min-height: 140px;">
+          <div id="card-kpi-venda" class="kpi-card" style="padding: 26px 24px; min-height: 140px;">
             <div class="kpi-header">
               <span class="kpi-title">Faturamento Total</span>
               <div class="kpi-icon">
