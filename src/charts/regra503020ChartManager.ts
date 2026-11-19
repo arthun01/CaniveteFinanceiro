@@ -107,6 +107,7 @@ export class Regra503020ChartManager {
         responsive: true,
         maintainAspectRatio: false,
         cutout: '62%',
+        animation: forceLight ? false : { duration: 600 },
         plugins: {
           legend: {
             position: 'bottom',
@@ -213,6 +214,7 @@ export class Regra503020ChartManager {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        animation: forceLight ? false : { duration: 600 },
         plugins: {
           legend: {
             position: 'top',

@@ -385,20 +385,21 @@ function handleExportPdf(): void {
   const activeResult = currentResult;
   if (activeResult) {
     updatePrintHeader(activeResult);
-  }
-
-  const wasDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  if (wasDark && activeResult) {
+    // Renderiza com alto contraste e sem animação para evitar gráficos cortados no print
     chartManager.renderChartsForPrint(activeResult);
   }
 
-  window.print();
+  // Pequeno timeout de 100ms para permitir ao browser pintar o canvas antes do diálogo de impressão
+  setTimeout(() => {
+    window.print();
 
-  if (wasDark && activeResult) {
-    setTimeout(() => {
-      chartManager.updateCharts(activeResult);
-    }, 400);
-  }
+    // Restaura os gráficos com o tema ativo do usuário após a impressão
+    if (activeResult) {
+      setTimeout(() => {
+        chartManager.updateCharts(activeResult);
+      }, 400);
+    }
+  }, 100);
 }
 
 /**
@@ -500,14 +501,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (currentResult) {
       updatePrintHeader(currentResult);
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        chartManager.renderChartsForPrint(currentResult);
-      }
+      chartManager.renderChartsForPrint(currentResult);
     }
   });
 
   window.addEventListener('afterprint', () => {
-    if (document.documentElement.getAttribute('data-theme') === 'dark' && currentResult) {
+    if (currentResult) {
       chartManager.updateCharts(currentResult);
     }
   });

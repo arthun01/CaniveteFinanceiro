@@ -1597,9 +1597,12 @@ dialog.donate-dialog::backdrop {
 
 .scratchpad-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-top: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .category-card {
@@ -1611,6 +1614,10 @@ dialog.donate-dialog::backdrop {
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
   transition: all 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .category-card:hover {
@@ -1755,31 +1762,61 @@ dialog.donate-dialog::backdrop {
   gap: 0.5rem;
   margin-bottom: 1rem;
   flex: 1;
-  max-height: 260px;
+  max-height: 240px;
   overflow-y: auto;
-  padding-right: 4px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  padding-right: 6px;
+}
+
+/* Scrollbar visível e elegante para a lista de itens tanto no desktop quanto no mobile */
+.items-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.items-list::-webkit-scrollbar-track {
+  background: var(--card-bg-daily);
+  border-radius: 4px;
+}
+
+.items-list::-webkit-scrollbar-thumb {
+  background: rgba(24, 63, 53, 0.25);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .items-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .item-row {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .item-input-desc {
-  flex: 1.6;
-  padding: 8px 12px;
+  flex: 1.5;
+  min-width: 0;
+  width: 0;
+  padding: 8px 10px;
   font-size: 13px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line);
   background: var(--card-bg-subtle);
   color: var(--ink);
   font-family: var(--font-sans);
+  box-sizing: border-box;
 }
 
 .item-input-val {
   flex: 1.1;
-  padding: 8px 12px;
+  min-width: 0;
+  width: 0;
+  padding: 8px 10px;
   font-size: 13px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line);
@@ -1787,6 +1824,7 @@ dialog.donate-dialog::backdrop {
   color: var(--ink);
   font-weight: 600;
   font-family: var(--font-sans);
+  box-sizing: border-box;
 }
 
 .btn-remove-item {
@@ -1886,6 +1924,11 @@ dialog.donate-dialog::backdrop {
   /* Oculta elementos que não pertencem ao relatório impresso */
   .navbar,
   include-navbar,
+  #mobile-menu,
+  .mobile-menu,
+  #mobile-menu-backdrop,
+  .mobile-menu-backdrop,
+  aside,
   .mobile-drawer,
   .drawer-backdrop,
   footer,
@@ -1924,6 +1967,8 @@ dialog.donate-dialog::backdrop {
     font-size: 10pt !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    overflow-x: hidden !important;
+    border: none !important;
   }
 
   .container {
@@ -1931,6 +1976,14 @@ dialog.donate-dialog::backdrop {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    border: none !important;
+  }
+
+  .balance-card::after,
+  .kpi-final::after,
+  .kpi-card::after {
+    display: none !important;
+    content: none !important;
   }
 
   /* Cabeçalho do Relatório Impresso */
@@ -2133,8 +2186,21 @@ dialog.donate-dialog::backdrop {
     color: #0f172a !important;
   }
 
-  .chart-canvas-wrapper {
-    height: 190px !important;
+  #chart-pie-wrapper {
+    height: 200px !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+
+  #chart-pie {
+    max-width: 280px !important;
+    max-height: 190px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  #chart-bars-wrapper {
+    height: 200px !important;
     max-width: 100% !important;
   }
 
@@ -2153,6 +2219,8 @@ dialog.donate-dialog::backdrop {
   .table-wrapper {
     max-height: none !important;
     overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .evolution-table {
