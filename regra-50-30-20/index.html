@@ -270,7 +270,7 @@
 
       <!-- GRÁFICO PEQUENO DE DOUGHNUT (DISTRIBUIÇÃO DA RENDA) -->
       <section class="charts-section" aria-label="Distribuição da Renda" style="margin-bottom: 2.5rem;">
-        <div class="chart-card glass-panel border-gradient">
+        <div class="chart-card glass-panel border-gradient" style="max-width: 560px; margin: 0 auto;">
           <div class="chart-header">
             <div>
               <h3 class="chart-title">Distribuição Ideal (50/30/20)</h3>
@@ -282,6 +282,7 @@
           </div>
           <div class="chart-canvas-wrapper" id="chart-pie-wrapper" style="height: 250px;">
             <canvas id="chart-pie"></canvas>
+            <img id="chart-pie-print-img" class="chart-print-img" alt="Gráfico de Distribuição 50/30/20" />
           </div>
         </div>
       </section>
@@ -444,6 +445,7 @@
           </div>
           <div class="chart-canvas-wrapper" id="chart-bars-wrapper" style="height: 300px;">
             <canvas id="chart-bars"></canvas>
+            <img id="chart-bars-print-img" class="chart-print-img" alt="Comparação Meta vs Realizado" />
           </div>
         </div>
 

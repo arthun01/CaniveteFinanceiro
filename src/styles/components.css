@@ -1911,7 +1911,8 @@ dialog.donate-dialog::backdrop {
 /* ==========================================================================
    ESTILOS GLOBAIS DE IMPRESSÃO / EXPORTAÇÃO PDF (@media print)
    ========================================================================== */
-.print-only {
+.print-only,
+.chart-print-img {
   display: none !important;
 }
 
@@ -2169,7 +2170,7 @@ dialog.donate-dialog::backdrop {
     font-weight: 700 !important;
   }
 
-  /* Gráficos */
+  /* Gráficos na Impressão */
   .charts-section {
     margin-bottom: 16px !important;
     page-break-inside: avoid !important;
@@ -2179,6 +2180,8 @@ dialog.donate-dialog::backdrop {
   .chart-card {
     padding: 10px 14px !important;
     margin-bottom: 12px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .chart-title {
@@ -2186,22 +2189,50 @@ dialog.donate-dialog::backdrop {
     color: #0f172a !important;
   }
 
-  #chart-pie-wrapper {
-    height: 200px !important;
-    max-width: 320px !important;
+  /* Oculta os canvases interativos na impressão para evitar distorção do motor do navegador */
+  canvas#chart-pie,
+  canvas#chart-bars {
+    display: none !important;
+  }
+
+  /* Exibe os snapshots dos gráficos com proporções 100% naturais e nítidas */
+  .chart-print-img {
+    display: block !important;
+    object-fit: contain !important;
     margin: 0 auto !important;
   }
 
-  #chart-pie {
-    max-width: 280px !important;
-    max-height: 190px !important;
+  #chart-pie-wrapper {
+    height: auto !important;
+    max-width: 320px !important;
     margin: 0 auto !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #chart-pie-print-img {
+    max-height: 200px !important;
+    max-width: 320px !important;
+    width: auto !important;
     display: block !important;
   }
 
   #chart-bars-wrapper {
-    height: 200px !important;
+    height: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #chart-bars-print-img {
+    max-height: 220px !important;
     max-width: 100% !important;
+    width: auto !important;
+    display: block !important;
   }
 
   /* Tabela de Projeção Anual */

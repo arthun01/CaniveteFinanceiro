@@ -200,6 +200,7 @@ export class Regra503020ChartManager {
             borderColor: metaBorder,
             borderWidth: 1.5,
             borderRadius: 6,
+            maxBarThickness: 45,
           },
           {
             label: 'Seu Planejamento (%)',
@@ -208,6 +209,7 @@ export class Regra503020ChartManager {
             borderColor: [corRealFixos, corRealVar, corRealInv],
             borderWidth: 1.5,
             borderRadius: 6,
+            maxBarThickness: 45,
           },
         ],
       },
@@ -287,6 +289,26 @@ export class Regra503020ChartManager {
         },
       },
     });
+  }
+
+  public getPieChartImage(): string | null {
+    if (!this.pieChart) return null;
+    try {
+      return this.pieChart.toBase64Image('image/png', 1);
+    } catch {
+      const canvas = document.getElementById('chart-pie') as HTMLCanvasElement;
+      return canvas ? canvas.toDataURL('image/png') : null;
+    }
+  }
+
+  public getBarChartImage(): string | null {
+    if (!this.barChart) return null;
+    try {
+      return this.barChart.toBase64Image('image/png', 1);
+    } catch {
+      const canvas = document.getElementById('chart-bars') as HTMLCanvasElement;
+      return canvas ? canvas.toDataURL('image/png') : null;
+    }
   }
 
   public destroy(): void {

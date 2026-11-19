@@ -366,6 +366,26 @@ function updatePrintHeader(result: Regra503020Result): void {
 }
 
 /**
+ * Prepara e captura os gráficos como imagens de alta resolução para impressão
+ */
+function prepareChartsForPrint(result: Regra503020Result): void {
+  chartManager.renderChartsForPrint(result);
+
+  const pieImg = document.getElementById('chart-pie-print-img') as HTMLImageElement;
+  const barsImg = document.getElementById('chart-bars-print-img') as HTMLImageElement;
+
+  const pieData = chartManager.getPieChartImage();
+  if (pieImg && pieData) {
+    pieImg.src = pieData;
+  }
+
+  const barsData = chartManager.getBarChartImage();
+  if (barsImg && barsData) {
+    barsImg.src = barsData;
+  }
+}
+
+/**
  * Dispara o diálogo nativo de impressão e exportação em PDF (A4 Executivo)
  */
 function handleExportPdf(): void {
@@ -385,8 +405,7 @@ function handleExportPdf(): void {
   const activeResult = currentResult;
   if (activeResult) {
     updatePrintHeader(activeResult);
-    // Renderiza com alto contraste e sem animação para evitar gráficos cortados no print
-    chartManager.renderChartsForPrint(activeResult);
+    prepareChartsForPrint(activeResult);
   }
 
   // Pequeno timeout de 100ms para permitir ao browser pintar o canvas antes do diálogo de impressão
@@ -501,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (currentResult) {
       updatePrintHeader(currentResult);
-      chartManager.renderChartsForPrint(currentResult);
+      prepareChartsForPrint(currentResult);
     }
   });
 
