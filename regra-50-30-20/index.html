@@ -125,19 +125,20 @@
         </h2>
 
         <form id="regra-form" class="calc-form" novalidate>
-          <div class="form-grid" style="grid-template-columns: minmax(0, 1fr) auto;">
+          <div class="regra-form-grid">
             <div class="input-group" id="group-renda">
               <label for="input-renda" class="input-label">
-                <span>Renda Líquida Mensal (Salário Líquido que entra na conta)</span>
-                <span style="font-size: 10px; color: var(--green); font-weight: 700;">OBRIGATÓRIO</span>
+                <span>Renda Líquida Mensal</span>
+                <span class="badge-required">OBRIGATÓRIO</span>
               </label>
               <div class="input-wrapper">
                 <input type="text" id="input-renda" class="form-input" placeholder="R$ 0,00" autofocus />
               </div>
+              <span class="input-hint">Salário líquido ou receitas que entram na sua conta todo mês</span>
             </div>
 
-            <div class="input-group" style="justify-content: flex-end;">
-              <label class="input-label" style="opacity: 0; pointer-events: none;">
+            <div class="input-group regra-demo-group">
+              <label class="input-label action-group-desktop-label" aria-hidden="true" style="opacity: 0; pointer-events: none;">
                 <span>Ação Rápida</span>
               </label>
               <button type="button" id="btn-demo" class="btn btn-secondary" style="height: 48px; white-space: nowrap;" title="Preencher com renda exemplo de R$ 5.000,00 e gastos comuns">
@@ -434,7 +435,7 @@
                 Acompanhe o crescimento acumulado das 3 categorias ao longo de 1 ano
               </div>
             </div>
-            <span id="badge-projecao-status" class="hero-badge" style="margin: 0; font-size: 10px;">12 Meses</span>
+            <span id="badge-projecao-status" class="hero-badge" style="margin: 0; font-size: 10px; white-space: nowrap; flex-shrink: 0;">12 Meses</span>
           </div>
 
           <div class="table-wrapper">

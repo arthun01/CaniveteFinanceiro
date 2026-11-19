@@ -160,9 +160,7 @@ function renderAnnualProjectionTable(result: Regra503020Result): void {
   if (!tableBody) return;
 
   if (badgeProjecaoStatus) {
-    const totalAno = result.projecaoAnual[result.projecaoAnual.length - 1]?.totalAcumulado || 0;
-    const invAno = result.projecaoAnual[result.projecaoAnual.length - 1]?.investimentosAcumulado || 0;
-    badgeProjecaoStatus.textContent = `Em 1 Ano: ${formatCurrency(invAno)} em Investimentos / Dívidas (Total: ${formatCurrency(totalAno)})`;
+    badgeProjecaoStatus.textContent = '12 Meses';
   }
 
   const rowsHtml = result.projecaoAnual
