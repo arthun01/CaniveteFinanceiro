@@ -32,6 +32,11 @@ export class Regra503020ChartManager {
     this.renderComparisonBarChart(result);
   }
 
+  public renderChartsForPrint(result?: Regra503020Result): void {
+    this.renderProportionChart(result, true);
+    this.renderComparisonBarChart(result, true);
+  }
+
   private isDarkMode(): boolean {
     return document.documentElement.getAttribute('data-theme') === 'dark';
   }
@@ -39,7 +44,7 @@ export class Regra503020ChartManager {
   /**
    * 1. Gráfico de Rosca (Donut) Pequeno: Distribuição 50 / 30 / 20
    */
-  public renderProportionChart(result?: Regra503020Result): void {
+  public renderProportionChart(result?: Regra503020Result, forceLight = false): void {
     const canvas = document.getElementById('chart-pie') as HTMLCanvasElement;
     if (!canvas) return;
 
@@ -48,7 +53,7 @@ export class Regra503020ChartManager {
       this.pieChart = null;
     }
 
-    const isDark = this.isDarkMode();
+    const isDark = forceLight ? false : this.isDarkMode();
     const hasData = Boolean(result && result.rendaLiquida > 0);
 
     const fixosVal = result ? result.resumoFixos.valorMeta : 50;
@@ -145,7 +150,7 @@ export class Regra503020ChartManager {
   /**
    * 2. Gráfico de Barras Agrupadas: Meta (50/30/20) vs Realizado pelo Usuário
    */
-  public renderComparisonBarChart(result?: Regra503020Result): void {
+  public renderComparisonBarChart(result?: Regra503020Result, forceLight = false): void {
     const canvas = document.getElementById('chart-bars') as HTMLCanvasElement;
     if (!canvas) return;
 
@@ -154,7 +159,7 @@ export class Regra503020ChartManager {
       this.barChart = null;
     }
 
-    const isDark = this.isDarkMode();
+    const isDark = forceLight ? false : this.isDarkMode();
     const hasData = Boolean(result && result.rendaLiquida > 0);
 
     const textColor = isDark ? '#f0f7f3' : '#203c33';

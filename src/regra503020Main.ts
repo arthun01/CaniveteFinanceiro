@@ -340,6 +340,68 @@ function carregarExemploPratico(): void {
 }
 
 /**
+ * Atualiza os metadados do cabeçalho exclusivo para impressão / PDF
+ */
+function updatePrintHeader(result: Regra503020Result): void {
+  const dateEl = document.getElementById('print-date');
+  const rendaEl = document.getElementById('print-renda-info');
+
+  if (dateEl) {
+    const now = new Date();
+    const dataStr = now.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+    const horaStr = now.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    dateEl.textContent = `Emissão: ${dataStr} às ${horaStr}`;
+  }
+
+  if (rendaEl) {
+    rendaEl.textContent = `Renda Líquida Base: ${formatCurrency(result.rendaLiquida)}`;
+  }
+}
+
+/**
+ * Dispara o diálogo nativo de impressão e exportação em PDF (A4 Executivo)
+ */
+function handleExportPdf(): void {
+  const renda = parseCurrencyInput(rendaInput.value);
+  if (renda <= 0) {
+    showError('Por favor, informe sua renda líquida mensal antes de exportar o relatório em PDF.');
+    rendaInput.focus();
+    return;
+  }
+
+  hideError();
+
+  if (!currentResult) {
+    runCalculation(false);
+  }
+
+  const activeResult = currentResult;
+  if (activeResult) {
+    updatePrintHeader(activeResult);
+  }
+
+  const wasDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (wasDark && activeResult) {
+    chartManager.renderChartsForPrint(activeResult);
+  }
+
+  window.print();
+
+  if (wasDark && activeResult) {
+    setTimeout(() => {
+      chartManager.updateCharts(activeResult);
+    }, 400);
+  }
+}
+
+/**
  * Limpa todos os itens de gastos das 3 categorias mantendo a renda
  */
 function limparItensGastos(): void {
@@ -427,6 +489,28 @@ document.addEventListener('DOMContentLoaded', () => {
   btnClear.addEventListener('click', resetForm);
   btnDemo.addEventListener('click', carregarExemploPratico);
   btnClearItems.addEventListener('click', limparItensGastos);
+
+  const btnExportPdf = document.getElementById('btn-export-pdf');
+  btnExportPdf?.addEventListener('click', handleExportPdf);
+
+  // Sincroniza metadados e gráficos ao acionar impressão nativa do navegador (ex: Ctrl+P / Cmd+P)
+  window.addEventListener('beforeprint', () => {
+    if (!currentResult && parseCurrencyInput(rendaInput.value) > 0) {
+      runCalculation(false);
+    }
+    if (currentResult) {
+      updatePrintHeader(currentResult);
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        chartManager.renderChartsForPrint(currentResult);
+      }
+    }
+  });
+
+  window.addEventListener('afterprint', () => {
+    if (document.documentElement.getAttribute('data-theme') === 'dark' && currentResult) {
+      chartManager.updateCharts(currentResult);
+    }
+  });
 
   // Escuta alteração de tema para atualizar as cores dos gráficos
   window.addEventListener('theme-changed', () => {
