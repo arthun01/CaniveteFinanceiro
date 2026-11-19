@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora 50/30/20 — Regra de Orçamento Pessoal | CaniveteFinanceiro</title>
+    <meta
+      name="description"
+      content="Planeje seu salário líquido com a regra 50/30/20: 50% para custos fixos essenciais, 30% para despesas variáveis e 20% para investir ou quitar dívidas. Gráficos e simulação anual."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Arthur (@arthun01)" />
+    <meta name="theme-color" content="#183f35" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arthurrv.me/CaniveteFinanceiro/regra-50-30-20/" />
+
+    <!-- Favicon & PWA Manifest -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" href="../favicon.svg" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CaniveteFinanceiro" />
+    <meta property="og:url" content="https://arthurrv.me/CaniveteFinanceiro/regra-50-30-20/" />
+    <meta property="og:title" content="Calculadora 50/30/20 — Regra de Orçamento Pessoal" />
+    <meta property="og:description" content="Organize seu orçamento mensal: descubra o valor ideal para necessidades (50%), desejos (30%) e investimentos ou quitação de dívidas (20%)." />
+    <meta property="og:image" content="https://arthurrv.me/CaniveteFinanceiro/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://arthurrv.me/CaniveteFinanceiro/regra-50-30-20/" />
+    <meta name="twitter:title" content="Calculadora 50/30/20 — Regra de Orçamento Pessoal" />
+    <meta name="twitter:description" content="Simulação da regra 50/30/20 com lista de gastos personalizados, gráfico de meta vs realizado e projeção em 12 meses." />
+    <meta name="twitter:image" content="https://arthurrv.me/CaniveteFinanceiro/og-image.png" />
+
+    <!-- Preconnect Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos Estruturais -->
+
+    <!-- Dados Estruturados Schema.org (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Calculadora 50/30/20",
+            "url": "https://arthurrv.me/CaniveteFinanceiro/regra-50-30-20/",
+            "description": "Simulador interativo da Regra 50/30/20 de finanças pessoais com categorização de gastos, gráficos comparativos e projeção anual.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "pt-BR",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://arthurrv.me/CaniveteFinanceiro/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Regra 50/30/20",
+                "item": "https://arthurrv.me/CaniveteFinanceiro/regra-50-30-20/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="../assets/regra503020-Dm1bHJzp.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/index-CK_TVc5X.js">
+    <link rel="modulepreload" crossorigin href="../assets/formatters-CdjjqVE6.js">
+    <link rel="modulepreload" crossorigin href="../assets/chart-CHUjcuZ4.js">
+    <link rel="stylesheet" crossorigin href="../assets/index-DGo72HnD.css">
+  </head>
+  <body>
+    <!-- BARRA DE NAVEGAÇÃO -->
+<div class="container navbar-wrapper">
+  <nav class="navbar" aria-label="Navegação Principal">
+    <a href="../" class="logo">
+      <i class="logo-icon"></i>
+      CaniveteFinanceiro
+    </a>
+
+    <!-- Ações: Apoie + Dark Mode Toggle & Botão Hambúrguer Mobile -->
+    <div class="navbar-right">
+      <button type="button" class="btn-donate" id="open-donate-btn" aria-label="Apoiar o projeto">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>Apoie</span>
+      </button>
+      <button type="button" class="theme-toggle-btn" aria-label="Alternar tema"></button>
+      <button type="button" id="hamburger-btn" class="hamburger-btn" aria-label="Abrir menu mobile" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- MENU MOBILE (DRAWER & BACKDROP) -->
+<div id="mobile-menu-backdrop" class="mobile-menu-backdrop"></div>
+<aside id="mobile-menu" class="mobile-menu" aria-label="Menu Mobile">
+  <div>
+    <div class="mobile-menu-header">
+      <a href="../" class="logo">
+        <i class="logo-icon"></i>
+        CaniveteFinanceiro
+      </a>
+      <button type="button" id="close-menu-btn" class="mobile-menu-close" aria-label="Fechar menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="../" class="mobile-nav-link " data-nav="home">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Início
+      </a>
+      <a href="../juros-compostos/" class="mobile-nav-link " data-nav="juros-compostos">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
+        Juros Compostos
+      </a>
+      <a href="../reserva-emergencia/" class="mobile-nav-link " data-nav="reserva-emergencia">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        Reserva de Emergência
+      </a>
+      <a href="../imposto-de-renda/" class="mobile-nav-link " data-nav="imposto-de-renda">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+          <line x1="7" y1="15" x2="7.01" y2="15"></line>
+          <line x1="11" y1="15" x2="13" y2="15"></line>
+        </svg>
+        Imposto de Renda
+      </a>
+      <a href="../fundos-imobiliarios/" class="mobile-nav-link " data-nav="fundos-imobiliarios">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+          <line x1="9" y1="22" x2="9" y2="22.01"></line>
+          <line x1="15" y1="22" x2="15" y2="22.01"></line>
+          <line x1="9" y1="6" x2="9" y2="6.01"></line>
+          <line x1="15" y1="6" x2="15" y2="6.01"></line>
+          <line x1="9" y1="10" x2="9" y2="10.01"></line>
+          <line x1="15" y1="10" x2="15" y2="10.01"></line>
+          <line x1="9" y1="14" x2="9" y2="14.01"></line>
+          <line x1="15" y1="14" x2="15" y2="14.01"></line>
+        </svg>
+        Fundos Imobiliários
+      </a>
+      <a href="../financiamento/" class="mobile-nav-link " data-nav="financiamento">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"></path>
+          <path d="M3 10h18"></path>
+          <path d="M5 6l7-3 7 3"></path>
+          <path d="M4 10v11"></path>
+          <path d="M20 10v11"></path>
+          <path d="M8 14v4"></path>
+          <path d="M12 14v4"></path>
+          <path d="M16 14v4"></path>
+        </svg>
+        Financiamento
+      </a>
+      <a href="../margem-de-lucro/" class="mobile-nav-link " data-nav="margem-de-lucro">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="5" x2="5" y2="19"></line>
+          <circle cx="6.5" cy="6.5" r="2.5"></circle>
+          <circle cx="17.5" cy="17.5" r="2.5"></circle>
+        </svg>
+        Margem de Lucro
+      </a>
+      <a href="../regra-50-30-20/" class="mobile-nav-link active" data-nav="regra-50-30-20">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+          <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+        </svg>
+        Regra 50/30/20
+      </a>
+      <div class="mobile-menu-divider"></div>
+      <button type="button" id="mobile-donate-btn" class="mobile-nav-link mobile-nav-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color: #e11d48;">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        Apoie o Projeto
+      </button>
+      <a href="https://github.com/arthun01/CaniveteFinanceiro" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+        </svg>
+        <span>CaniveteFinanceiro</span>
+      </a>
+    </div>
+  </div>
+  <div class="mobile-menu-footer">
+    <span>Alternar Tema</span>
+    <button type="button" class="theme-toggle-btn" aria-label="Alternar tema"></button>
+  </div>
+</aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+      <!-- CABEÇALHO EXCLUSIVO PARA IMPRESSÃO / EXPORTAÇÃO PDF -->
+      <header class="print-only print-header" aria-hidden="true">
+        <div class="print-header-top">
+          <div class="print-brand">
+            <span class="print-brand-title">Canivete Financeiro</span>
+            <span class="print-brand-sub">Planejamento Orçamentário • Regra 50/30/20</span>
+          </div>
+          <div class="print-meta">
+            <div id="print-date">Emissão: --/--/----</div>
+            <div id="print-renda-info">Renda Líquida Base: R$ 0,00</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          ORÇAMENTO PESSOAL • REGRA 50/30/20
+        </div>
+        <h1 class="hero-title">Calculadora 50/30/20</h1>
+        <p class="hero-subtitle">
+          Organize seu salário líquido de forma equilibrada: 50% para necessidades e custos fixos, 30% para despesas variáveis e 20% para investir no seu futuro ou amortizar dívidas.
+        </p>
+      </section>
+
+      <!-- FORMULÁRIO DE ENTRADA -->
+      <section class="calculator-form-card glass-panel border-gradient" aria-label="Renda Líquida Mensal">
+        <h2 class="card-title" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+            <line x1="12" y1="14" x2="12" y2="18"></line>
+            <line x1="8" y1="16" x2="16" y2="16"></line>
+          </svg>
+          Sua Renda Mensal
+        </h2>
+
+        <form id="regra-form" class="calc-form" novalidate>
+          <div class="regra-form-grid">
+            <div class="input-group" id="group-renda">
+              <label for="input-renda" class="input-label">
+                <span>Renda Líquida Mensal</span>
+                <span class="badge-required">OBRIGATÓRIO</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="text" id="input-renda" class="form-input" placeholder="R$ 0,00" autofocus />
+              </div>
+              <span class="input-hint">Salário líquido ou receitas que entram na sua conta todo mês</span>
+            </div>
+
+            <div class="input-group regra-demo-group">
+              <label class="input-label action-group-desktop-label" aria-hidden="true" style="opacity: 0; pointer-events: none;">
+                <span>Ação Rápida</span>
+              </label>
+              <button type="button" id="btn-demo" class="btn btn-secondary" style="height: 48px; white-space: nowrap;" title="Preencher com renda exemplo de R$ 5.000,00 e gastos comuns">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Carregar Exemplo
+              </button>
+            </div>
+          </div>
+
+          <!-- MENSAGEM DE ERRO/VALIDAÇÃO -->
+          <div id="regra-error-alert" style="display: none; margin-top: 1rem; padding: 12px 16px; border-radius: 10px; background: rgba(225, 29, 72, 0.1); border: 1px solid rgba(225, 29, 72, 0.25); color: #e11d48; font-size: 13px; line-height: 1.5;"></div>
+
+          <!-- BOTÕES DE AÇÃO -->
+          <div class="form-actions" style="margin-top: 1.25rem;">
+            <button type="button" id="btn-clear" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+              </svg>
+              Limpar
+            </button>
+            <button type="button" id="btn-export-pdf" class="btn btn-secondary" title="Exportar planejamento completo em PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Exportar PDF
+            </button>
+            <button type="submit" id="btn-calculate" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Calcular Divisão 50/30/20
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- RESULTADOS EM NÚMEROS (CARDS DE KPI + GRÁFICO DOUGHNUT) -->
+      <section class="results-section" aria-label="Divisão da Regra 50/30/20" style="margin-bottom: 2.5rem;">
+        <div class="results-grid" style="grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));">
+          <!-- 1. 50% Custos Fixos -->
+          <div id="card-kpi-fixos" class="kpi-card" style="padding: 24px; min-height: 140px; border-top: 3px solid #0284c7;">
+            <div class="kpi-header">
+              <span class="kpi-title">50% — Custos Fixos</span>
+              <div class="kpi-icon" style="background: rgba(2, 132, 199, 0.12); color: #0284c7;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-fixos" class="kpi-value amount" style="margin: 10px 0;">R$ 0,00</div>
+            <div id="kpi-fixos-sub" class="kpi-footer">Necessidades essenciais</div>
+          </div>
+
+          <!-- 2. 30% Custos Variáveis -->
+          <div id="card-kpi-variaveis" class="kpi-card" style="padding: 24px; min-height: 140px; border-top: 3px solid #d97706;">
+            <div class="kpi-header">
+              <span class="kpi-title">30% — Custos Variáveis</span>
+              <div class="kpi-icon" style="background: rgba(217, 119, 6, 0.12); color: #d97706;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                  <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                  <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-variaveis" class="kpi-value amount" style="margin: 10px 0;">R$ 0,00</div>
+            <div id="kpi-variaveis-sub" class="kpi-footer">Estilo de vida, lazer e desejos</div>
+          </div>
+
+          <!-- 3. 20% Investir ou Reduzir Dívidas -->
+          <div id="card-kpi-investimentos" class="kpi-card kpi-profit" style="padding: 24px; min-height: 140px; border-top: 3px solid var(--green);">
+            <div class="kpi-header">
+              <span class="kpi-title">20% — Investir / Dívidas</span>
+              <div class="kpi-icon" style="background: var(--green-soft); color: var(--green);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-investimentos" class="kpi-value amount" style="margin: 10px 0;">R$ 0,00</div>
+            <div id="kpi-investimentos-sub" class="kpi-footer">Construção de futuro e quitação</div>
+          </div>
+
+          <!-- 4. Renda Total Líquida -->
+          <div class="kpi-card balance-card" style="padding: 24px; min-height: 140px;">
+            <div class="kpi-header">
+              <span class="kpi-title">Renda Líquida Total</span>
+              <div class="kpi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+            </div>
+            <div id="kpi-renda" class="kpi-value amount" style="margin: 10px 0;">R$ 0,00</div>
+            <div id="kpi-renda-sub" class="kpi-footer">100% da base mensal</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRÁFICO PEQUENO DE DOUGHNUT (DISTRIBUIÇÃO DA RENDA) -->
+      <section class="charts-section" aria-label="Distribuição da Renda" style="margin-bottom: 2.5rem;">
+        <div class="chart-card glass-panel border-gradient" style="max-width: 560px; margin: 0 auto;">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Distribuição Ideal (50/30/20)</h3>
+              <p style="font-size: 13px; color: var(--muted); margin: 4px 0 0 0;">
+                Proporção recomendada pela metodologia para cada categoria do seu salário líquido
+              </p>
+            </div>
+            <span class="hero-badge" style="margin: 0; font-size: 10px;">Proporção</span>
+          </div>
+          <div class="chart-canvas-wrapper" id="chart-pie-wrapper" style="height: 250px;">
+            <canvas id="chart-pie"></canvas>
+            <img id="chart-pie-print-img" class="chart-print-img" alt="Gráfico de Distribuição 50/30/20" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO INTERATIVA: RABISCAR GASTOS POR CATEGORIA -->
+      <section class="scratchpad-section" aria-label="Rabiscar Gastos por Categoria">
+        <div class="section-title-wrapper" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <div>
+            <h2 class="card-title" style="display: flex; align-items: center; gap: 0.6rem; margin: 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+              Rabiscar Gastos Detalhados
+            </h2>
+            <p style="font-size: 13.5px; color: var(--muted); margin: 0.35rem 0 0 0;">
+              Adicione suas contas e despesas reais em cada grupo para comparar com os limites da regra.
+            </p>
+          </div>
+          <button type="button" id="btn-clear-items" class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px; min-height: 32px;">
+            Limpar Todos os Itens
+          </button>
+        </div>
+
+        <div class="scratchpad-grid">
+          <!-- CARD 1: 50% Custos Fixos -->
+          <div class="category-card card-fixos glass-panel border-gradient" id="block-fixos">
+            <div class="category-top">
+              <div class="category-title-group">
+                <h3>Custos Fixos (50%)</h3>
+                <p>Moradia, energia, água, gás, supermercado, transporte</p>
+              </div>
+              <span class="category-pct-badge">Meta 50%</span>
+            </div>
+
+            <div class="category-stats-row">
+              <span class="stat-label">Limite Permitido:</span>
+              <span class="stat-val" id="limit-fixos">R$ 0,00</span>
+            </div>
+            <div class="category-stats-row">
+              <span class="stat-label">Gasto Cadastrado:</span>
+              <span class="stat-val" id="spent-fixos">R$ 0,00</span>
+            </div>
+            <div class="category-stats-row">
+              <span class="stat-label" id="balance-label-fixos">Saldo Restante:</span>
+              <span class="stat-val" id="balance-fixos" style="color: #0284c7;">R$ 0,00</span>
+            </div>
+
+            <div class="category-progress-track">
+              <div id="progress-fixos" class="category-progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <div class="items-list" id="list-fixos">
+              <!-- Linhas de itens geradas dinamicamente via JS -->
+            </div>
+
+            <button type="button" class="btn-add-item" data-category="fixos">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Adicionar Custo Fixo
+            </button>
+          </div>
+
+          <!-- CARD 2: 30% Custos Variáveis -->
+          <div class="category-card card-variaveis glass-panel border-gradient" id="block-variaveis">
+            <div class="category-top">
+              <div class="category-title-group">
+                <h3>Custos Variáveis (30%)</h3>
+                <p>Lazer, restaurantes, viagens, compras, assinaturas</p>
+              </div>
+              <span class="category-pct-badge">Meta 30%</span>
+            </div>
+
+            <div class="category-stats-row">
+              <span class="stat-label">Limite Permitido:</span>
+              <span class="stat-val" id="limit-variaveis">R$ 0,00</span>
+            </div>
+            <div class="category-stats-row">
+              <span class="stat-label">Gasto Cadastrado:</span>
+              <span class="stat-val" id="spent-variaveis">R$ 0,00</span>
+            </div>
+            <div class="category-stats-row">
+              <span class="stat-label" id="balance-label-variaveis">Saldo Restante:</span>
+              <span class="stat-val" id="balance-variaveis" style="color: #d97706;">R$ 0,00</span>
+            </div>
+
+            <div class="category-progress-track">
+              <div id="progress-variaveis" class="category-progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <div class="items-list" id="list-variaveis">
+              <!-- Linhas de itens geradas dinamicamente via JS -->
+            </div>
+
+            <button type="button" class="btn-add-item" data-category="variaveis">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Adicionar Custo Variável
+            </button>
+          </div>
+
+          <!-- CARD 3: 20% Investir ou Reduzir Dívidas -->
+          <div class="category-card card-investimentos glass-panel border-gradient" id="block-investimentos">
+            <div class="category-top">
+              <div class="category-title-group">
+                <h3>Investir / Dívidas (20%)</h3>
+                <p>Reserva, financiamento, FIIs, ações, amortização</p>
+              </div>
+              <span class="category-pct-badge">Meta 20%</span>
+            </div>
+
+            <div class="category-stats-row">
+              <span class="stat-label">Meta Recomendada:</span>
+              <span class="stat-val" id="limit-investimentos">R$ 0,00</span>
+            </div>
+            <div class="category-stats-row">
+              <span class="stat-label">Valor Destinado:</span>
+              <span class="stat-val" id="spent-investimentos">R$ 0,00</span>
+            </div>
+            <div class="category-stats-row">
+              <span class="stat-label" id="balance-label-investimentos">Faltam para a Meta:</span>
+              <span class="stat-val" id="balance-investimentos" style="color: var(--green);">R$ 0,00</span>
+            </div>
+
+            <div class="category-progress-track">
+              <div id="progress-investimentos" class="category-progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <div class="items-list" id="list-investimentos">
+              <!-- Linhas de itens geradas dinamicamente via JS -->
+            </div>
+
+            <button type="button" class="btn-add-item" data-category="investimentos">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Adicionar Investimento / Dívida
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO DE COMPARAÇÃO & PROJEÇÃO: BARRAS AGRUPADAS + TABELA ANUAL -->
+      <section class="charts-section" aria-label="Comparação de Metas e Projeção" style="margin-bottom: 2.5rem;">
+        <!-- 1. GRÁFICO DE BARRAS AGRUPADAS (META x REALIZADO) -->
+        <div class="chart-card glass-panel border-gradient" style="margin-bottom: 2rem;">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Comparação: Meta da Regra vs Seu Orçamento Real</h3>
+              <p style="font-size: 13px; color: var(--muted); margin: 4px 0 0 0;">
+                Percentual da renda destinado a cada grupo. Barras que ultrapassam o teto são sinalizadas automaticamente.
+              </p>
+            </div>
+            <span class="hero-badge" style="margin: 0; font-size: 10px;">Meta x Real</span>
+          </div>
+          <div class="chart-canvas-wrapper" id="chart-bars-wrapper" style="height: 300px;">
+            <canvas id="chart-bars"></canvas>
+            <img id="chart-bars-print-img" class="chart-print-img" alt="Comparação Meta vs Realizado" />
+          </div>
+        </div>
+
+        <!-- 2. TABELA DE PROJEÇÃO ANUAL (12 MESES) -->
+        <div class="table-card glass-panel border-gradient">
+          <div class="table-header">
+            <div>
+              <h3 class="table-title">Simulação e Projeção Anual (12 Meses)</h3>
+              <div class="table-scroll-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Acompanhe o crescimento acumulado das 3 categorias ao longo de 1 ano
+              </div>
+            </div>
+            <span id="badge-projecao-status" class="hero-badge" style="margin: 0; font-size: 10px; white-space: nowrap; flex-shrink: 0;">12 Meses</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="evolution-table">
+              <thead>
+                <tr>
+                  <th scope="col">Mês</th>
+                  <th scope="col">Custos Fixos Acum. (50%)</th>
+                  <th scope="col">Custos Variáveis Acum. (30%)</th>
+                  <th scope="col" class="col-investimentos">Investir ou Reduzir Dívidas (20%)</th>
+                  <th scope="col">Total Movimentado</th>
+                </tr>
+              </thead>
+              <tbody id="projecao-table-body">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: 14px;">
+                    Informe sua renda líquida mensal para visualizar o cronograma acumulado de 12 meses.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUIA DIDÁTICO / EXPLICAÇÃO DA METODOLOGIA 50/30/20 -->
+      <section class="education-section" aria-label="Como funciona o método 50/30/20">
+        <div class="education-card">
+          <h2 class="education-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--green);">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            O que é a Metodologia 50/30/20 e Por Que Adotá-la?
+          </h2>
+          <p class="education-text">
+            Criada pela professora de direito de Harvard e senadora americana Elizabeth Warren, a <strong>Regra 50/30/20</strong> é uma das ferramentas de planejamento orçamentário mais práticas e eficientes do mundo. Em vez de controlar centavo por centavo com centenas de planilhas complexas, você divide seu salário líquido em três grandes pilares com limites bem definidos:
+          </p>
+
+          <div class="formula-box">
+            Divisão Inteligente: 50% Necessidades  +  30% Desejos  +  20% Investimentos & Quitação
+          </div>
+
+          <div class="education-grid">
+            <div class="education-item">
+              <h4>1. Visão Clara do Dinheiro</h4>
+              <p>Elimina a sensação de que o salário "evaporou" no final do mês, dando transparência sobre o destino de cada real.</p>
+            </div>
+            <div class="education-item">
+              <h4>2. Limites Definidos</h4>
+              <p>Evita que o padrão de vida e custos fixos (aluguel, condomínio, carro) sufoquem sua capacidade de poupança.</p>
+            </div>
+            <div class="education-item">
+              <h4>3. Equilíbrio sem Culpa</h4>
+              <p>Você reserva 30% especificamente para aproveitar a vida (lazer, jantares, hobbies) sem peso na consciência.</p>
+            </div>
+            <div class="education-item">
+              <h4>4. Metas e Independência</h4>
+              <p>Ao destinar 20% com disciplina para reserva de emergência, quitação antecipada de dívidas e investimentos, você constrói patrimônio real.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- RODAPÉ EXCLUSIVO PARA IMPRESSÃO / EXPORTAÇÃO PDF -->
+      <footer class="print-only print-footer" aria-hidden="true">
+        <span>Relatório emitido via Canivete Financeiro (arthurrv.me/CaniveteFinanceiro)</span>
+        <span>Planejamento Orçamentário Pessoal • Uso Pessoal e Didático</span>
+      </footer>
+    </main>
+
+    <!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-left">
+      <span>Conheça o <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link footer-saldo-link">Saldo</a><sup>&reg;</sup></span>
+    </div>
+    <div class="footer-right">
+      <span>Desenvolvido <span class="footer-carinho">com carinho </span>por</span>
+      <a href="https://github.com/arthun01" target="_blank" rel="noopener noreferrer" class="footer-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+        </svg>
+        Arthur (@arthun01)
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL "APOIE O PROJETO" -->
+<dialog id="donate-dialog" class="donate-dialog">
+  <div class="dialog-top">
+    <div class="donate-title-group">
+      <span class="donate-icon-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </span>
+      <h3 class="donate-title">Apoie o CaniveteFinanceiro</h3>
+    </div>
+    <button type="button" id="close-donate-btn" class="close" aria-label="Fechar modal">✕</button>
+  </div>
+
+  <div class="donate-body">
+    <p class="donate-intro">
+      O <strong>CaniveteFinanceiro</strong> é uma plataforma 100% gratuita, de código aberto e sem anúncios. Se estas ferramentas te ajudaram em suas decisões patrimoniais, considere apoiar para manter o projeto vivo e evoluindo!
+    </p>
+
+    <div class="donate-card">
+      <div class="donate-card-header">
+        <span class="donate-tag">Chave Pix</span>
+        <span class="donate-card-hint">Qualquer valor incentiva muito 💚</span>
+      </div>
+      <div class="donate-pix-box">
+        <input type="text" id="pix-key-input" value="arthurramos7890@gmail.com" readonly aria-label="Chave Pix" />
+        <button type="button" id="copy-pix-btn" class="btn btn-primary donate-copy-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copy-pix-text">Copiar Chave Pix</span>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size: 13px; color: var(--muted); margin-bottom: 0.75rem;">Ou fortaleça dando uma estrela no repositório:</p>
+      <a href="https://github.com/arthun01/CaniveteFinanceiro" target="_blank" rel="noopener noreferrer" class="btn btn-secondary donate-github-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+        </svg>
+        <span>CaniveteFinanceiro</span>
+      </a>
+    </div>
+  </div>
+</dialog>
+
+
+  </body>
+</html>
