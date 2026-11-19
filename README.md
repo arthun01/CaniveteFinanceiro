@@ -8,7 +8,7 @@ Construído com **HTML5**, **CSS3 Moderno** e **TypeScript** estruturado com **V
 
 ## 🧭 Ferramentas Disponíveis no Portal
 
-O portal inicial (`index.html`) oferece acesso direto a seis ferramentas essenciais:
+O portal inicial (`index.html`) oferece acesso direto a sete ferramentas essenciais:
 
 ### 1. 📈 [Calculadora de Juros Compostos](./juros-compostos/)
 - **Projeção Exponencial:** Simulação de juros sobre juros com valor inicial e aportes mensais recorrentes.
@@ -82,6 +82,17 @@ O portal inicial (`index.html`) oferece acesso direto a seis ferramentas essenci
   - **Gráfico de Rosca:** Proporção entre o custo de aquisição da mercadoria e o lucro bruto gerado.
   - **Tabela de Sensibilidade:** Simulação instantânea de precificação para 8 faixas de margem (10% a 80%) com clique interativo para aplicar.
 - **Guia Didático:** Desmistificação da diferença crítica entre Margem (de cima para baixo) e Markup (de baixo para cima), ilustrado com o caso clássico de R$ 5,00 e R$ 15,00.
+
+---
+
+### 7. 🍰 [Calculadora 50/30/20 de Orçamento Pessoal](./regra-50-30-20/)
+- **Divisão Equilibrada do Salário:** 50% para Custos Fixos & Necessidades, 30% para Custos Variáveis & Lazer e 20% para Investir ou Reduzir Dívidas.
+- **Rabiscar Gastos Detalhados:** Listas dinâmicas personalizáveis com acompanhamento do limite, total gasto e saldo restante por categoria.
+- **Visualizações Dinâmicas:**
+  - **Gráfico de Rosca:** Proporção 50/30/20 do salário líquido mensal.
+  - **Gráfico de Barras Agrupadas:** Comparativo direto entre a Meta da Regra (%) vs Seu Planejamento Real (%), com alerta visual caso o teto seja estourado.
+  - **Tabela Anual Acumulada (12 Meses):** Projeção de 1 ano com destaque estilístico na coluna de *Investir ou Reduzir Dívidas* para incentivar o olhar sobre a construção de patrimônio.
+- **Guia Didático:** Explicação dos benefícios da metodologia de Elizabeth Warren e dicas de equilíbrio orçamentário.
 
 ---
 

@@ -37,6 +37,7 @@ Documentações completas das ferramentas atualmente em produção:
 - **[`features/06-financiamento-prestacoes-fixas.md`](./features/06-financiamento-prestacoes-fixas.md):** Simulador de Financiamento com Prestações Fixas (Banco Central / Tabela Price), resolução das 4 variáveis ($p, q_0, j, n$), cronograma de amortização e gráficos de juros.
 - **[`features/07-seo-e-indexacao.md`](./features/07-seo-e-indexacao.md):** Estratégia de SEO Técnico, robots.txt, sitemap.xml, canonicalização HTTPS, Open Graph, Twitter Cards e dados estruturados Schema.org (JSON-LD).
 - **[`features/08-margem-de-lucro.md`](./features/08-margem-de-lucro.md):** Calculadora de Margem de Lucro e Markup, formação de preço de venda, tabela de sensibilidade (10% a 80%) e gráfico de composição Custo vs Lucro.
+- **[`features/09-regra-50-30-20.md`](./features/09-regra-50-30-20.md):** Calculadora da Regra 50/30/20 de Orçamento Pessoal, lista interativa para rabiscar gastos, gráfico de barras agrupadas (meta x realizado) e projeção de 12 meses com destaque em investimentos.
 
 ---
 
@@ -49,6 +50,7 @@ Os arquivos de concepção originais criados pelo idealizador do projeto foram p
 - [`sources/ideia-4.md`](./sources/ideia-4.md): Concepção do Simulador de Fundos Imobiliários e Efeito Bola de Neve.
 - [`sources/ideia-5.md`](./sources/ideia-5.md): Concepção do Simulador de Financiamento com Prestações Fixas (Banco Central).
 - [`sources/ideia-6.md`](./sources/ideia-6.md): Concepção da Calculadora de Margem de Lucro e Markup comercial.
+- [`sources/ideia-7(503020).md`](./sources/ideia-7(503020).md): Concepção da Calculadora da Regra 50/30/20 de Orçamento Pessoal.
 - [`sources/ideia-indexacao-google-search.md`](./sources/ideia-indexacao-google-search.md): Requisitos de SEO técnico, auditoria e indexação no Google Search Console e Bing.
 - [`sources/base-css-aplicacao-externa.md`](./sources/base-css-aplicacao-externa.md): Folha de estilos e tokens de design da aplicação externa de referência ("Saldo").
 - [`sources/plano_de_criacao.md`](./sources/plano_de_criacao.md): Plano inicial de arquitetura técnica e animações.

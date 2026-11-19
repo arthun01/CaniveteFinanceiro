@@ -1561,3 +1561,252 @@ dialog.donate-dialog::backdrop {
 [data-theme="dark"] .footer-link {
   color: var(--lime);
 }
+
+/* --- REGRA 50/30/20: SEÇÃO DE RABISCAR GASTOS --- */
+.scratchpad-section {
+  margin-bottom: 2.5rem;
+}
+
+.scratchpad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.category-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-xl);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.category-card:hover {
+  border-color: rgba(24, 63, 53, 0.2);
+}
+
+.category-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.category-title-group h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 4px 0;
+}
+
+.category-title-group p {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.category-pct-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.category-card.card-fixos .category-pct-badge {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+}
+
+.category-card.card-variaveis .category-pct-badge {
+  background: rgba(217, 119, 6, 0.12);
+  color: #d97706;
+}
+
+.category-card.card-investimentos .category-pct-badge {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+[data-theme="dark"] .category-card.card-fixos .category-pct-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .category-card.card-variaveis .category-pct-badge {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .category-card.card-investimentos .category-pct-badge {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+.category-stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+  font-size: 13px;
+}
+
+.category-stats-row .stat-label {
+  color: var(--muted);
+}
+
+.category-stats-row .stat-val {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.category-progress-track {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--card-bg-daily);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.category-progress-bar {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.4s ease, background-color 0.3s ease;
+}
+
+.category-card.card-fixos .category-progress-bar {
+  background: #0284c7;
+}
+
+.category-card.card-variaveis .category-progress-bar {
+  background: #d97706;
+}
+
+.category-card.card-investimentos .category-progress-bar {
+  background: var(--green);
+}
+
+[data-theme="dark"] .category-card.card-fixos .category-progress-bar {
+  background: #38bdf8;
+}
+
+[data-theme="dark"] .category-card.card-variaveis .category-progress-bar {
+  background: #fbbf24;
+}
+
+[data-theme="dark"] .category-card.card-investimentos .category-progress-bar {
+  background: #4ade80;
+}
+
+.category-progress-bar.overbudget {
+  background: var(--red) !important;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex: 1;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.item-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.item-input-desc {
+  flex: 1.6;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--card-bg-subtle);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.item-input-val {
+  flex: 1.1;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--card-bg-subtle);
+  color: var(--ink);
+  font-weight: 600;
+  font-family: var(--font-sans);
+}
+
+.btn-remove-item {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-remove-item:hover {
+  background: var(--red-bg);
+  color: var(--red);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.btn-add-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 8px 14px;
+  background: var(--card-bg-daily);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-item:hover {
+  background: var(--green-soft);
+  color: var(--green);
+  border-color: var(--green);
+}
+
+/* Destaque para a coluna de Investir/Quitar Dívidas na Tabela Anual */
+.evolution-table td.col-investimentos,
+.evolution-table th.col-investimentos {
+  background: rgba(24, 63, 53, 0.05);
+  color: var(--green);
+  font-weight: 700;
+  border-left: 1px solid rgba(24, 63, 53, 0.1);
+  border-right: 1px solid rgba(24, 63, 53, 0.1);
+}
+
+[data-theme="dark"] .evolution-table td.col-investimentos,
+[data-theme="dark"] .evolution-table th.col-investimentos {
+  background: rgba(74, 222, 128, 0.08);
+  color: #4ade80;
+  border-left-color: rgba(74, 222, 128, 0.15);
+  border-right-color: rgba(74, 222, 128, 0.15);
+}
